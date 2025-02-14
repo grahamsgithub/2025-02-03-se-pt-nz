@@ -10,6 +10,19 @@
 //   return num1 + num2
 // }
 
+// Below this we have a new function called greet.
+// This function takes a name as a parameter and 
+// logs a greeting to the console. It uses the readline
+// module to get the name from the user.
+
+// the below code (const readline = require('readline');) 
+// is used to get user input. you have to install readline
+// to use it in the terminal.
+// the require function is used to import the readline 
+// unit from the node.js standard library.
+
+const readline = require('readline');
+
 console.log('M1LAB4.js')
 console.log('---------')
 console.log('Things to do with the numbers 5 and 10:')
@@ -31,3 +44,21 @@ function devide(a, b) {
   return a / b
 }
 
+// New function to greet a person by name
+function greet(name) {
+  console.log(`Hello ${name}`)
+}
+
+// Ask the user for their name and greet them using readline
+// the readline module is used to get user input
+// I got the code example online and modified it
+// to fit
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question("What is your name? ", function(name) {
+  greet(name);
+  rl.close();
+});
