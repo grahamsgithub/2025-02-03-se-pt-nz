@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- The head contains things like:
+1. Meta charset
+2. Meta viewport
+3. Title
+4. Link to CSS / or style tag
+5. Link to JS
+6. keywords and description for SEO -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1 Exercise 3</title>
+    <link rel="stylesheet" href="M1LAB3.css">
+    <script src="M1LAB3.js"></script>
+</head>
+
+<!-- the body contains the content of the page.  -->
+
+<body>
+    <!-- The code below is a simple HTML page that contains two columns. 
+    Each column contains an image, a heading, a text area, and a button. 
+    When the button is clicked, the background color of the column changes to blue or green, 
+    and the heading changes to "Hi" followed by the text entered in the text area. 
+    The code uses JavaScript to change the background color and the heading text When
+    the button is clicked. -->
+    <div class="container">
+        <div class="column" id="column1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyCMzku8N8h7XBFk3IM5DEE87WOomPCUh1BA&s"
+                alt="Circle">
+            <h1 id="heading1">Hello</h1>
+            <textarea name="textarea1" id="text1" placeholder="Enter your name."></textarea>
+            <button id="button1" onclick="changecolor1(),usename1()">Change Me</button>
+        </div>
+        <div class="column" id="column2">
+            <img src="data:image/png;base64,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"
+                alt="Triangle">
+            <h1 id="heading2">World</h1>
+            <textarea name="textarea2" id="text2" placeholder="Enter your name."></textarea>
+            <button id="button2" onclick="changecolor2(),usename2()">Change Me</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
