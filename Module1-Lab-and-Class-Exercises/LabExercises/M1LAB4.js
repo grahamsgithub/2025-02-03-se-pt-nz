@@ -57,8 +57,24 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+This code: const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+// is used to create a readline interface. The input is
+// set to the standard input stream and the output is set
+// to the standard output stream. Which is the terminal.
+// We can use the readline interface to ask the user for input.
 
 rl.question("What is your name? ", function(name) {
   greet(name);
   rl.close();
 });
+
+// This code: rl.question("What is your name? ", function(name) {
+// is used to ask the user for their name. The question method
+// is called on the readline interface. The first parameter is
+// the question to ask the user. The second parameter is a
+// callback function that is called when the user enters their
+// name. The name is passed to the greet function and the readline
+// interface is closed.
