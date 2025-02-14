@@ -1,4 +1,4 @@
-noconsole.log('M1LAB4.js')
+console.log('M1LAB4.js')
 console.log('---------')
 console.log('Things to do with the numbers 5 and 10:')
 console.log('5 + 10 =', add(5, 10))
