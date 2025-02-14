@@ -23,14 +23,6 @@
 
 const readline = require('readline');
 
-console.log('M1LAB4.js')
-console.log('---------')
-console.log('Things to do with the numbers 5 and 10:')
-console.log('5 + 10 =', add(5, 10))
-console.log('5 - 10 =', subtract(5, 10))
-console.log('5 * 10 =', multiply(5, 10))
-console.log('5 / 10 =', devide(5, 10))
-
 function add(a, b) {
   return a + b
 }   
@@ -45,36 +37,38 @@ function devide(a, b) {
 }
 
 // New function to greet a person by name
+// I got the code example online and modified it to fit the requirements
+// The greet function takes a name as a parameter and logs a greeting to the console
+// The readline module is used to get the name from the user
+// The readline module is imported at the top of the file
+// The greet function is called at the end of the file.
 function greet(name) {
   console.log(`Hello ${name}`)
 }
 
+console.log('M1LAB4.js')
+console.log('---------')
+console.log('Things to do with the numbers 5 and 10:')
+console.log('5 + 10 =', add(5, 10))
+console.log('5 - 10 =', subtract(5, 10))
+console.log('5 * 10 =', multiply(5, 10))
+console.log('5 / 10 =', devide(5, 10))
+
 // Ask the user for their name and greet them using readline
-// the readline module is used to get user input
-// I got the code example online and modified it
-// to fit
+// The readline module is used to get user input
+// The greet function is called with the user's name
+// .createInterface is a method of the readline module
+// input and output are properties of the process object
+// The question method is used to ask the user for their name
+// output is to the console and input is from the console
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-This code: const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-// is used to create a readline interface. The input is
-// set to the standard input stream and the output is set
-// to the standard output stream. Which is the terminal.
-// We can use the readline interface to ask the user for input.
+// the rl.question method is used to ask the user for their name
+// rl.close is used to close the readline interface
 
 rl.question("What is your name? ", function(name) {
   greet(name);
   rl.close();
 });
-
-// This code: rl.question("What is your name? ", function(name) {
-// is used to ask the user for their name. The question method
-// is called on the readline interface. The first parameter is
-// the question to ask the user. The second parameter is a
-// callback function that is called when the user enters their
-// name. The name is passed to the greet function and the readline
-// interface is closed.
