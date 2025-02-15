@@ -1,4 +1,4 @@
-// in the below code we functions 
+// in the below code we use functions 
 // to add, subtract, multiply and divide two numbers. 
 // The functions are called with the numbers 5 and 10. 
 // The results are printed to the console. a and b are 
@@ -12,14 +12,15 @@
 
 // Below this we have a new function called greet.
 // This function takes a name as a parameter and 
-// logs a greeting to the console. It uses the readline
-// module to get the name from the user.
+// logs a greeting to the console using this captured input. 
+// It uses the readline module to get the name from the user.
 
 // the below code (const readline = require('readline');) 
 // is used to get user input. you have to install readline
 // to use it in the terminal.
 // the require function is used to import the readline 
 // unit from the node.js standard library.
+
 
 const readline = require('readline');
 
@@ -54,6 +55,7 @@ console.log('5 - 10 =', subtract(5, 10))
 console.log('5 * 10 =', multiply(5, 10))
 console.log('5 / 10 =', devide(5, 10))
 
+// The below code is used to get user input
 // Ask the user for their name and greet them using readline
 // The readline module is used to get user input
 // The greet function is called with the user's name
