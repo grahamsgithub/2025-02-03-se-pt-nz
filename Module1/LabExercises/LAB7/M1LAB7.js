@@ -127,5 +127,3 @@ if (isFinite(nameentered) != true) {
 
 // The below code sends 'All tests passed' to the console
 // if no errors are thrown by the if statements in the tests
-
-ed
