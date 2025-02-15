@@ -179,6 +179,10 @@ rl.question("What is your name? ", function(name) {
     // The final check to see if all tests passed
     // testpass is incremented by 1 for each test that passes
     // if all tests pass meaning testpass is 13, the message 'All tests passed.' is sent to the console
+    // NB the mathematical test check the validity of the functions add, subtract, multiply and devide
+    // so whether the function correctly performs the mathematical operation
+    // the final test checks if the name entered consists of only letters so is more of a validation test
+
     if (testpass == 13)  {
         console.log('All tests passed.');
     }
