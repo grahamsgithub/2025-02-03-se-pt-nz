@@ -1,0 +1,121 @@
+/* This is the style sheet for the dice game.
+using the link tag in the head of the html file
+link rel="stylesheet" type="text/css" href="dicestyle.css"
+
+float left and right are used to position the containers side by side
+I used flexbox to center the content of the containers
+along with justify-content and align-items both set to center
+I also used flex-direction to set the direction of the flexbox to column
+this lets the content of the containers be centered vertically
+I used overflow: auto to allow the content of the containers to be scrollable 
+but this was not really needed for most screens
+em is used for the border-radius, padding, margin, and border
+em lets the size of the border, padding, and margin be relative to the font-size
+which itself is relative to the size of the screen
+i used rem to set the font-size of the buttons and the text in the containers
+rem lets the size of the font be relative to the font-size of the root element
+which is the html element (with a default font-size of 16px)
+for font-size i used xx-large, x-large, and large to make the text bigger
+and bolder to make the text thicker these are again relative to the font-size
+all of the above means that the layout is responsive and will look good on most screens
+as opposed to using fixed sizes like pixels which would not always look good on all screens */
+
+#container0 {
+    width: 40%;
+    height: 40%;
+    background-color: #ac5568;
+    padding: 1em;
+    margin: 1rem auto; /* Center the container horizontally */
+    border: 1em solid #000;
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: auto;
+    text-align: center; /* Center the text in its parent element */
+}
+
+#container1 {
+    float: left;
+    width: 40%;
+    height: 40%;
+    background-color: #b17c32;
+    padding: 1em;
+    margin: 1rem;
+    border: 1em solid #000;
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: auto;
+}
+#container2 {
+    float: right;
+    align-content: center;
+    width: 40%;
+    height: 40%;
+    background-color: #91afab;
+    padding: 1em;
+    margin: 1rem;
+    border: 1em solid #000;
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: auto;
+}
+#container3 {
+    align-content: center;
+    width: 40%;
+    height: 40%;
+    background-color: #4f703b;
+    padding: 1em;
+    margin: 1rem auto; /* Center the container horizontally */
+    border: 1em solid #000;
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    align-content: center;
+    background-color: #ffffff;
+    color: #ea0000;
+    border: 1em solid #000;
+    border-radius: 1rem;
+    padding: 1em;
+    margin: 1em;
+    font-size: 2em;
+}
+
+#container0 h1 {
+    font-size: xx-large;
+    font-weight: bolder;
+}
+#container1 p {
+    font-size: xx-large;
+    font-weight: bolder;
+}
+#container2 p {
+    font-size: xx-large;
+    font-weight: bolder;
+}
+#container3 p {
+    font-size: xx-large;
+    font-weight: bolder;
+}
+#container3 label {
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+#container3 textarea {
+    font-size: xx-large;
+    font-weight: bolder;
+}
+

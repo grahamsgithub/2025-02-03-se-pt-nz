@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1 Lab 8</title>
+    <link rel="stylesheet" href="dicestyle.css">
+</head>
+<body>
+    <!-- The page contains 3 containers. Each container contains a header, a paragraph and a button. -->
+    <div id="container0"><h1>Welcome to the DevsInc Dice Generator</h1></div>
+    <div id="container1">
+        <h1>6-A-SIDE DICE</h1>
+        <p>Click the button to roll the 6 Sided Dice. Click again for another role.</p>
+        <button id="roll6Button" onclick="roll6Die()">Roll Me!</button>
+    </div>
+    <div id="container2">
+        <h1>10-A-SIDE DICE</h1>
+        <p>Click the button to roll the 10 Sided Dice.Click again for another role.</p>
+        <button id="roll10Button" onclick="roll10Die()">Roll Me!</button>
+    </div>
+    <div id="container3">
+        <!-- container 3 uses a text area to allow the user to enter the number of sides for the dice they want to roll.
+        this value is saved as a variable (userDiceChoice) which is then passed to the rollChosenDie function
+        as a parameter when the button is clicked. The rollChosenDie function then uses this value to generate a random number
+        with the maximum value being the number of sides the user has chosen. -->
+        <h1>CHOOSE-YOUR-SIDES</h1>
+        <p>Enter your number of dice sides.</p>
+        <!-- the textarea below has been modifed with maxlenght to only allow 4 characters to be entered. 
+        and the cols attribute has been set to 4 to make the textarea smaller - this is to 
+        aid with responsive design only on smaller screens (the function will calculate any number of sides). -->
+        <textarea name="diceChoice" id="userDiceChoice" maxlength="4" cols="4"></textarea>
+        <p>Click the button to roll the Dice. Click again for another role.</p>
+        <button id="rollYourDie" onclick="rollChosenDie()">Roll Me!</button>
+    </div>
+    <script>
+        // the orignalcode logic using math.random and math.floor was taken from a class exercise.
+        // math.floor is used to round the number down to the nearest whole number. Math.random is used to generate a random number
+        // the + 1 is added to ensure that the number generated is between 1 and the number of sides of the dice.
+        // instead of a zero which is impossible for a real world dice.
+
+        // It would be possible to adapt this code to use a different method for container 3's function but I wanted to 
+        // see if there was a different way and if that could also include user input error checking (see comments below)
+        function roll6Die() {
+            let x = Math.floor((Math.random() * 6) + 1);
+            document.getElementById("roll6Button").textContent = x;
+        }
+        function roll10Die() {
+            let y = Math.floor((Math.random() * 10) + 1);
+            document.getElementById("roll10Button").textContent = y;
+        }
+        // // JavaScript function to roll a die with a user-defined number of sides
+        // it uses parseInt to convert the user input to a number and then checks if the number is valid
+        // by checking if it is not a number or if it is less than or equal to 0. This is done by using isNaN. Which means
+        // is Not a Number.
+        // isNan returns true if the value is not a number and false if it is a number. So isNan(diceSides) means 
+        // that if the value of diceSides is not a number then the alert will be displayed. The || symbol is used to
+        // check if either of the conditions is true. || means OR. so it also if diceSides is less than or equal to 0.
+        function rollChosenDie() {
+            let diceSides = parseInt(document.getElementById("userDiceChoice").value);
+            if (isNaN(diceSides) || diceSides <= 0) {
+                alert("Please enter a valid number of dice sides.");
+                return;
+            }
+            let z = Math.floor((Math.random() * diceSides) + 1);
+            document.getElementById("rollYourDie").textContent = z;
+        }
+
+        // // JavaScript tests for rollChosenDie function
+
+        // To use the test just uncomment the code below and check the browswer console for the results.
+        // The tests should be commented out for normal use of the page as otherwise the test values will
+        // interfere with the running of the rollChosenDie function.
+
+        // function runTests() {
+        
+        //     // Test 1: Check if rollChosenDie updates the output with a value between 1 and the chosen number of sides
+        //     document.getElementById("userDiceChoice").value = 20;
+        //     rollChosenDie();
+        //     let result = parseInt(document.getElementById("rollYourDie").textContent);
+        //     console.log("Test 1 passed:", result >= 1 && result <= 20);
+
+        //     // Test 2: Check if rollChosenDie correctly handles a 20-sided die
+        //     document.getElementById("userDiceChoice").value = 20;
+        //     rollChosenDie();
+        //     result = parseInt(document.getElementById("rollYourDie").textContent);
+        //     console.log("Test 2 passed:", result >= 1 && result <= 20);
+
+        //     // Test 3: Check if rollChosenDie correctly handles a 40-sided die
+        //     document.getElementById("userDiceChoice").value = 40;
+        //     rollChosenDie();
+        //     result = parseInt(document.getElementById("rollYourDie").textContent);
+        //     console.log("Test 3 passed:", result >= 1 && result <= 40);
+        // // Run tests on page load
+        // window.onload = runTests;
+    
+    </script>
+</body>
+</html>
