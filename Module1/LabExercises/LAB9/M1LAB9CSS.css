@@ -1,0 +1,100 @@
+body {
+    font-family: 'Cabin Sketch', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    background-color: #f3ede5e0;
+    background-image: url('landingbackground.jpg'); /* Path to your background image */
+    background-size: 100% 100%; /* Allows the background image to distort so that it always fits the background size without image cropping */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Fix the background image */
+}
+
+#container0 {
+    position: absolute;
+    top: 22%; /* Adjust the top position as needed */
+    left: 55.5%; /* Adjust the left position as needed */
+    width: 22%; /* Adjust the width as needed */
+    height: 61.8%; /* Adjust the height as needed */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    overflow: auto; /* Add scrollbars if content overflows */
+    padding: 4px; /* Add padding inside the container */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
+}
+
+header {
+    color: rgb(255, 246, 234);
+    font-size: 1em;
+    font-weight: bolder;
+    padding: 1em 0;
+    text-align: left;
+    hyphens: auto; /* Enable automatic hyphenation */
+    word-break: break-word; /* Ensure words break correctly */
+    overflow-wrap: break-word; /* Ensure words break correctly */
+}
+
+nav {
+    text-align: left;
+    margin: 0.5em 0;
+    hyphens: auto; /* Enable automatic hyphenation */
+    word-break: break-word; /* Ensure words break correctly */
+    overflow-wrap: break-word; /* Ensure words break correctly */
+}
+
+nav a {
+    display: block; /* Display links as block elements to stack them vertically */
+    color: rgb(255, 246, 234);
+    margin: 0.2em 0; /* Add vertical margin for spacing */
+    font-size: 1.5em; /* Increase font size to match the heading text */
+    text-decoration: none;
+    transition: opacity 0.3s ease; /* Add transition for smooth opacity change */
+    hyphens: auto; /* Enable automatic hyphenation */
+    word-break: break-word; /* Ensure words break correctly */
+    overflow-wrap: break-word; /* Ensure words break correctly */
+}
+
+nav a:hover {
+    opacity: 0.4; /* Make the link 60% more transparent on hover */
+}
+
+section {
+    color: white;
+    margin: 2em 0;
+    padding: 1em;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background for better readability */
+    hyphens: auto; /* Enable automatic hyphenation */
+    word-break: break-word; /* Ensure words break correctly */
+    overflow-wrap: break-word; /* Ensure words break correctly */
+}
+
+footer {
+    color: black;
+    font-size: small;
+    text-align: center;
+    padding: 1em 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    hyphens: auto; /* Enable automatic hyphenation */
+    word-break: break-word; /* Ensure words break correctly */
+    overflow-wrap: break-word; /* Ensure words break correctly */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+a {
+    text-decoration: none;
+    hyphens: auto; /* Enable automatic hyphenation */
+    word-break: break-word; /* Ensure words break correctly */
+    overflow-wrap: break-word; /* Ensure words break correctly */
+}
