@@ -27,6 +27,7 @@ console.log(book.description);
 // this is done by enclosing the objects in square brackets
 // and separating them with commas so putting objects inside an array's syntax
 // is like this: const arrayname = [{object1},{object2},{object3}]
+// this is cool.
 console.log('Use console.log to print an array of book objects');
 const books = [
     {

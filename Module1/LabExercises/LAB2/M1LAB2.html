@@ -14,11 +14,13 @@
         </body>
         </html>
     -->
-<link rel="stylesheet" href="">
+
 <body>
+    <a href="https://www.example.com" target="_blank">Visit Example</a>
     <h2>Image Example</h2>
 
-    <!-- Used class exercise from slide  30-31 as base code for the below section-->
+    <!-- Used class exercise from slide  30-31 as base code for the below section just for filler
+     content for the page-->
     <div>
         <!-- example of images from web reset to the same size using the height attribute -->
         <img src="https://www.woolworths.co.nz/images/global-nav/header/woolworths-desktop-logo.svg" alt="Woolies">
@@ -29,6 +31,7 @@
         <img height="50px" src="https://www.paknsave.co.nz/next/images/logos/default.svg" alt="PacknSave">
     </div>
     <div>
+        <!-- Used some copy of common html elements from the slides as filler content for the page -->
         <!-- example of a table -->
         <br><br><br>
         <table style="border: 1px solid black;">
@@ -63,6 +66,159 @@
             </div>
             <input type="submit" value="CONFIRM BY CLICKING">
         </form>
+    </div>
+
+    <div>
+        <h2>Commonly Used HTML Elements</h2>
+        <ul>
+            <li>
+                <!-- Below code uses &lt;p&gt; element to define a paragraph of text.
+                This let you use reserved symbol or characters in the browser's printed content. -->
+                <strong>&lt;p&gt; (Paragraph)</strong>
+                <p>The &lt;p&gt; element defines a paragraph of text.</p>
+                <pre><code>&lt;p&gt;This is a paragraph.&lt;/p&gt;</code></pre>
+                <p>Example:</p>
+                <p>This is a paragraph.</p>
+            </li>
+            <li>
+                <strong>&lt;a&gt; (Anchor)</strong>
+                <p>The &lt;a&gt; element defines a hyperlink.</p>
+                <pre><code>&lt;a href="https://www.example.com"&gt;Visit Example&lt;/a&gt;</code></pre>
+                <p>Example:</p>
+                <a href="https://www.example.com">Visit Example</a>
+            </li>
+            <li>
+                <strong>&lt;img&gt; (Image)</strong>
+                <p>The &lt;img&gt; element embeds an image in the document.</p>
+                <pre><code>&lt;img src="image.jpg" alt="Description"&gt;</code></pre>
+                <p>Example:</p>
+                <!-- The below code will display the alt text as the image is not included -->
+                <img src="https://www.example.com/image.jpg" alt="Example Image" width="100">
+            </li>
+            <li>
+                <strong>&lt;ul&gt; and &lt;li&gt; (Unordered List and List Item)</strong>
+                <p>The &lt;ul&gt; element defines an unordered list, and the &lt;li&gt; element defines a list item.</p>
+                <pre><code>&lt;ul&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                <p>Example:</p>
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                </ul>
+            </li>
+            <li>
+                <strong>&lt;ol&gt; and &lt;li&gt; (Ordered List and List Item)</strong>
+                <p>The &lt;ol&gt; element defines an ordered list, and the &lt;li&gt; element defines a list item.</p>
+                <pre><code>&lt;ol&gt;
+    &lt;li&gt;First item&lt;/li&gt;
+    &lt;li&gt;Second item&lt;/li&gt;
+    &lt;li&gt;Third item&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                <p>Example:</p>
+                <ol>
+                    <li>First item</li>
+                    <li>Second item</li>
+                    <li>Third item</li>
+                </ol>
+            </li>
+            <li>
+                <strong>&lt;h1&gt; to &lt;h6&gt; (Headings)</strong>
+                <p>The &lt;h1&gt; to &lt;h6&gt; elements define HTML headings, with &lt;h1&gt; being the highest level
+                    and &lt;h6&gt; the lowest.</p>
+                <pre><code>&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+&lt;h4&gt;Heading 4&lt;/h4&gt;
+&lt;h5&gt;Heading 5&lt;/h5&gt;
+&lt;h6&gt;Heading 6&lt;/h6&gt;</code></pre>
+                <p>Example:</p>
+                <h1>Heading 1</h1>
+                <h2>Heading 2</h2>
+                <h3>Heading 3</h3>
+                <h4>Heading 4</h4>
+                <h5>Heading 5</h5>
+                <h6>Heading 6</h6>
+            </li>
+            <li>
+                <strong>&lt;div&gt; (Division)</strong>
+                <p>The &lt;div&gt; element is a container for other HTML elements, used to group them together.</p>
+                <pre><code>&lt;div&gt;
+    &lt;p&gt;This is a paragraph inside a div.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                <p>Example:</p>
+                <div>
+                    <p>This is a paragraph inside a div.</p>
+                </div>
+            </li>
+            <li>
+                <strong>&lt;span&gt; (Span)</strong>
+                <p>The &lt;span&gt; element is an inline container for text and other inline elements.</p>
+                <pre><code>&lt;span&gt;This is a span.&lt;/span&gt;</code></pre>
+                <p>Example:</p>
+                <span>This is a span.</span>
+            </li>
+            <li>
+                <strong>&lt;table&gt;, &lt;tr&gt;, &lt;td&gt;, &lt;th&gt; (Table, Table Row, Table Data, Table
+                    Header)</strong>
+                <p>The &lt;table&gt; element defines a table, &lt;tr&gt; defines a row, &lt;td&gt; defines a cell, and
+                    &lt;th&gt; defines a header cell.</p>
+                <pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Header 1&lt;/th&gt;
+        &lt;th&gt;Header 2&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Data 1&lt;/td&gt;
+        &lt;td&gt;Data 2&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                <p>Example:</p>
+                <table style="border: 2px solid black;">
+                    <tr>
+                        <th>Header 1</th>
+                        <th>Header 2</th>
+                    </tr>
+                    <tr>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                    </tr>
+                </table>
+            </li>
+            <li>
+                <strong>&lt;form&gt;, &lt;input&gt;, &lt;label&gt; (Form, Input, Label)</strong>
+                <p>The &lt;form&gt; element defines a form, &lt;input&gt; defines an input field, and &lt;label&gt;
+                    defines a label for an input field.</p>
+                <pre><code>&lt;form&gt;
+    &lt;label for="name"&gt;Name:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name"&gt;
+    &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;</code></pre>
+                <p>Example:</p>
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                    <input type="submit" value="Submit">
+                </form>
+            </li>
+            <li>
+                <strong>&lt;button&gt; (Button)</strong>
+                <p>The &lt;button&gt; element defines a clickable button.</p>
+                <pre><code>&lt;button&gt;Click Me&lt;/button&gt;</code></pre>
+                <p>Example:</p>
+                <button>Click Me</button>
+            </li>
+            <li>
+                <strong>&lt;blockquote&gt; (Blockquote)</strong>
+                <p>The &lt;blockquote&gt; element defines a section that is quoted from another source.</p>
+                <pre><code>&lt;blockquote&gt;This is a blockquote.&lt;/blockquote&gt;</code></pre>
+                <p>Example:</p>
+                <blockquote>This is a blockquote.</blockquote>
+            </li>
+        </ul>
     </div>
 </body>
 

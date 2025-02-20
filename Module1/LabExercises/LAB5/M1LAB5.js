@@ -50,3 +50,6 @@ function displayFruits(favoritefruits) {
 
 // Call the function to display the fruits
 displayFruits(favoritefruits);
+
+// Have added and removed breakpoints in the code to see the changes in the array as it is modified.
+// The breakpoints were removed to not interfere with the browswer console output above.
