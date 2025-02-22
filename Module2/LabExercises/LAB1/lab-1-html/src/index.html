@@ -2,19 +2,147 @@
 <html>
 
 <head>
+  <!-- The below code populates the head section of the HTML file. 
+  The head is used for meta-information about the page.
+  It includes the title of the page which is displayed in the browser tab. 
+  The character set (UTF-8 is the most common and is used for most languages
+  and special characters)
+  A description of the page used by search engines to display information about the page. 
+  And keywords used by search engines to help categorize the page.
+  Author is used to give credit to the creator of the page. 
+  The viewport settings are used to make the page responsive to different screen sizes. -->
+  <title>M2LAB1</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="This is a description for M2LAB1 website.">
+  <meta name="keywords" content="HTML, CSS, JavaScript, website">
+  <meta name="author" content="Your Name">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+  </style>
 </head>
 
 <body>
   <header>
     <nav>
       <!-- works like <a href="/index.html">Home</a> -->
-      <a href="/">Home</a>
+
+      <!-- NB the above is dependent on your local configurations if you are running these 
+       files from your local 5500 port and may not work in all cases. For example it 
+       may open not the index.html file but the directory listing the html file you 
+       are clicking the link is saved in.  -->
+      <ol>
+       <a href="index.html">Home</a>
+        <a href="form.html">Form</a></ol>
     </nav>
   </header>
+  <h1>My HTML learning journey</h1>
+  <article>
+    <!-- The difference between the h1 above and the h2 below is that the h1 is the 
+    main heading of the page and the h2 is a subheading.
+    This is shown not just by the size of the text but also by the fact that the
+    h1 is the first heading on the page and the h2 is the second. which makes it a subheading.
+    In terms of semantics this is important because it helps screen readers and search engines
+    understand the structure of the page. -->
+    <h2>Learning elements - div, span, p, pre, ul, li, ol, article</h2>
+    <!-- Content added in previous points of M2LAB1 are inside this article tag-->
+    <div>HTML in a div</div>
+    <div>CSS in a div</div>
+    <div>JavaScript in a div</div>
+    <!-- The above will display as a list of divs on the page. 
+  because  div = block level element -->
+    <span>HTML in a span</span> <span>CSS in a span</span> <span>Javascript in a span</span>
+    <!-- The above will display spans all on 1 line because span = inline element -->
+    <p>
+      p represents paragraph without preserving spacing
+    </p>
+    <!-- The above means you can add spaces in the p tag but they wont
+  be displayed in the browser. -->
+    <pre>
+    Text in         a pre element
+    is displayed in a fixed-width
+    font, and it preserves
+    both      spaces and
+    line breaks
+  </pre>
+    <!-- The below shows an unordered list and an ordered list as well as a nested list -->
+    <ul>
+      <li>Unordered list item 1</li>
+      <li>Unordered list item 2</li>
+      <li>Unordered list item 3</li>
+      <li>Unordered list item 4 + Nested list Item <ol>
+          <li>Nested item 1</li>
+          <li>Nested item 2</li>
+        </ol>
+      </li>
+    </ul>
+    <ol>
+      <li>Ordered list item 1</li>
+      <li>Ordered list item 2</li>
+      <li>Ordered list item 3</li>
+    </ol>
+  </article>
+  <article>
+    <h2>This is our second article heading done in H2</h2>
+    <!-- Below is a table with various adaptation to cells columns and rows
+     using rowspan and colspan-->
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">First header 2 colspan</th>
+          <th>Second header</th>
 
-  <main>  
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>First cell - first row</td>
+          <td>Second cell - first row</td>
+          <td>3rd column cell</td>
+        </tr>
+        <tr>
+          <td>First cell - 2nd row</td>
+          <td rowspan="2">Second cell - 2nd row 2 rowspan </td>
+          <td>3rd column cell</td>
+        </tr>
+        <tr>
+          <td>First cell - 3rd row</td>
+          <td>Second cell - 3rd row</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+  <article>
+    <h2>This is our 3rd article.</h2>
+    <img src="https://picsum.photos/400/400" height=300px; width="300px;"
+      alt="Descriptove Alt text for the image goes here in case it does not load and for accesability and indexing." />
+    <!-- The above is an image tag with a source attribute that points to an image on the web.
+  the height and width have been used inline. with static values. -->
+    <img src="./assets/html_lab_image.jpg" height=300px; width="300px;" alt="Picture of clouds at sunrise/set." />
+    <!-- The above img tag points to an image in the same directory as the html file. -->
+    <video autoplay width="250">
+      <source src="./assets/flower.webm" type="video/webm">
+      Sorry, your browser doesn't support embedded videos.
+    </video>
+    <!-- The above is a video tag with a source attribute that points to a video in the same directory as the html file. -->
+    <figure>
+      <audio autoplay src="./assets/t-rex-roar.mp3">
+        Your browser does not support the <code>audio</code> element.
+      </audio>
+      <figcaption>Audio of a T-Rex roar</figcaption>
+    </figure>
+    <!-- the above is an audio tag with a source attribute
+that points to an audio file in the same directory 
+as the html file. it is nested inside a figure tag
+which is used to group media content and its caption.
+this is useful for screen readers and search engines -->
+  </article>
+  <main>
   </main>
-
   <footer>Copyright &copy; 2024</footer>
 </body>
 

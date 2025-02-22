@@ -8,9 +8,85 @@
   <header>
     <nav>
       <!-- works like <a href="/index.html">Home</a> -->
-      <a href="/">Home</a>
+
+      <!-- see comments in the index.html file about why This
+      may not work in all cases. -->
+      <ol>
+        <a href="index.html">Home</a>
+        <a href="form.html">Form</a>
+      </ol>
+      <!-- the above unordered list creates a navigation bar with 2 links
+      to the index.html and form.html files.This can be styled
+      using css to create a horizontal navigation bar 
+      or a vertical. -->
     </nav>
   </header>
+  <!-- the below code snippet uses the form tag to create 
+  a form with 3 input fields. Which are a text area for first name, a text area 
+  and last name capture with labels 
+  and a radio button for coding choice. -->
+  <form method="POST" action="http://localhost:3000/profile">
+    <div>
+      <!-- NB always match the label for attribute with 
+      the id of the input field and name attribute of the input field.
+      this lets the browser know that the label is for the input field. -->
+      <label for="firstName">Please enter your first name:</label>
+      <textarea name="firstName" id="firstName"></textarea>
+    </div>
+    <div>
+      <label for="lastName">Please enter your last name:</label>
+      <textarea name="lastName" id="lastName"></textarea>
+    </div>
+    <div>
+      <label for="codingChoiceJS">Please choose your favorite coding language:</label>
+      <input type="radio" id="codingChoiceJS" name="codingChoice" value="JS">
+      <label for="codingChoiceJS">JS</label>
+      <input type="radio" id="codingChoicePython" name="codingChoice" value="Python">
+      <label for="codingChoicePython">Python</label>
+      <input type="radio" id="codingChoiceJava" name="codingChoice" value="Java">
+      <label for="codingChoiceJava">Java</label>
+    </div>      <!-- The above radio input selector is used to capture the users 
+      choice of coding language.
+      ite uses id, name and value attributes to define the input field. -->
+      <!-- you can only select one option. this input is then passed to the server
+      when the form is submitted.
+      here we are using a POST method to send the data to the server.
+      the server is a local server running on port 3000.
+      We set up the sample server using:
+      npx json-server@0.17.4 db.json
+      this command creates a server that listens on port 3000 and reads data from a file called db.json
+      the db.json file contains the data that the server will return when a request is made to it.  -->
+    <div>
+      <label for="carChoice">Select the car make you like:</label>
+      <input type="checkbox" name="carChoice" value="Toyota">
+      <label for="carChoice">Toyota</label>
+      <input type="checkbox" name="carChoice" value="Ford">
+      <label for="carChoice">Ford</label>
+      <input type="checkbox" name="carChoice" value="BMW">
+      <label for="carChoice">BMW</label>
+      <!-- The above code snippet creates a checkbox input selector 
+      to capture the users choice of car brand. 
+      It states the name of the input field and 
+      the value of the input field along with the 
+      name of the selector      -->
+    </div>
+    <div>
+      <!-- the below code snippet creates a select input field
+      to capture the users choice of car brand.
+      It states the name of the input field and
+      the value of the input field along with the
+      name of the selector
+       -->
+      <label for="carOwn">Select the car make you own:</label>
+      <select name="carOwn" id="carOwn">
+        <option value="BMW">BMW</option>
+        <option value="Toyota">Toyota</option>
+        <option value="Ford">Ford</option>
+        <option value="NoneOfThese">I don't own one of these.</option>
+      </select>
+    </div>
+    <button type="submit">Submit form</button>
+  </form>
 
   <main>
   </main>
