@@ -1,0 +1,189 @@
+/* I. Selectors */
+/* Put styles for questions 1.1, 1.2, 1.3 and 1.4 here */
+
+article {
+    position: relative;
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+/* the above margin has 20px on top and bottom and 0 on left and right
+if there were 4 values, the first would be top, second right, third bottom, fourth left
+so top right bottom left
+the values can also be relative so in % or em or rem or vw or vh
+em is relative to the font-size of the element
+rem is relative to the font-size of the root element
+vw is relative to 1% of the width of the viewport
+vh is relative to 1% of the height of the viewport
+padding is the space between the content and the border
+border is the line around the content
+margin is the space between the border and the next element */
+
+.style-me1 {
+    color: red;
+}
+
+/* the above code changes the color of the text to red
+this happens because the .style-me1 specificity is higher than the article specificity that
+it is nested in (the article specificity is 1 and the .style-me1 specificity is 10)
+because specificity order is inline styles, id, class, element
+/* so the class specificity is higher than the element specificity and cancels it out */
+/* even though both are applied to the same element */
+
+#style-me2 {
+    color: purple;
+    font-family: Tahoma, sans-serif;
+}
+
+/* the above code changes the color of the text to blue
+this happens because the #style-me2 specificity is higher than the article specificity that
+it is nested in (the article specificity is 1 and the #style-me2 specificity is 100)
+because specificity order is inline styles, id, class, element
+so the id specificity is higher than the class specificity and cancels out
+the class applied to the same element */
+/* This is also why we can use this id selector to change the font-family and font color 
+of this element this way*/
+
+/* Put styles for questions 2.1 and 2.2 here */
+
+.my-descendants-are-styled p {
+    background-color: red;
+}
+
+.my-children-are-styled > p {
+    background-color: lightgreen;
+}
+
+/* NB note syntax: > for direct children only and space for all descendants */
+/* the above code uses 
+.my-descendants-are-styled p: 
+This selector applies a red background color to 
+all <p> elements that are descendants (at any level) of an element 
+with the class .my-descendants-are-styled.
+.my-children-are-styled > p:
+This selector applies a light green background color only to 
+<p> elements that are direct children of an element
+with the class .my-children-are-styled.
+but won't apply to the <p> elements that are descendants 
+of the children of the element */
+
+/* II. Box model and common properties */
+/* Put styles for questions 1-8 here */
+
+
+.box {
+    padding: 60px 70px 120px 6em;
+    margin: 20px 50px 10% 50px;
+    background-color: lightblue;
+    width: 45vw;
+    height: 10vh !important;
+    border: 10px solid black;
+    border-radius: 50%;
+    overflow: scroll;
+    outline: 10px solid red;
+    background-image: url("../assets/images/img1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: content-box; /* or border-box, content-box is default*/
+}
+
+/* in the code above:
+
+using overflow: scroll; adds a scrollbar to the box if the content is too big to fit
+using overflow: hidden; hides the content that is too big to fit
+using overflow: auto; adds a scrollbar only if the content is too big to fit
+using overflow: visible; the content is not clipped and may be rendered outside the box */
+
+/* box-sizing: content-box versus or border-box */
+
+/* reference: https://www.geeksforgeeks.org/how-is-border-box-different-from-content-box/ */
+
+/* Copy of the AI answer:
+
+box-sizing: content-box: The width and height include only the content.
+Padding and border are added outside the content box, 
+increasing the total size of the element.
+box-sizing: border-box: The width and height include the content, 
+padding, and border. This makes it easier to size elements
+, as the total size of the element remains consistent */
+
+/* so for 4.1 using content-box the size of the element is content 
+without padding or border
+but for border-box the size of the element is the content plus 
+the padding and border*/
+
+/* NB
+padding is inside = the space between the content and the border
+margin is outside = the space between the border and the next element */ */
+
+/* 
+2.3	Try resizing the browser window while the box size 
+depends on the vw and vh units. What can you observe?
+
+The box size changes as the browser window is resized.
+The box size is responsive to the browser window size.
+And it also changes the font size of the text inside the box
+because the font size is set in em units (by default) which are 
+relative to the font size of the parent element 
+and so it shrinks too*/
+
+
+/* III. Positioning */
+/* Put styles for questions 1-3 here */
+
+.position-absolute {
+    position: absolute;
+    top: 500px;
+    left: 20; 
+    right: 0;
+    bottom: 50px;
+    background-color: orange;
+}
+
+/* ERROR ABOVE */
+
+.position-relative {
+    position: relative;
+    top: 10px;
+    left: 200px; 
+    right: 40px;
+    bottom: 50px;
+    background-color: lightcoral;
+}
+
+.position-sticky {
+    position: sticky;
+    top: 10px;
+    left: 20; 
+    right: 0;
+    bottom: 0;
+    background-color: lightblue;
+}
+
+
+/* IV. Styling text */
+/* Put styles for questions 1-10 here */
+
+.text-style {
+    font-size: 1.5em;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 2;
+    letter-spacing: 1px;
+    color: rgb(46, 23, 224);
+    background-color: rgb(255, 119, 0);
+    font-family: Verdana, sans-serif;
+}
+
+
+/* V. Styling links */
+/* Put styles for questions 1-3 here */
+
+
+/* VI. calc() */
+/* Put styles for questions 1-3 here */
