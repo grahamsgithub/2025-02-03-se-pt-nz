@@ -223,5 +223,6 @@ for security reasons or privacy reasons of clients */
 
 /* in the above code i had to change the width of the fluid-col to 355px from 350px
 to get the inline-block to work and display the elements side by side
-there could be several reasons for this eg. the padding, margin, border, etc. of the parent element */
+there could be several reasons for this eg. the padding, margin, border, etc. 
+of parent element or parent ancestor*/
 /* or added spacing between inline-block elements */
