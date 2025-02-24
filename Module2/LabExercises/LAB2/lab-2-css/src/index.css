@@ -1,24 +1,227 @@
 /* I. Selectors */
 /* Put styles for questions 1.1, 1.2, 1.3 and 1.4 here */
+article {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.style-me1 {
+    color: red;
+}
+
+#style-me2 {
+    color: blue;
+}
+
+#style-me2.style-me1 {
+    color: purple;
+}
+
+/* NB margin is the space outside the border, padding is the space inside the border */
+/* Note the specific selector is a combination of the id and class selectors
+joined by . 
+in terms of specificity, the id selector is more specific than the class selector */
 
 /* Put styles for questions 2.1 and 2.2 here */
 
+.my-descendants-are-styled p {
+    background-color: red;
+}
+
+.my-children-are-styled > p {
+    background-color: lightgreen;
+}
+
+/* in the above code > is used to select only the direct children of the parent element
+but ' ' is used to select all the descendants of the parent element */
 
 /* II. Box model and common properties */
 /* Put styles for questions 1-8 here */
 
+.box {
+    margin: 50px 5px 5px 5px;
+    padding: 30px 60px 40px 60px;
+    background-color: aqua;
+    border: 1px solid black;
+    width: 30vw;
+    height: 20vh !important;
+    border: 10px solid black;
+    box-sizing: border-box;
+    overflow: scroll;
+    outline: 10px solid rgb(97, 16, 16);
+    border-radius: 50%;
+    background-image: url(../assets/images/img1.png );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* in the above code, the margin is the space outside the border, padding is the space inside the border
+the background-color is the color of the background of the box
+both margin and padding can take values in px, em, %, etc
+they must be spaced not comma separated
+each can take 4 values to set the top, right, bottom, and left
+the order is top, right, bottom, left */
+/* !important is used to override the default value of the height property
+which in the inline style added in the html file */
+
+/* 2.3 answer
+
+The boxes changes size inside the viewing window 
+because the width and height are set in vw and vh units
+so it is always relative to the size of the viewport
+and the viewport is the visible part of the web page
+the text also scales down as the box size changes
+because the text size is set in em units
+and em units are relative to the font size of the parent element
+by default */
+
+/* box-sizing: border-box or content-box; */ */
+/* box-sizing is used to set the box model to include the border or not
+border-box includes the border in the width and height of the box
+content-box does not include the border in the width and height of the box */
+/* reference: https://www.geeksforgeeks.org/how-is-border-box-different-from-content-box/ */
+
+/* overflow can take values like auto, hidden, scroll, visible
+scroll adds a scrollbar to the box if the content overflows
+visible is the default value and it shows the content even if it overflows
+hidden hides the content if it overflows
+auto adds a scrollbar only if the content overflows */ */
 
 /* III. Positioning */
 /* Put styles for questions 1-3 here */
 
+body {
+    position: relative;
+}
+
+/* NB had to add this to the body to make the position-absolute work because the
+body tag defaults to position: static
+and position: static does not work with position: absolute
+for .position-absolute to work the parent element of the .position-absolute
+targeted tag
+must have a position other than static
+you'd think first to just add position relative to the article tag
+but that does not work because the article tag is inside the body tag
+which is still defaulting to position: static
+so as our .position-absolute is in an article tag inside the body tag
+we set the body tag to position: relative
+so that the article tag can be positioned relative to the body tag
+through inheritance
+and this can then be inherited by the article and by the div tag etc.
+ */
+
+.position-absolute {
+    position: absolute;
+    top: 10px;
+    right: 100px;
+    background-color: lightsalmon;
+}
+
+.position-relative {
+    position: relative;
+    top: 10px;
+    left: 50px;
+    background-color: lightblue;
+}
+
+.position-relative > .position-absolute {
+    background-color: lightgreen;
+}
+
+.position-sticky {
+    position: sticky;
+    top: 20%;
+    background-color: yellow; 
+}
+
+/* Absolute and Relative Positioning  */
+/* AI explanation:
+ an element with position: absolute; is placed inside a parent element 
+with position: relative;, the absolutely positioned 
+element is positioned relative to the parent element.
+but when When an element with position: absolute; 
+is placed outside of any relatively positioned 
+parent element, it is positioned relative to 
+the nearest positioned ancestor (an ancestor with
+ position set to relative, absolute, fixed, or sticky). 
+ If no such ancestor exists, it is positioned relative to the initial 
+containing block (usually the <html> element). */
 
 /* IV. Styling text */
 /* Put styles for questions 1-10 here */
+
+.text-style {
+    
+    font-family: 'Cabin Sketch', monospace;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: darkblue;
+    background-color: navajowhite;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    white-space: nowrap;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+
+}
 
 
 /* V. Styling links */
 /* Put styles for questions 1-3 here */
 
+a, a:link {
+    color: pink;
+    text-decoration: overline;
+    font-size: medium;
+    font-weight: bold;
+    
+}
+
+a:hover, a:active, a:focus {
+    color: rgb(165, 11, 122);
+    text-decoration: underline;
+    font-size: large;
+    font-weight: bolder;
+}
+
+a:visited {
+    color: rgb(198, 18, 18);
+    text-decoration: none;
+    font-style: italic;
+}
+/* 
+the above font-style on visited may not work because the browser may not allow it
+for security reasons or privacy reasons of clients */
 
 /* VI. calc() */
 /* Put styles for questions 1-3 here */
+
+.calc-style {
+    width: calc(100vw - 100px); 
+    height: calc(100% - 20px);
+    background-color: rgb(133, 128, 240);
+    
+}
+
+.fixed-width-col {
+    width: 350px;
+    display: inline-block;
+    background-color: rgb(128, 240, 143);
+    
+}
+
+.fluid-col {
+    width: calc(100% - 355px);
+    display: inline-block;
+    background-color: rgb(252, 7, 7);
+}
+
+/* in the above code i had to change the width of the fluid-col to 355px from 350px
+to get the inline-block to work and display the elements side by side
+there could be several reasons for this eg. the padding, margin, border, etc. of the parent element */
+/* or added spacing between inline-block elements */
