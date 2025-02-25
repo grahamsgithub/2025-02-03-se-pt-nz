@@ -77,7 +77,7 @@ because the text size is set in em units
 and em units are relative to the font size of the parent element
 by default */
 
-/* box-sizing: border-box or content-box; */ */
+/* box-sizing: border-box or content-box; */
 /* box-sizing is used to set the box model to include the border or not
 border-box includes the border in the width and height of the box
 content-box does not include the border in the width and height of the box */
@@ -87,35 +87,15 @@ content-box does not include the border in the width and height of the box */
 scroll adds a scrollbar to the box if the content overflows
 visible is the default value and it shows the content even if it overflows
 hidden hides the content if it overflows
-auto adds a scrollbar only if the content overflows */ */
+auto adds a scrollbar only if the content overflows */
 
 /* III. Positioning */
 /* Put styles for questions 1-3 here */
 
-body {
-    position: relative;
-}
-
-/* NB had to add this to the body to make the position-absolute work because the
-body tag defaults to position: static
-and position: static does not work with position: absolute
-for .position-absolute to work the parent element of the .position-absolute
-targeted tag
-must have a position other than static
-you'd think first to just add position relative to the article tag
-but that does not work because the article tag is inside the body tag
-which is still defaulting to position: static
-so as our .position-absolute is in an article tag inside the body tag
-we set the body tag to position: relative
-so that the article tag can be positioned relative to the body tag
-through inheritance
-and this can then be inherited by the article and by the div tag etc.
- */
-
 .position-absolute {
     position: absolute;
     top: 10px;
-    right: 100px;
+    left: 100px;
     background-color: lightsalmon;
 }
 
@@ -221,8 +201,10 @@ for security reasons or privacy reasons of clients */
     background-color: rgb(252, 7, 7);
 }
 
-/* in the above code i had to change the width of the fluid-col to 355px from 350px
+/* in the above code i had to change the width 
+from the expected fluid-col to 355px from 350px
 to get the inline-block to work and display the elements side by side
+at 350px it was not working as the 2 inline elemnts were then still too wide
 there could be several reasons for this eg. the padding, margin, border, etc. 
-of parent element or parent ancestor*/
-/* or added spacing between inline-block elements */
+of parent element or ancestor may be adding to the width
+or added spacing between inline-block elements or text styling */
