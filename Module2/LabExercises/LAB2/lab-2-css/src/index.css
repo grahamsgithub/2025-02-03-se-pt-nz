@@ -150,18 +150,25 @@ containing block (usually the <html> element). */
 
 }
 
-
 /* V. Styling links */
 /* Put styles for questions 1-3 here */
 
+/* Style all links in their basic (default) state */
 a, a:link {
     color: pink;
     text-decoration: overline;
     font-size: medium;
     font-weight: bold;
-    
 }
 
+/* Style visited links */
+a:visited {
+    color: rgb(198, 18, 18);
+    text-decoration: none;
+    font-style: italic;
+}
+
+/* Style links on hover, active, and focus states */
 a:hover, a:active, a:focus {
     color: rgb(165, 11, 122);
     text-decoration: underline;
@@ -169,14 +176,16 @@ a:hover, a:active, a:focus {
     font-weight: bolder;
 }
 
-a:visited {
-    color: rgb(198, 18, 18);
-    text-decoration: none;
-    font-style: italic;
-}
+
 /* 
-the above font-style on visited may not work because the browser may not allow it
+NB
+in the above code the styling on the visited link may not work because the browser may not allow it
 for security reasons or privacy reasons of clients */
+/* in the above code the default link color is pink and the text-decoration is overline
+but this may not display after the link is visited (which would then be styled differently)
+to red as the browser may remember the visited link and style accordingly
+if you run this page in (for exampel) incognito mode the link will always
+pink (i.e. unvisited default) as this browser setting does not remember visited links */
 
 /* VI. calc() */
 /* Put styles for questions 1-3 here */
