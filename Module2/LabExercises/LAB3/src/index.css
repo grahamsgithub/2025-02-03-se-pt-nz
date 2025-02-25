@@ -1,3 +1,4 @@
+/* part of the below comments are pulled from online sources and / or AI q&a */
 body {
     font-family: sans-serif;
     font-size: 16px;
@@ -39,3 +40,143 @@ a {
 .w-80 {
     width: 80px;
 }
+
+/* the below code sets the display to flex for the flex-container class */
+/* flex means that the flex items will be laid out in a row or column 
+depending on the flex-direction property
+the flex items will be laid out in a row by default
+in the associated html file the flex items are nested inside the flex-container class */
+
+.flex-container {
+    display: flex;
+    flex-direction: row; /* this is setting the flex direction to row which is also the default*/
+}
+
+/* flex-direction: row or column or row-reverse or column-reverse decides 
+the direction of the main axis and the cross axis so for the :default row
+the main axis is horizontal and the cross axis is vertical
+for column the main axis is vertical and the cross axis is horizontal
+this is important for the justify-content and align-items properties
+we used below */
+
+/* Add rules for flex-item-1, -2, -3, and -4 classes */
+
+.flex-item-1 {
+    flex: 1;
+}
+
+.flex-item-2 {
+    flex: 2;
+}
+
+.flex-item-3 {
+    flex: 3;
+}
+
+.flex-item-4 {
+    flex: 4;
+}
+
+/* 
+the above code in .flex-item-1, -2, -3, and -4 classes sets the flex property to 1, 2, 3, and 4
+respectively this means that the flex items will take up 1, 2, 3, and 4 times the 
+space of the first flex item in the flex-container class */
+/* the .flex-item-1 class width set to 1 means that it will take up 1/10 of the space
+of the flex-container class which is set to 10 by default (?) */
+
+/* Add rule for flex-center class */
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+/* the above justify-content: center lets the flex items be centered along the main axis
+i.e. horizontally in a row and vertically in a column
+align-items: center lets the flex items be centered along the cross axis
+i.e. vertically in a row and horizontally in a column
+so the flex-center class centers the flex items both horizontally and vertically */
+/* but how you use these is relative to the flex-direction property set in the flex-container class
+the default is row (?) */
+
+/* Add rule for flex-space-between class */
+.flex-space-between {
+    justify-content: space-between;
+}
+/* the above justify-content: space-between lets the flex items be evenly 
+distributed along the main axis (in this case horizontally) with the first item
+at the start and the last item at the end of the flex container so it corresponds
+with the text (i am on left and i am on right) in the associated html file
+other optiosn for justify-content are space-around and space-evenly
+space-around lets the flex items be evenly distributed along the main axis with
+equal space around them
+space-evenly lets the flex items be evenly distributed along the main axis with
+equal space around them and at the start and end of the flex container */
+
+/* Add rule for flex-wrap class */
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+/* Add rule for flex-basis-item-50 class */
+.flex-basis-item-50 {
+    flex-basis: 25%;
+}
+
+/* the above code in .flex-wrap class sets the flex-wrap property to wrap
+wrap lets the flex items wrap onto a new line if they do not fit on the current line
+based on the width of the flex container
+the .flex-basis-item-50 class sets the flex-basis property to 50% of the width of 
+the flex container
+the flex-basis property sets the initial main size of a flex item 
+before free space is distributed
+so what the above does it that it creates 2 rows of 2 flex items each
+with each flex item taking up 50% of the width of the flex container */
+/* if you change it to wrap-reverse the items will wrap in reverse order
+so the bottom to items will be displayed on top and the top 2 on the bottom but
+with an unexpected order
+so the last item (4) will now be on the top right and the first item (1) will be on the bottom left 
+if you change it to nowrap the items will not wrap and will be on the same line */
+
+.flex-menu {
+    display: flex;
+    justify-content: left;
+    list-style-type: none;
+    flex-grow: calc(1/5);
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+.flex-menu .first-item, .flex-menu .second-item, .flex-menu .third-item, .flex-menu .fourth-item, .flex-menu .fifth-item {
+    
+    text-align: center;
+    margin-left: 1px;
+    margin-right: 2px;
+    /* gap can also be used instead of margin-left and margin-right eg. gap: 1px; */
+    /* padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 1em; 
+    can also be done by the below as a single value
+    updates all sides with that value */
+    padding: 1em;
+}
+
+ 
+
+.flex-menu .fourth-item {
+    
+    order: 1; /* Move the FAQs menu item to the last position */
+}
+
+
+/* Online explanation of the above code i found online
+The order property in Flexbox is used to control the order in 
+which flex items appear within a flex container. 
+By default, all flex items have an order value of 0. 
+The order property can be set to any integer value, 
+positive or negative, to change the order of the items.
+Explanation of order: 1
+the .flex-menu .fourth-item class is set to order: 1;. 
+This means that this item will be placed after 
+any items with the default order value of 0. 
+If all other items have the default order value of 0, 
+setting order: 1 for the FAQs menu item will move it to the last position. */
