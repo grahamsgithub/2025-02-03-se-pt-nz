@@ -213,7 +213,9 @@ pink (i.e. unvisited default) as this browser setting does not remember visited 
 /* in the above code i had to change the width 
 from the expected fluid-col to 355px from 350px
 to get the inline-block to work and display the elements side by side
-at 350px it was not working as the 2 inline elemnts were then still too wide
+as the exercise required
+when the width was at 350px it was not working as the 2 
+inline elemnts were then still too wide
 there could be several reasons for this eg. the padding, margin, border, etc. 
 of parent element or ancestor may be adding to the width
 or added spacing between inline-block elements or text styling */
