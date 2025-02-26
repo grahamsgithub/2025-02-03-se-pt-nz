@@ -1,1 +1,43 @@
+body {font-family: Poppins, sans-serif;
+    color: #ff006a;
+    background-color: #454545;
+    margin: 1em;
+    padding: 0;
+    
+    line-height: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
+}
+img {width: 20vh;
+    height: 20vh;
+    border-radius: 40%;
+    margin: 1 em;
+    align-content: center;
+    
+}
+
+.leftSide {
+    
+    flex-direction: row; /* this is setting the flex direction to row which is also the default*/
+    width: 40%;
+    justify-content: flex-start;
+    border: white solid 2px;
+    padding: 1em;
+}
+.rightSide {
+    display: flex;
+    flex-direction: row; /* this is setting the flex direction to row which is also the default*/
+    width: 40%;
+    justify-content: flex-end;
+    border: white solid 2px;
+    padding: 1em;
+}
+.footer {
+    display: flex;
+    flex-direction: row; /* this is setting the flex direction to row which is also the default*/
+    justify-content: center;
+    border: white solid 2px;
+    padding: 1em;
+}
