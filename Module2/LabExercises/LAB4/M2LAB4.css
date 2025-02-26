@@ -1,7 +1,13 @@
 body {font-family: Poppins, sans-serif;
     color: #ff006a;
+    background-image: url("handbase.jpg");
+    background-size: cover; /* Allows the background image to distort so that it always fits the background size without image cropping */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Fix the background image */
+    margin: 0;
     background-color: #454545;
-    margin: 1em;
+    margin: 0;
     padding: 0;
     
     line-height: normal;
