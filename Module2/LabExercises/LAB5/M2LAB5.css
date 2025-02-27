@@ -96,6 +96,7 @@ section[title="ResumeHead"] {
     /* disable above to allow text to be left aligned
     and for consistent heading top padding in all sections */
     align-items: center;
+    text-align: center;
 }
 
 section[title="Skills"] {
@@ -179,4 +180,42 @@ footer {
     text-transform: uppercase;
     font-weight: bold;
     text-align: center;
+}
+
+/* Media Queries */
+
+/* Extra small devices (phones, 0px and up) */
+@media (min-width: 0px) {
+    
+    main {
+        flex-direction: column;
+    }
+    .leftSide {
+        flex: 1 1 100%;
+    }
+}
+
+/* Small devices (600px and up) */
+@media (min-width: 600px) {
+    
+    main {
+        flex-direction: row;
+    }
+    .leftSide {
+        flex: 1 1 50%;
+    }
+}
+
+/* Medium devices (960px and up) */
+@media (min-width: 960px) {
+    .leftSide {
+        flex: 1 1 33%;
+    }
+}
+
+/* Large devices (1280px and up) */
+@media (min-width: 1280px) {
+    .leftSide {
+        flex: 1 1 30%;
+    }
 }
