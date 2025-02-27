@@ -1,0 +1,182 @@
+/* NB for using flex
+1. ensure the parent element of the flex items has a display property of flex
+2. once the parent element has a display property of flex, the flex items can be styled using flex properties
+in our below code we have a flex-container class that has a display property of flex
+this is the main
+inside of which we have our sections (see html file structure)
+we use flex direction to set the direction of the main axis and the cross axis
+using either row or column
+which will stack the flex items in a row or column on screen 
+we use justify-content to align the flex items along the main axis
+and align-items to align the flex items along the cross axis
+we use flex to set the size of the flex items relative to each other
+we use flex-grow to set the size of the flex items relative to each other
+we us flew-wrap to allow the flex items to wrap if needed
+wrap means that the flex items will wrap to the next line 
+if they exceed the width of the flex container */
+
+body {
+    box-sizing: content-box;
+    /* Set the box-sizing property to content-box
+    This means that the width and height of the element are calculated without padding and border */
+    /* This is the default value in any case
+    neither content-box nor border-box impacts the design function though. */
+    font-family: Poppins, sans-serif;
+    color: #12627a;
+    background-image: url("handbase.jpg");
+    background-size: cover;
+    /* Allows the background image to distort so that it always fits the background size without image cropping */
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-attachment: fixed;
+    /* Fix the background image */
+    margin: 0;
+    /* Remove default margin */
+    padding: 0;
+    /* Remove default padding */
+    line-height: normal;
+    display: flex;
+    /* Arrange sections side by side */
+    flex-direction: column;
+    /* Arrange sections side by side */
+    justify-content: space-between;
+    /* Space between sections */
+    flex-wrap: column;
+
+    /* Allow wrapping if needed */
+    a,
+    a:visited {
+        color: #12627a;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #eaeaea;
+    }
+
+}
+
+main {
+    max-width: 65%;
+    /* Set the maximum width of the main section */
+    /* this area holds all the sections in the html file */
+    display: flex;
+    /* Arrange sections side by side if needed */
+    flex-direction: row;
+    /* Arrange sections side by side based on the row or column seting */
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* Allow wrapping if needed */
+}
+
+.emAccolades {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.codingLang {
+    font-weight: bolder;
+    letter-spacing: 0.1em;
+}
+
+section[title="ResumeHead"] {
+    order: 1;
+    max-width: auto;
+    /* Set the maximum width of the section */
+    max-height: auto;
+    /* Set the maximum height of the section */
+    padding: 1em;
+    margin: 1em;
+    /* border: solid 0.2em rgba(255, 255, 255, 0.633); */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* disable above to allow text to be left aligned
+    and for consistent heading top padding in all sections */
+    align-items: center;
+}
+
+section[title="Skills"] {
+    order: 2;
+}
+
+section[title="Education"] {
+    order: 3;
+}
+
+section[title="Experience"] {
+    order: 4;
+}
+
+section[title="Contact"] {
+    order: 5;
+}
+
+
+section[title="Contact"],
+section[title="Skills"] {
+    text-align: center;
+
+    ul {
+        list-style-type: none;
+    }
+
+    li {
+        text-align: left;
+    }
+}
+
+img {
+    width: 20vh;
+    height: 20vh;
+    border-radius: 40%;
+    border: solid 0.2em rgb(0, 0, 0);
+    opacity: 0.7;
+    margin: 1 em;
+    align-content: center;
+}
+
+.svg-img {
+    filter: invert(100%) brightness(200%);
+    /* Needed to invert the color of the SVG image - I don't have photoshop */
+}
+
+.svg-img-icon {
+    filter: invert(100%) brightness(200%);
+    width: 4em;
+    height: 4em;
+}
+
+.leftSide {
+    flex: 1 1 30%;
+    /* Allow sections to grow and shrink, with a minimum width of 20%*/
+    max-width: auto;
+    max-height: auto;
+    padding: 1em;
+    margin: 1em;
+    background: linear-gradient(to bottom, #ffffff94, #00000000);
+    /* Apply gradient on top of background*/
+    /* border: solid 0.2em rgba(255, 255, 255, 0.633); */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; disabled this to allow the text to be left aligned
+    /* and for consistent heading top padding in all sections */
+    align-items: center;
+}
+
+.leftSide:hover {
+    background-color: #eaeaea52;
+    /* Change background gradient on hover */
+}
+
+footer::before {
+    content: "© ";
+}
+
+footer {
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+}
