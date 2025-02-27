@@ -16,6 +16,11 @@ wrap means that the flex items will wrap to the next line
 if they exceed the width of the flex container */
 
 body {
+    box-sizing: content-box;
+    /* Set the box-sizing property to content-box
+    This means that the width and height of the element are calculated without padding and border */
+    /* This is the default value in any case
+    neither content-box nor border-box impacts the design function though. */
     font-family: Poppins, sans-serif;
     color: #12627a;
     background-image: url("handbase.jpg");
@@ -39,6 +44,7 @@ body {
     justify-content: space-between;
     /* Space between sections */
     flex-wrap: column;
+
     /* Allow wrapping if needed */
     a,
     a:visited {
@@ -55,6 +61,7 @@ body {
 main {
     max-width: 65%;
     /* Set the maximum width of the main section */
+    /* this area holds all the sections in the html file */
     display: flex;
     /* Arrange sections side by side if needed */
     flex-direction: row;
@@ -75,22 +82,26 @@ section[title="John Doe Resume Header"] {
     /* Set the maximum height of the section */
     padding: 1em;
     margin: 1em;
-        /* border: solid 0.2em rgba(255, 255, 255, 0.633); */
+    /* border: solid 0.2em rgba(255, 255, 255, 0.633); */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-section[title="Contact Information"], section[title="Skills"]{
+section[title="Contact Information"],
+section[title="Skills"] {
     text-align: center;
+
     ul {
         list-style-type: none;
     }
+
     li {
         text-align: left;
     }
 }
+
 img {
     width: 20vh;
     height: 20vh;
@@ -99,7 +110,6 @@ img {
     opacity: 0.7;
     margin: 1 em;
     align-content: center;
-
 }
 
 .svg-img {
@@ -130,28 +140,6 @@ img {
 }
 
 .leftSide:hover {
-    background-color: #eaeaea52;
-    /* Change background gradient on hover */
-}
-
-.rightSide {
-    flex: 1 1 30%;
-    /* Allow sections to grow and shrink, with a minimum width of 300px */
-    max-width: auto;
-    max-height: auto;
-    padding: 1em;
-    margin: 1em;
-    background: linear-gradient(to bottom, #ffffff94, #00000000);
-    /* Apply gradient on top of background color */
-    /* border: solid 0.2em rgba(255, 255, 255, 0.633); */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.rightSide:hover {
     background-color: #eaeaea52;
     /* Change background gradient on hover */
 }
