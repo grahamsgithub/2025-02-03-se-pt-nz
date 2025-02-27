@@ -104,7 +104,6 @@ img {
 
 .svg-img {
     filter: invert(100%) brightness(200%);
-    /* Adjust the filter values to achieve the desired color */
     /* Needed to invert the color of the SVG image - I don't have photoshop */
 }
 
@@ -116,7 +115,7 @@ img {
 
 .leftSide {
     flex: 1 1 20%;
-    /* Allow sections to grow and shrink, with a minimum width of 300px */
+    /* Allow sections to grow and shrink, with a minimum width of 20%*/
     max-width: auto;
     max-height: auto;
     padding: 1em;
@@ -128,6 +127,11 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.leftSide:hover {
+    background-color: #eaeaea52;
+    /* Change background gradient on hover */
 }
 
 .rightSide {
@@ -145,6 +149,11 @@ img {
     justify-content: center;
     align-items: center;
 
+}
+
+.rightSide:hover {
+    background-color: #eaeaea52;
+    /* Change background gradient on hover */
 }
 
 footer::before {
