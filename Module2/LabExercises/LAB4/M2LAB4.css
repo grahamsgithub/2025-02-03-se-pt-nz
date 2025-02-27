@@ -71,11 +71,18 @@ main {
     /* Allow wrapping if needed */
 }
 
-.codingLang {
-    font-weight: bolder;
+.emAccolades {
+    font-style: italic;
+    font-weight: bold;
 }
 
-section[title="John Doe Resume Header"] {
+.codingLang {
+    font-weight: bolder;
+    letter-spacing: 0.1em;
+}
+
+section[title="ResumeHead"] {
+    order: 1;
     max-width: auto;
     /* Set the maximum width of the section */
     max-height: auto;
@@ -85,11 +92,30 @@ section[title="John Doe Resume Header"] {
     /* border: solid 0.2em rgba(255, 255, 255, 0.633); */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
+    /* disable above to allow text to be left aligned
+    and for consistent heading top padding in all sections */
     align-items: center;
 }
 
-section[title="Contact Information"],
+section[title="Skills"] {
+    order: 2;
+}
+
+section[title="Education"] {
+    order: 3;
+}
+
+section[title="Experience"] {
+    order: 4;
+}
+
+section[title="Contact"] {
+    order: 5;
+}
+
+
+section[title="Contact"],
 section[title="Skills"] {
     text-align: center;
 
@@ -124,7 +150,7 @@ img {
 }
 
 .leftSide {
-    flex: 1 1 20%;
+    flex: 1 1 30%;
     /* Allow sections to grow and shrink, with a minimum width of 20%*/
     max-width: auto;
     max-height: auto;
@@ -135,7 +161,8 @@ img {
     /* border: solid 0.2em rgba(255, 255, 255, 0.633); */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; disabled this to allow the text to be left aligned
+    /* and for consistent heading top padding in all sections */
     align-items: center;
 }
 
