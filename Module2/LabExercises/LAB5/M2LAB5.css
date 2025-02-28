@@ -23,15 +23,6 @@ body {
     neither content-box nor border-box impacts the design function though. */
     font-family: Poppins, sans-serif;
     color: #12627a;
-    background-image: url("handbase.jpg");
-    background-size: cover;
-    /* Allows the background image to distort so that it always fits the background size without image cropping */
-    background-position: center;
-    /* Center the image */
-    background-repeat: no-repeat;
-    /* Do not repeat the image */
-    background-attachment: fixed;
-    /* Fix the background image */
     margin: 0;
     /* Remove default margin */
     padding: 0;
@@ -184,38 +175,15 @@ footer {
 
 /* Media Queries */
 
-/* Extra small devices (phones, 0px and up) */
-@media (min-width: 0px) {
-    
-    main {
-        flex-direction: column;
+/* Extra small devices (phones, max width of 600px) */
+@media (max-width: 599.98px) {
+    body {
+    background-image: url("handbasesmall.jpg");
+    background-size: cover;
+    background-attachment: fixed;
     }
     .leftSide {
-        flex: 1 1 100%;
+    flex: 1 1 40%;
     }
 }
 
-/* Small devices (600px and up) */
-@media (min-width: 600px) {
-    
-    main {
-        flex-direction: row;
-    }
-    .leftSide {
-        flex: 1 1 50%;
-    }
-}
-
-/* Medium devices (960px and up) */
-@media (min-width: 960px) {
-    .leftSide {
-        flex: 1 1 33%;
-    }
-}
-
-/* Large devices (1280px and up) */
-@media (min-width: 1280px) {
-    .leftSide {
-        flex: 1 1 30%;
-    }
-}
