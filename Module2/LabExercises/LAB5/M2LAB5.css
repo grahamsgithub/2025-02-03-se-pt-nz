@@ -1,5 +1,3 @@
-/* M2LAB5.css */
-
 /* NB for using flex
 1. ensure the parent element of the flex items has a display property of flex
 2. once the parent element has a display property of flex, the flex items can be styled using flex properties
@@ -55,7 +53,7 @@ body {
     }
 
     a:hover {
-        color: #eaeaea !important;
+        color: #eaeaea;
     }
 
 }
@@ -67,7 +65,7 @@ main {
     display: flex;
     /* Arrange sections side by side if needed */
     flex-direction: row;
-    /* Arrange sections side by side based on the row or column setting */
+    /* Arrange sections side by side based on the row or column seting */
     justify-content: space-between;
     flex-wrap: wrap;
     /* Allow wrapping if needed */
@@ -131,7 +129,6 @@ section[title="Skills"] {
 }
 
 img {
-    /* this section only sets the values for the image icon borders */
     width: 20vh;
     height: 20vh;
     border-radius: 40%;
@@ -143,21 +140,16 @@ img {
 
 .svg-img {
     filter: invert(100%) brightness(200%);
-    width: 8em;
-    height: 8em;
     /* Needed to invert the color of the SVG image - I don't have photoshop */
-    /* the original svg images are black */
-    /* this code section applies primarily to the resume image icon */
 }
 
 .svg-img-icon {
-    /* code section for the svg image icons */
     filter: invert(100%) brightness(200%);
     width: 4em;
     height: 4em;
 }
 
-.sectionBlock {
+.leftSide {
     flex: 1 1 30%;
     /* Allow sections to grow and shrink, with a minimum width of 20%*/
     max-width: auto;
