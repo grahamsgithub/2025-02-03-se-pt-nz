@@ -23,6 +23,15 @@ body {
     neither content-box nor border-box impacts the design function though. */
     font-family: Poppins, sans-serif;
     color: #12627a;
+    background-image: url("handbase.jpg");
+    background-size: cover;
+    /* Allows the background image to distort so that it always fits the background size without image cropping */
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-attachment: fixed;
+    /* Fix the background image */
     margin: 0;
     /* Remove default margin */
     padding: 0;
@@ -87,7 +96,6 @@ section[title="ResumeHead"] {
     /* disable above to allow text to be left aligned
     and for consistent heading top padding in all sections */
     align-items: center;
-    text-align: center;
 }
 
 section[title="Skills"] {
@@ -172,18 +180,3 @@ footer {
     font-weight: bold;
     text-align: center;
 }
-
-/* Media Queries */
-
-/* Extra small devices (phones, max width of 600px) */
-@media (max-width: 599.98px) {
-    body {
-    background-image: url("handbasesmall.jpg");
-    background-size: cover;
-    background-attachment: fixed;
-    }
-    .leftSide {
-    flex: 1 1 40%;
-    }
-}
-
