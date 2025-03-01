@@ -52,14 +52,15 @@ body {
     font-weight: bold;
 }
 
-a, a:visited {
-        color: #12627a;
-        font-weight: bold;
-    }
+a,
+a:visited {
+    color: #12627a;
+    font-weight: bold;
+}
 
 a:hover {
-        color: #eaeaea;
-    }
+    color: #eaeaea;
+}
 
 
 main {
@@ -73,6 +74,8 @@ main {
     justify-content: space-between;
     flex-wrap: wrap;
     /* Allow wrapping if needed */
+    word-break: break-all;
+    hyphens: auto;
 }
 
 .emAccolades {
@@ -120,7 +123,8 @@ section[title="Skills"] {
     }
 }
 
-/* the below code block only applies to the icon borders */
+/* the below code block only applies to the icon borders 
+not the images themselves as these are controlled below*/
 img {
     width: 20vh;
     height: 20vh;
@@ -135,27 +139,25 @@ img {
 .svg-img {
     filter: invert(100%) brightness(200%);
 
-    
+
 }
 
-/* Needed to invert the color of the SVG image - I don't have photoshop */
+/* Needed to invert the color of the SVG image as I don't have photoshop */
 /* above code block only applies to the resume image */
 
 .svg-img-icon {
     filter: invert(100%) brightness(200%);
-    
+
 }
 
 .sectionBlock {
     flex: 1 1 30%;
     /* Allow sections to grow and shrink, with a minimum width of 20%*/
-    max-width: auto;
-    max-height: auto;
-    min-width: 3em;
+    /* 1 1 30% is shorthand for flex-grow, flex-shrink, and flex-basis */
+    width: 80%;
     padding: 1em;
     margin: 1em;
-    background-color: white;
-    /* background: linear-gradient(to bottom, #ffffff94, #00000000); */
+    background: linear-gradient(to bottom, #ffffff94, #00000000);
     /* Apply gradient on top of background*/
     /* border: solid 0.2em rgba(255, 255, 255, 0.633); */
     display: flex;
@@ -163,18 +165,14 @@ img {
     /* justify-content: center; disabled this to allow the text to be left aligned
     /* and for consistent heading top padding in all sections */
     align-items: center;
-    word-wrap: break-word;
-    flex-wrap: wrap;
-    
-}
-h1 {
-    height: fit-content;
-    width: fit-content;
+    word-break: break-all;
+    hyphens: auto;
+    /* note that hyphens is not supported in all browsers */
 }
 
 .sectionBlock:hover {
     background-color: #eaeaea52;
-    /* Change background gradient on hover */
+    /* Change background gradient transparency on hover */
 }
 
 footer::before {
@@ -187,6 +185,12 @@ footer {
     text-align: center;
 }
 
+/* 
+The below code block is for the responsive design of the website
+the media queries are used to change the layout of the website based on the screen size
+the current breakpoints are set at 600px, 960px, and 1280px
+these are common but more can be added if needed */
+
 @media screen and (min-width: 0px) and (max-width: 600px) {
     body {
         background-image: url("handbasesmall.jpg");
@@ -194,30 +198,32 @@ footer {
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
-        font-size: xx-large;
+        font-size: x-large;
     }
+
     main {
         max-width: 100%;
-        max-height: 50%;}
+        max-height: 50%;
+    }
 
 }
 
-@media screen and (min-width: 601px) and (max-width: 1130px) {
+@media screen and (min-width: 601px) and (max-width: 960px) {
     body {
         background-image: url("handbasesmall.jpg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
-        font-size: xx-large;
+        font-size: large;
     }
 
 
 }
 
-@media screen and (min-width: 1131px) and (max-width: 1280px) {
+@media screen and (min-width: 960px) and (max-width: 1280px) {
     body {
-        font-size: x-large;
+        font-size: large;
     }
 
 
@@ -225,8 +231,7 @@ footer {
 
 @media screen and (min-width: 1281px) {
     body {
-        font-size: x-large;
+        font-size: large;
     }
-
-
-}
+}s
+    /* The above breakpoints were tested on: https://responsivetesttool.com/  */
