@@ -23,6 +23,7 @@ body {
     neither content-box nor border-box impacts the design function though. */
     font-family: Poppins, sans-serif;
     color: #12627a;
+    word-wrap: break-word;
     background-image: url("handbase.jpg");
     background-size: cover;
     /* Allows the background image to distort so that it always fits the background size without image cropping */

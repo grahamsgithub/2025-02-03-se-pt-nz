@@ -23,6 +23,7 @@ body {
     neither content-box nor border-box impacts the design function though. */
     font-family: Poppins, sans-serif;
     color: #12627a;
+    word-wrap: break-word;
     background-image: url("handbase.jpg");
     background-size: cover;
     /* Allows the background image to distort so that it always fits the background size without image cropping */
@@ -46,17 +47,20 @@ body {
     flex-wrap: column;
 
     /* Allow wrapping if needed */
-    a,
-    a:visited {
+
+    color: #12627a;
+    font-weight: bold;
+}
+
+a, a:visited {
         color: #12627a;
         font-weight: bold;
     }
 
-    a:hover {
+a:hover {
         color: #eaeaea;
     }
 
-}
 
 main {
     max-width: 65%;
@@ -83,19 +87,7 @@ main {
 
 section[title="ResumeHead"] {
     order: 1;
-    max-width: auto;
-    /* Set the maximum width of the section */
-    max-height: auto;
-    /* Set the maximum height of the section */
-    padding: 1em;
-    margin: 1em;
-    /* border: solid 0.2em rgba(255, 255, 255, 0.633); */
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    /* disable above to allow text to be left aligned
-    and for consistent heading top padding in all sections */
-    align-items: center;
+
 }
 
 section[title="Skills"] {
@@ -128,6 +120,7 @@ section[title="Skills"] {
     }
 }
 
+/* the below code block only applies to the icon borders */
 img {
     width: 20vh;
     height: 20vh;
@@ -136,27 +129,33 @@ img {
     opacity: 0.7;
     margin: 1 em;
     align-content: center;
+
 }
 
 .svg-img {
     filter: invert(100%) brightness(200%);
-    /* Needed to invert the color of the SVG image - I don't have photoshop */
+
+    
 }
+
+/* Needed to invert the color of the SVG image - I don't have photoshop */
+/* above code block only applies to the resume image */
 
 .svg-img-icon {
     filter: invert(100%) brightness(200%);
-    width: 4em;
-    height: 4em;
+    
 }
 
-.leftSide {
+.sectionBlock {
     flex: 1 1 30%;
     /* Allow sections to grow and shrink, with a minimum width of 20%*/
     max-width: auto;
     max-height: auto;
+    min-width: 3em;
     padding: 1em;
     margin: 1em;
-    background: linear-gradient(to bottom, #ffffff94, #00000000);
+    background-color: white;
+    /* background: linear-gradient(to bottom, #ffffff94, #00000000); */
     /* Apply gradient on top of background*/
     /* border: solid 0.2em rgba(255, 255, 255, 0.633); */
     display: flex;
@@ -164,9 +163,16 @@ img {
     /* justify-content: center; disabled this to allow the text to be left aligned
     /* and for consistent heading top padding in all sections */
     align-items: center;
+    word-wrap: break-word;
+    flex-wrap: wrap;
+    
+}
+h1 {
+    height: fit-content;
+    width: fit-content;
 }
 
-.leftSide:hover {
+.sectionBlock:hover {
     background-color: #eaeaea52;
     /* Change background gradient on hover */
 }
@@ -179,4 +185,48 @@ footer {
     text-transform: uppercase;
     font-weight: bold;
     text-align: center;
+}
+
+@media screen and (min-width: 0px) and (max-width: 600px) {
+    body {
+        background-image: url("handbasesmall.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-size: xx-large;
+    }
+    main {
+        max-width: 100%;
+        max-height: 50%;}
+
+}
+
+@media screen and (min-width: 601px) and (max-width: 1130px) {
+    body {
+        background-image: url("handbasesmall.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-size: xx-large;
+    }
+
+
+}
+
+@media screen and (min-width: 1131px) and (max-width: 1280px) {
+    body {
+        font-size: x-large;
+    }
+
+
+}
+
+@media screen and (min-width: 1281px) {
+    body {
+        font-size: x-large;
+    }
+
+
 }
