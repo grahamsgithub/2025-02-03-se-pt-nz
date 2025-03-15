@@ -41,7 +41,7 @@ function ucFirstLetters(str) {
     return result;
 }
 console.log("1. :")
-console.log(ucFirstLetters("los angeles city tour") ) //Los Angeles
+console.log(ucFirstLetters("los angeles city tour")) //Los Angeles
 
 // 2. Create a function truncate(str, max) that truncates a given string of text if its total
 // length is greater than the max length. It should return either the truncated text, with an
@@ -156,12 +156,12 @@ console.log(truncate('This text will be truncated if it is too long', 25)) // Th
 const animals = ['Tiger', 'Giraffe']
 
 animals.push('Monkey', 'Zebra')
-animals.unshift('Armadillo','Duck','Teddy Bear')
+animals.unshift('Armadillo', 'Duck', 'Teddy Bear')
 animals.sort()
 
 newValue = 'Elephant'
 function replaceMiddleAnimal(newValue) {
-    animals.splice(Math.floor(animals.length/2), 0, newValue);
+    animals.splice(Math.floor(animals.length / 2), 0, newValue);
     return
 }
 replaceMiddleAnimal(newValue)
@@ -171,8 +171,7 @@ console.log(animals)
 
 beginsWith = 't';
 
-function findMatchingAnimals(beginsWith)
-{
+function findMatchingAnimals(beginsWith) {
     let foundAnimals = animals.filter(animal => animal.toLowerCase().startsWith(beginsWith.toLowerCase()))
     return foundAnimals
 }
@@ -382,7 +381,7 @@ floatB = 0.20;
 function currencyAdditionTwo(floatA, floatB) {
     let result = parseFloat(floatA) + parseFloat(floatB);
     return parseFloat(result.toFixed(2));
-    }
+}
 console.log(currencyAdditionTwo(0.1, 0.2)) // 0.3
 //boolean test with function naming adapted as required
 console.log(0.3 == currencyAdditionTwo(0.1, 0.2)) // true
@@ -403,7 +402,7 @@ console.log(0.3 == currencyAdditionTwo(0.1, 0.2)) // true
 // NB i also updated the boolean test values accordingly
 
 float3 = 0.30;
-float4 = 0.50; 
+float4 = 0.50;
 
 function currencyOperation(float3, float4, operation,) {
     switch (operation) {
@@ -492,30 +491,30 @@ function unique(duplicatesArray) {
     const seen = new Set();
     const uniqueArray = [];
 
-// 5. then we use a forEach loop to iterate over the arrayCopy
+    // 5. then we use a forEach loop to iterate over the arrayCopy
 
-// NB forEach is a method that calls a function once for each element in an array
-// note the syntax is: arrayname.forEach()
+    // NB forEach is a method that calls a function once for each element in an array
+    // note the syntax is: arrayname.forEach()
 
-// so in this case we use arrayCopy.forEach((element) => {})
-// this is a shorthand way of writing a function
-// the => here means function
-// so we are creating a function that takes an element as a parameter
-// and then runs the code block for each element in the array
+    // so in this case we use arrayCopy.forEach((element) => {})
+    // this is a shorthand way of writing a function
+    // the => here means function
+    // so we are creating a function that takes an element as a parameter
+    // and then runs the code block for each element in the array
 
-// the if statement inside the forEach loop checks if the element 
-// is already in the seen set
-// using !seen (not seen) and .has() which returns a boolean
-// so the first time the loop runs it will check if the element is in the Set
-// but because it is the first time the set is empty 
-// so the test result is true (i.e. element not seen yet) 
-// so the code block runs and adds the element to the Set and the uniqueArray
-// then the loop runs again for the next element
-// and checks if this element is in the Set
-// if it is !seen it again adds it to seen set and uniqueArray
-// if it is not it just moves on to the next element
-// then when it is done iterating through all the elements in the array
-// it returns the uniqueArray
+    // the if statement inside the forEach loop checks if the element 
+    // is already in the seen set
+    // using !seen (not seen) and .has() which returns a boolean
+    // so the first time the loop runs it will check if the element is in the Set
+    // but because it is the first time the set is empty 
+    // so the test result is true (i.e. element not seen yet) 
+    // so the code block runs and adds the element to the Set and the uniqueArray
+    // then the loop runs again for the next element
+    // and checks if this element is in the Set
+    // if it is !seen it again adds it to seen set and uniqueArray
+    // if it is not it just moves on to the next element
+    // then when it is done iterating through all the elements in the array
+    // it returns the uniqueArray
 
     arrayCopy.forEach((element) => {
         if (!seen.has(element)) {
@@ -545,11 +544,11 @@ console.log(unique(testScores)) // [ 55, 84, 97, 63, 32, 91, 43 ]
 // filter. Test each of your answers to the below tasks.
 
 const books = [
-{ id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: 1925 },
-{ id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', year: 1960 },
-{ id: 3, title: '1984', author: 'George Orwell', year: 1949 },
-{ id: 4, title: 'Brave New World', author: 'Aldous Huxley', year: 1932 },
-{ id: 5, title: 'The Catcher in the Rye', author: 'J.D. Salinger', year: 1951 },
+    { id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: 1925 },
+    { id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', year: 1960 },
+    { id: 3, title: '1984', author: 'George Orwell', year: 1949 },
+    { id: 4, title: 'Brave New World', author: 'Aldous Huxley', year: 1932 },
+    { id: 5, title: 'The Catcher in the Rye', author: 'J.D. Salinger', year: 1951 },
 ];
 
 // a) Write a function getBookTitle(bookId) that uses the find function to return the
@@ -642,7 +641,10 @@ function getOldBooks(year) {
     const foundOldEnough = books.filter(book => book.year < year);
 
     // Return the title if the book is found, otherwise return 'Book not found'
-    return foundOldEnough.length ? foundOldEnough : 'None found'; //ERROR ask Mirza
+    // NB needed to use .lenth to check if the array is empty
+    // because the array will always be returned even if empty
+    // because .filter will always create / return an array even if empty
+    return foundOldEnough.length ? foundOldEnough : 'None found';
 }
 
 console.log("7. b:")
@@ -697,13 +699,223 @@ console.log(books) //
 // it is being created by the .map method and then returned by the function to the .filter method
 // so the function will return the array of titles of books written by authors
 
-//CHECK above with Mirza
+
 
 
 function getTitles(authorInitial) {
-    return books.filter(book => 
+    return books.filter(book =>
         book.author.charAt(0).toUpperCase() === authorInitial.toUpperCase()).map(book => book.title);
-} 
+}
 
 console.log("7. d:")
 console.log(getTitles('H')) // [ 'To Kill a Mockingbird' ]
+
+// e) (Extension) Write a function latestBook() that uses find and forEach to get the
+// book with the most recent publication date.
+
+function latestBook() {
+    let latest = books[0]; // Initialize with the first book
+
+    books.forEach(book => {
+        if (book.year > latest.year) {
+            latest = book.title; // Update latest if the current book is more recent
+        }
+    });
+
+    return latest;
+}
+
+console.log("7. d:")
+console.log("The latest book is: " + latestBook()) // [ 'To Kill a Mockingbird' ]
+
+// 8. The following code creates a new Map object for storing names beginning with A, B, or C
+// with their phone numbers.
+
+const phoneBookABC = new Map() //an empty map to begin with
+phoneBookABC.set('Annabelle', '0412312343')
+phoneBookABC.set('Barry', '0433221117')
+phoneBookABC.set('Caroline', '0455221182')
+
+// a) Create a new phoneBookDEF Map to store names beginning with D, E or F
+
+console.log("8. :")
+const phoneBookDEF = new Map([
+    ['Dan', '5656'],
+    ['Ed', '4545'],
+    ['Fred', '3434']
+]);
+
+// above is the same as doing:
+// phoneBookDEF.set('Dan', '5656') 
+// phoneBookDEF.set('Ed', '4545')
+// phoneBookDEF.set('Fred', '3434')
+
+// c) Update the phone number for Caroline
+
+
+phoneBookABC.set('Caroline', '11111');
+
+// the below is way to join together two maps
+// it uses the spread operator to create a new map called contacts
+// NB note the syntax
+
+function contacts(phoneBookABC, phoneBookDEF) {
+    return new Map([...phoneBookABC, ...phoneBookDEF]);
+}
+
+// then we use the function printPhoneBook to print the contacts
+// we use .forEach to iterate over the contacts map
+// and then print the key and value of each contact
+// using the console.log() method and string interpolation ${}
+
+function printPhoneBook(contacts) {
+    contacts.forEach((value, key) => {
+        console.log(`${key}: ${value}`);
+    });
+}
+
+printPhoneBook(contacts(phoneBookABC, phoneBookDEF));
+
+// 9. Given the below salaries object, perform the following tasks.
+
+let salaries = {
+    "Timothy": 35000,
+    "David": 25000,
+    "Mary": 55000,
+    "Christina": 75000,
+    "James": 43000
+};
+
+// a) Write a function sumSalaries(salaries) that calculates and returns the total of all salaries
+
+// in the below code 
+// we create a function called sumSalaries that takes a parameter called salaries
+// which we expect to be an object
+// then we create a variable called total and set it to 0
+// then we use a for of loop to iterate over the values of the salaries object
+// using Object.values(salaries)
+// this will return an array of the values of the salaries object
+// so [35000, 25000, 55000, 75000, 43000]
+// then we iterate over this array using the for of loop
+// and add each value to the total variable
+// then we return the total variable
+
+function sumSalaries(salaries) {
+    let total = 0;
+    for (let salary of Object.values(salaries)) {
+        total += salary;
+    }
+    return total;
+}
+
+// in the below code 
+// we create a function called bestSalary that takes a parameter called salaries
+// which we expect to be an object
+// then we create a variable called highest and set it to 0
+// then we use a for of loop to iterate over the values of the salaries object
+// using Object.values(salaries)
+// this will return an array of the values of the salaries object
+// then inside the loop we check if the salary is higher than the highest
+// if it is we set the highest to the salary
+// then we return the highest
+
+function bestSalary(salaries) {
+    let highest = 0;
+
+    for (let salary of Object.values(salaries)) {
+        if (salary > highest) {
+            highest = salary;
+        }
+    }
+    return highest;
+}
+
+console.log("9. a:")
+console.log(sumSalaries(salaries)) // 233000
+console.log(bestSalary(salaries)) // 75000
+
+// 10.The following code uses the Date object to print the current time and the number of hours
+// that have passed today so far. Extend the code to do the following:
+
+// a) Print the total number of minutes that have passed so far today
+// b) Print the total number of seconds that have passed so far today
+
+const today = new Date();
+console.log('Current time is ' + today.toLocaleTimeString())
+console.log(today.getHours() + ' hours have passed so far today')
+console.log((today.getHours())*60 + today.getMinutes() + ' minutes have passed so far today')
+console.log(((today.getHours())*60 + today.getMinutes())*60 + ' minutes have passed so far today')
+
+// c) Calculate and print your age as: 'I am x years, y months and z days old'
+
+let myBirthday = {year:1978, month:4, day:26};
+
+let todayDate = {year:today.getFullYear(), month: today.getMonth(), day:today.getDate()};
+
+console.log(todayDate)
+
+// below we subtract the years months and days of my birthday from todays date
+// to get the difference in years months and days
+// then we print the result
+// depending on the result we may need to convert the negative numbers
+// to positive numbers
+// this is done by the function negativeConvert
+// which takes the years months and days as parameters
+// and then checks if the days or months are negative
+// if they are it adds 30 to the days and 12 to the months
+// and then subtracts 1 from the years
+// then it returns the new values
+// then we print the new values
+// this is not 100% accurate because of leap years
+// and some months having 31 days and some 30
+// but it is a good approximation
+
+let years = todayDate.year - myBirthday.year;
+let month = (todayDate.month - myBirthday.month)-1;
+let days = todayDate.day - myBirthday.day;
+
+console.log(`I am ${years} years, ${month} months and ${days} days old`);
+console.log("Which means actually . . .")
+
+function negativeConvert (years, month, days) {
+    if (days < 0) {
+        days2 = days + 30;  }
+    if (month < 0) {
+        month2 = month + 12;
+        years2 = years - 1;}
+    return [years2, month2, days2];
+}
+negativeConvert (years, month, days);
+
+console.log(`I am ${years2} years, ${month2} months and ${days2} days old *almost*`);
+
+// Write a function daysInBetween(date1, date2) which calculates and returns the amount
+// of days in between the two given dates.
+
+console.log("10. d:")
+
+// the below code block is a function that takes two dates as parameters
+// and then calculates the difference in milliseconds between the two dates
+// then it converts the difference to days and returns the result
+
+function daysInBetween(date1, date2) {
+    // Calculate the difference in milliseconds
+    const difference = date2 - date1;
+    // Convert the difference to days
+    return Math.floor(difference / (1000 * 60 * 60 * 24));
+}
+
+// note for the above return Math.floor(difference / (1000 * 60 * 60 * 24));
+// converts the difference from milliseconds to days.
+// dividing the difference by the number of milliseconds in a day (1000 * 60 * 60 * 24).
+// 1000 milliseconds in a second.
+// 60 seconds in a minute.
+// 60 minutes in an hour.
+// 24 hours in a day.
+
+// Create two date objects
+const date1 = new Date(1964, 0, 1);
+const date2 = new Date(2019, 0, 10);
+
+// Call the function with the two dates
+console.log(daysInBetween(date1, date2)); // 9
