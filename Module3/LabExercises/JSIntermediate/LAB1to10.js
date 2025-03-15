@@ -642,7 +642,7 @@ function getOldBooks(year) {
     const foundOldEnough = books.filter(book => book.year < year);
 
     // Return the title if the book is found, otherwise return 'Book not found'
-    return foundOldEnough ? foundOldEnough : 'None found'; //ERROR ask Mirza
+    return foundOldEnough.length ? foundOldEnough : 'None found'; //ERROR ask Mirza
 }
 
 console.log("7. b:")
@@ -668,7 +668,7 @@ console.log(getOldBooks(1800)) //
 
 function addGenre(genre) {
     // Use the .map method to add a new genre property to each book
-    return books.map(book => {book.genre = genre; return book;});
+    return books.map(book => book.genre = genre);
 }
 
 // call the function with the parameter 'classic'
