@@ -49,3 +49,4 @@ else {
 // Null is a primitive value
 // Undefined is a primitive value and a type
 // Null shows as an object type but this is a bug in JS, null is not a type
+// just a value
