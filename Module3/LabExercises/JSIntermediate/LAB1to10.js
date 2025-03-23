@@ -816,8 +816,9 @@ function sumSalaries(salaries) {
 // using Object.values(salaries)
 // this will return an array of the values of the salaries object
 // then inside the loop we check if the salary is higher than the highest
-// if it is we set the highest to the salary
-// then we return the highest
+// if it is we set the highest (0 at function call) to the salary
+// iterate and check the next salary
+// then we return the highest at the end
 
 function bestSalary(salaries) {
     let highest = 0;
@@ -868,7 +869,7 @@ console.log(todayDate)
 // then we print the new values
 // this is not 100% accurate because of leap years
 // and some months having 31 days and some 30
-// but it is a good approximation
+// but it is a good enough approximation 
 
 let years = todayDate.year - myBirthday.year;
 let month = (todayDate.month - myBirthday.month)-1;
