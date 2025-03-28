@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce Example</title>
+</head>
+<body>
+    <script>
+        // Debounce function
+        function debounce(func, ms) {
+            let timeout = 0;
+            return function() {
+                const context = this;
+                const args = arguments;
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {func.apply(context, args);}, ms);
+            };
+        }
+        // ask Mirza about above (why does it work??)
+        
+        // NB this and arguments are special objects in JavaScript that are available in every function.
+        // this refers to the object that the function is a method of, and arguments is an array-like object that holds all of the arguments passed to the function.
+        // Function to be debounced
+        function printMe(msg) {
+            console.log("printing debounced message + " + msg);
+        }
+
+        // Debounced version of printMe with a 1.5-second delay
+        const msWait = 1500; // 1.5 seconds
+        const msg = 'Added message stored in msg'; // added message to be printed
+        printMe = debounce(printMe, msWait);
+
+        // Fire off 3 calls to printMe within 300ms - only the LAST one should print, after 1500ms of no calls
+        setTimeout(printMe, 10);
+        setTimeout(printMe, 200);
+        setTimeout(printMe, 300, msg); // added in msg to be printed
+    </script>
+</body>
+</html>
