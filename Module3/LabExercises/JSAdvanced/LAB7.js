@@ -23,6 +23,16 @@
 
 // DigitalClock class
 class DigitalClock {
+    // the constructor method is a special method that is called 
+    // when an object is created and here the constructor takes a prefix parameter
+    // and sets the prefix property of the object to the value 
+    // of the prefix parameter
+    // this is a way to create a new object with properties and methods
+    // the prefix is a string that is used to identify the clock
+    // this is a way to create a new class that inherits from another class
+    // so the DigitalClock class is the base class
+    // and the PrecisionClock and AlarmClock classes are the derived classes
+    // and the prefix lets us identify which clock is which
     constructor(prefix) {
         this.prefix = prefix;
     }
@@ -62,6 +72,9 @@ class DigitalClock {
 // PrecisionClock class
 class PrecisionClock extends DigitalClock {
     constructor(prefix, precision = 1000) {
+        // super is a way to call the constructor of the parent class
+        // and pass in the prefix parameter to the parent class
+        // this is a way to create a new class that inherits from another class
         super(prefix);
         this.precision = precision;
     }
@@ -99,6 +112,10 @@ class PrecisionClock extends DigitalClock {
 
 // AlarmClock class
 class AlarmClock extends DigitalClock {
+    // again as above we use extends to create a new class that 
+    // inherits from another class
+    // and we pass in the prefix and wakeupTime parameters
+    // this lets us create a new class that inherits from another class
     constructor(prefix, wakeupTime = '07:00') {
         super(prefix);
         this.wakeupTime = wakeupTime;
