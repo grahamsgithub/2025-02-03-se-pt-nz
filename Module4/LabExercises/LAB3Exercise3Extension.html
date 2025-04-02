@@ -1,29 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #e3f2fd;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .card {
-            padding: 10px;
-        }
+    <!-- Populate the page dynamically, by generating an artist 
+profile card which includes cards representing the 
+items in an artist's portfolio. Extension: make an array 
+of artists, all with multiple portfolio items -->
 
-        .card-title {
-            font-weight: 600;
-            font-size: 3em;
-            padding: 0 0 10px 0;
-        }
+    <head>
+        <!-- below is the style for the card
+    added border and margin for visibility while testing -->
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #e3f2fd;
+            }
 
-        .card-description {
-            font-weight: 400;
-            font-size: 2em
-        }
-    </style>
-</head>
+            .card {
+                padding: 10px;
+                margin: 2px;
+                border: 5px solid blue;
+            }
+
+            .card-title {
+                font-weight: 600;
+                font-size: 3em;
+                padding: 0 0 10px 0;
+            }
+
+            .card-description {
+                font-weight: 400;
+                font-size: 2em
+            }
+        </style>
+    </head>
 
 <body>
     <template id="card-template">
@@ -34,12 +47,15 @@
             </div>
         </div>
     </template>
-
+    <!-- below is the card list div which will be populated
+    by the script in below -->
     <div id="card-list"></div>
     <script>
-
+        // declaring and defining the variables for the card title and description
+        // as empty strings
         let cardTitle = '';
         let cardDescription = '';
+        // creating 3 objects for 3 artists
         const artist = {
             name: "Van Gogh",
             portfolio: [
@@ -79,10 +95,13 @@
                 },
             ]
         }
-
+        // saving the 3 artist objects in an array called artistArray
         const artistArray = [artist, artist2, artist3];
-
-
+        // function to add a card to the page
+        // it takes two parameters: cardTitle and cardDescription
+        // it clones the template, populates it with the card title and description
+        // and appends it to the card-list div which is the parent of the card
+        // and means it will be displayed on the page
         function addCard(cardTitle, cardDescription) {
             // clone the template
             const template =
@@ -97,17 +116,34 @@
             document.querySelector('#card-list')
                 .appendChild(template);
         }
+        // this function takes an array of artists and loops through it
+        // it takes artistArray as a parameter
+        // it calls the addCard function for each artist in the array 
+        // and for each portfolio item in the artist's portfolio
+        // inside the for of loop it calls the addCard function
+        // with the string "Artist: " and the artist's name once only 
+        // and then with the second for of loop it calls the addCard function again
+        // this time with the portfolio item title and url
+        // so it creates a single card for each artist and then creates
+        // a card for each portfolio item in the artist's portfolio
+
+        // NB note the addition of const inside the for of loop
+        // this is to ensure that the variable is scoped to the loop
+        // wont work without this
 
         function manyArtistCards(artistArray) {
             for (const indexValue of artistArray) {
-                addCard("Artist: ", artist.name);
-                for (const portfolioItem of artist.portfolio) {
+                // Add a card for the artist's name
+                addCard("Artist: ", indexValue.name); // Use indexValue.name instead of artist.name
+
+                // Add cards for each portfolio item
+                for (const portfolioItem of indexValue.portfolio) { // Use indexValue.portfolio
                     addCard(portfolioItem.title, portfolioItem.url);
                 }
             }
         }
         manyArtistCards(artistArray);
-        </script>
+    </script>
 
 </body>
 
