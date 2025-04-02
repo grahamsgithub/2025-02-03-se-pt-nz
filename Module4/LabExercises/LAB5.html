@@ -28,13 +28,17 @@
         <input type="text" id="newsItemTitle" class="form-control" placeholder="Enter news item title" required>
         <label for="newsItemContent">News Item Content</label>
         <input type="text" id="newsItemContent" class="form-control" placeholder="Enter news item content" required>
-        <button type="submit" class="btn btn-primary mt-2" onclick="addNewsItem()">Add News Item</button>   
+        <button type="submit" class="btn btn-primary mt-2" onclick="addNewsItem()">Add News Item</button>
     </form>
 
     <!-- Container to display the cards -->
     <div id="card-list" class="row"></div>
 
     <script>
+        let counterFetch=0; // Initialize a counter variable
+        let counterClear=0; // Initialize a counter variable
+        let counterDisplay=0; // Initialize a counter variable
+
         // Array of objects to be added to with new news items
         let news = [
             { id: 1, title: 'Election Results', content: "Newly elected minister..." },
@@ -47,11 +51,12 @@
         // to simulate async and then returns the news array
         // adapted the getCars function from the previous slide
         // added console logging to test
-        
+
         function getCars() {
+            
             return new Promise(resolve => {
                 setTimeout(() => {
-                    console.log("Data fetched successfully");
+                    console.log("Data fetched successfully " + counterFetch++);
                     resolve(news); // Resolve with the news array after 1 second
                 }, 1000);
             });
@@ -82,11 +87,11 @@
             getCars().then((news) => {
                 // Clear the card list
                 document.getElementById("card-list").innerHTML = "";
-                console.log("Old data cleared from container");
+                console.log("Old data cleared from container " + counterClear++);
 
                 // Add cards for each news item
                 news.forEach(newsItem => addCard(newsItem));
-                console.log("Data displayed successfully");
+                console.log("Data displayed successfully " + counterDisplay++);
 
                 // Call the function again after 5 seconds inside itself
                 setTimeout(fetchAndDisplayNews, 5000);
@@ -121,8 +126,9 @@
                 title: document.getElementById("newsItemTitle").value,
                 content: document.getElementById("newsItemContent").value
             };
-            news.push(newNewsObject); 
+            news.push(newNewsObject);
             console.log(news);
+            console.log("New news item added " + newNewsObject.id);
             addCard(newNewsObject);
         }
     </script>
