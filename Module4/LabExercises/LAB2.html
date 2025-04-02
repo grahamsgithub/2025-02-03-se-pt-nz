@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #a4a4a4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #c88585;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            cursor: pointer;
+        }
+        button.primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        button.secondary {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+        }
+        /* NB note syntax difference for button.active and
+        button:hover*/
+        button.active {
+            background-color: #0056b3;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        #result {
+            background-color: #e9ecef;
+        }
+        .operations {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Simple Calculator</h1>
+        <form id="calculatorForm">
+            <div class="form-group">
+                <label for="number1">Enter First Number</label>
+                <!-- NB note the use of type="number" for the input field and this
+                auto creates the up/down arrows in the input field. -->
+                <input type="number" id="number1" placeholder="First Number">
+            </div>
+            <!-- note the class below is used to group the operation 
+            buttons together the syntax here is 
+            class="form-group operations" meaning that
+            form-group is a class of the div and operations 
+            is a class of the button 
+            they are separated by a space -->
+            <div class="form-group operations">
+                <button type="button" class="primary" data-operation="add">+</button>
+                <button type="button" class="primary" data-operation="subtract">-</button>
+                <button type="button" class="primary" data-operation="multiply">x</button>
+                <button type="button" class="primary" data-operation="divide">/</button>
+            </div>
+            <div class="form-group">
+                <label for="number2">Enter Second Number</label>
+                <input type="number" id="number2" placeholder="Second Number">
+            </div>
+            <div class="form-group">
+                <button type="button" class="primary" id="equalsButton">=</button>
+            </div>
+            <div class="form-group">
+                <button type="button" class="secondary" id="resetButton">Reset</button>
+            </div>
+            <div class="form-group">
+                <label for="result">Result</label>
+                <input type="text" id="result" placeholder="Result" readonly>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript code to handle calculator operations
+        // let selectedOperation = null is declared here to make it available to all functions
+        // and calculationDone is used to check if a calculation has been done
+        let selectedOperation = null;
+        let calculationDone = false;
+
+        //in the below code we use the querySelectorAll method to select all buttons 
+        // with the class 'operations' and add an event listener to each button.
+        // this allows us to handle the click event for each operation button.
+        // When a button is clicked, we remove the 'active' class from all buttons
+        // and add it to the clicked button so that the user can see which operation is selected
+        // they can only select one operation at a time.
+        // The selected operation is stored in the selectedOperation variable.
+        // The equals button is used to perform the calculation based on the selected operation.
+        // The reset button clears the form and resets the selected operation.
+        // The result is displayed in the result input field.
+        // The calculationDone variable is used to check if a calculation has been done.
+        
+        const operationButtons = document.querySelectorAll('.operations button');
+        // operationButtons uses .forEach to loop through each button and add an event listener
+        // to handle the click event. When a button is clicked, it checks if a calculation has been done.
+        operationButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                if (calculationDone) {
+                    alert('Please reset before starting a new calculation.');
+                    return;
+                }
+
+                // Remove active class from all buttons
+                operationButtons.forEach(btn => btn.classList.remove('active'));
+
+                // Add active class to the clicked button
+                this.classList.add('active');
+                selectedOperation = this.getAttribute('data-operation');
+            });
+        });
+        // the below code adds an event listener to the equals button.
+        // When the equals button is clicked, it checks if a calculation has been done.
+        // If a calculation has been done, it alerts the user to reset before starting a new calculation.
+        document.getElementById('equalsButton').addEventListener('click', function() {
+            if (calculationDone) {
+                alert('Please reset before starting a new calculation.');
+                return;
+            }
+            // the below code retrieves the values from the input fields and checks if they are valid numbers.
+            // If they are not valid numbers, it alerts the user to enter valid numbers.
+            // this is done by the isNAN below
+            const number1 = parseFloat(document.getElementById('number1').value);
+            const number2 = parseFloat(document.getElementById('number2').value);
+            let result;
+
+            if (isNaN(number1) || isNaN(number2)) {
+                alert('Please enter valid numbers.');
+                return;
+            }
+            // below code checks if an operation has been selected.
+            // If no operation is selected, it alerts the user to select an operation.
+            if (!selectedOperation) {
+                alert('Please select an operation.');
+                return;
+            }
+            // the below code performs the selected operation based on the value of selectedOperation.
+            // It uses a switch statement to determine which operation to perform.
+            // The result is calculated based on the selected operation and the two numbers.
+            // If the operation is division and the second number is zero, it alerts the user that division by zero is not allowed.
+            switch (selectedOperation) {
+                case 'add':
+                    result = number1 + number2;
+                    break;
+                case 'subtract':
+                    result = number1 - number2;
+                    break;
+                case 'multiply':
+                    result = number1 * number2;
+                    break;
+                case 'divide':
+                    if (number2 === 0) {
+                        alert('Division by zero is not allowed.');
+                        return;
+                    }
+                    result = number1 / number2;
+                    break;
+                default:
+                    alert('Invalid operation selected.');
+                    return;
+            }
+            // the below code sets the result in the result input field and marks the calculation as done
+            // by setting calculationDone to true, this prevents further calculations until the reset button is clicked.
+            document.getElementById('result').value = result;
+            calculationDone = true;
+        });
+
+        // the below code adds an event listener to the reset button.
+        // When the reset button is clicked, it resets the form, clears the result field,
+        // and resets the selected operation and calculationDone variables.
+        // It also removes the active class from all operation buttons.
+        // NB note the .reset method is used to reset the form fields to their initial values.
+        // this is a built-in method of the form element in js
+        // and it resets all input fields to their default values.
+        document.getElementById('resetButton').addEventListener('click', function() {
+            document.getElementById('calculatorForm').reset();
+            document.getElementById('result').value = '';
+            selectedOperation = null;
+            calculationDone = false;
+
+            // Remove active class from all buttons
+            operationButtons.forEach(btn => btn.classList.remove('active'));
+        });
+    </script>
+</body>
+</html>
