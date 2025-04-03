@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxon DateTime Example</title>
+    <!-- Include Luxon Library -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/luxon.min.js"></script>
+</head>
+<body>
+    <h2>Luxon Date</h2>
+    <!-- Container for displaying the output -->
+    <div id="displayLuxon"></div>
+
+    <script type="text/javascript">
+        // the code below is a self-invoking function that runs immediately after it is defined
+        // it is self-invoking because it is wrapped in parentheses and followed by () at the end
+        // it lets us create a local scope for our variables
+        // syntax: of the self-invoking function is (function() { ... })();
+
+        // inside the function we define each variable and formula we need to use in the function
+        // followed by the code that uses the variables and then the result is displayed in the browser
+        // by appending the result to the innerHTML of the element with id displayLuxon with the +=
+
+
+        (function() {
+            // Create a shortcut and a new Luxon date
+            const DateTime = luxon.DateTime;
+            let nowLuxon = DateTime.now();
+            
+            // each display to the browser is done using the .innerHTML += code lineproperty of the element
+            // so the output is appended to the innerHTML of the element text each time
+
+            let eDisplayLuxon = document.getElementById('displayLuxon');
+            
+            // Display the unformatted and formatted current date
+            eDisplayLuxon.innerHTML += `<p>Unformatted date: ${nowLuxon}</p>`;
+            let formatted = nowLuxon.toFormat('MMMM dd, yyyy');
+            eDisplayLuxon.innerHTML += `<p>Formatted date: ${formatted}</p>`;
+            
+            // Display the current date in New York
+            let newYork = nowLuxon.setZone('America/New_York').toLocaleString(DateTime.DATETIME_FULL);
+            eDisplayLuxon.innerHTML += `<p>New York date: ${newYork}</p>`;
+
+            // 1. Calculate the number of days between your birthdate and the current date
+            let birthDate = DateTime.fromISO('1978-05-26'); // birthdate in ISO format
+            let daysBetween = nowLuxon.diff(birthDate, 'days').days; //.diff() method returns a Duration object
+            eDisplayLuxon.innerHTML += `<p>Days between birthdate and current date: ${Math.floor(daysBetween)}</p>`;
+
+            // 2. Display the number of years, months, and days between your birthdate and current date
+            let diff = birthDate.until(nowLuxon).toDuration(['years', 'months', 'days']); // .toDuration() method returns a Duration object
+            eDisplayLuxon.innerHTML += `<p>Difference: ${Math.floor(diff.years)} years, ${Math.floor(diff.months)} months, and ${Math.floor(diff.days)} days</p>`;
+
+            // 3. Given two dates, display the date closest to the current date
+            let date1 = DateTime.fromISO('2025-01-01');
+            let date2 = DateTime.fromISO('2025-12-31');
+            // the below code uses the .diff() method to calculate the difference between the two dates and the current date
+            // and then compares the two differences to find the closest date
+            // the .milliseconds property returns the difference in milliseconds
+            // the closest date is the one with the smallest difference in milliseconds
+           
+            let closestDate = nowLuxon.diff(date1).milliseconds < nowLuxon.diff(date2).milliseconds ? date1 : date2;
+            eDisplayLuxon.innerHTML += `<p>Closest date to current date (using 1 Jan and 31 Dec of 2025 as comparison date points'): ${closestDate.toFormat('MMMM dd, yyyy')}</p>`;
+
+            // 4. Given two dates, display whether the first date is before or after the second date
+            let comparisonResult = date1.toMillis() < date2.toMillis() ? 'before' : 'after';
+            eDisplayLuxon.innerHTML += `<p>Date1 is ${comparisonResult} Date2 (with same date a and b as in .3 above)</p>`;
+
+            // 5. Display the current time in London
+            // used base example supplied in slides
+            let londonTime = nowLuxon.setZone('Europe/London').toLocaleString(DateTime.TIME_SIMPLE);
+            eDisplayLuxon.innerHTML += `<p>Current time in London: ${londonTime}</p>`;
+        })();
+    </script>
+</body>
+</html>
