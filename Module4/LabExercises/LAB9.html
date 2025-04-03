@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCharts</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+</head>
+
+<body>
+    <!-- Prepare a DOM with a defined width and height for ECharts -->
+    <div id="main" style="width: 900px;height:600px;"></div>
+    <script type="text/javascript">
+        // Specify the configuration items and data for the chart
+        let options = {
+            title: { text: 'Fake Store Categories' },
+            xAxis: {
+                data: [] // Placeholder for category names
+            },
+            yAxis: {},
+            series: [{
+                name: '# products',
+                type: 'bar',
+                // belwo is the array we want to fill with data from the fakestory
+                data: [] // Placeholder for product counts
+            }]
+        };
+
+        // Fetch data from the API
+        fetch('https://fakestoreapi.com/products')
+            .then((response) => response.json())
+            .then((json) => {
+                // Log the fetched data to the console for testing
+                console.log(json);
+
+                // Group products by category
+
+                // The reduce function is used to group the products by category
+                // It creates an object where each key is a category and the value 
+                // is an array of products in that category
+                // The accumulator is an object that accumulates the grouped products
+                // The product is the current item being processed in the array
+                // If the category does not exist in the accumulator, 
+                // it initializes it as an empty array (this is the if statement)
+                // saying that if the category does not exist in the accumulator,
+                // it initializes it as an empty array using
+                // accumulator[product.category] = [];
+                // Then it pushes the current product into the array for that category
+                // Finally, it returns the accumulator for the next iteration
+                // so if it goes through the array of products it will group them by category
+                // and return an object where each key is a category and 
+                // the value is an array of products in that category
+
+                const groupedByCategory = json.reduce((accumulator, product) => {
+                    if (!accumulator[product.category]) {
+                        accumulator[product.category] = [];
+                    }
+                    accumulator[product.category].push(product);
+                    return accumulator;
+                }, {});
+
+                console.log(groupedByCategory);
+
+                // Extract category names and product counts
+
+                // The Object.keys method is used to get an array of the 
+                // keys (categories) from the groupedByCategory object
+                // The Object.values method is used to get an array of the
+                // values (arrays of products) from the groupedByCategory object
+                // The map method is used to create a new array containing the
+                // lengths of each array of products, 
+                // which represents the count of products in each category
+                // The categoryNames variable will contain an array of category names
+                // and the categoryCounts variable will contain an array of product counts
+                // so this will show us the number of products in each category
+                const categoryNames = Object.keys(groupedByCategory);
+                const categoryCounts = Object.values(groupedByCategory).map(products => products.length);
+
+                // Update the chart options
+
+                // then we update the chart options with the category names and product counts
+                // The xAxis.data property is set to the categoryNames array
+                // The series[0].data property is set to the categoryCounts array
+                // This will update the chart with the new data
+                // so the chart will show the number of products in each category
+                options.xAxis.data = categoryNames;
+                options.series[0].data = categoryCounts;
+
+                // Initialise the echarts instance and set the options
+                let myChart = echarts.init(document.getElementById('main'));
+                myChart.setOption(options);
+            });
+    </script>
+</body>
+
+</html>
