@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- the below is adapted from lab6 and lab9 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- below is the bootstrap insertion -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- used lab 4 as base code for this lab -->
+
+    <!-- bootstrap dropdown button copy-->
+
+    <!-- in th below code I added the id and then added the event listeners to ids in the script section
+    this lets us capture the click events on the dropdown items and filter the cards accordingly
+    using the filterByCategory function -->
+
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" id="mensClothing" >Mens Clothing</a></li>
+          <li><a class="dropdown-item" id="womensClothing" >Womens Clothing</a></li>
+          <li><a class="dropdown-item" id="electronics" >Electronics</a></li>
+          <li><a class="dropdown-item" id="jewelry" >Jewelry</a></li>
+        </ul>
+      </div>
+
+    <!-- Template for the card -->
+    <!-- with added wrapper divs for bootstrap functionality -->
+    <template id="card-template">
+        <div class="col-lg-3 col-md-6 col-12">
+            <!-- Responsive column classes -->
+            <div class="card" style="width: 18rem;">
+                <!-- added a flower image to template-->
+                <img id="imgURL" src="https://shirleysflowers.imgix.net/assets/img/symbolism/pink-flowers.jpg" class="card-img-top"
+                    alt="Placeholder Image">
+                <div class="card-body">
+                    <!-- updated template to macth data structure from API -->
+                    <p class="category">Category</p>
+                    <p class="description">Description</p>
+                    <p class="id">ID</p>
+                    <p class="price">Price</p>
+                    <p class="rating">Rating</p>
+                    <p class="title">Title</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Container to display the cards -->
+    <div class="container mt-4">
+        <div id="card-container" class="row g-4"></div> <!-- added Bootstrap row with gap between cards -->
+    </div>
+
+    <script>
+        // declare an empty array to store the objects
+        // this will be used to store the data fetched from the API
+        const localArrayOfObjects = [];
+
+        // Fetch all products from the API
+        fetch('https://fakestoreapi.com/products')
+            .then(response => response.json()) // Parse the response as JSON
+            .then(json => {
+                console.log("JSON array logged below:");
+                console.log(json); // Log the JSON array to the console
+
+                // Save the array into localArrayOfObjects
+                json.forEach(indexValue => {
+                    localArrayOfObjects.push(indexValue); // Push each post into the local array
+                });
+                console.log("Locally saved array below:");
+                console.log(localArrayOfObjects); // Log the updated localArrayOfObjects
+
+                // Call makeCards after the data is fetched
+                makeCards();
+            });
+
+        // Function to populate a card with data
+        function addArrayToCards(templateInstance, singleObject) {
+            templateInstance.querySelector(".category").innerText = `Category: ${singleObject.category}`;
+            templateInstance.querySelector(".description").innerText = `Description: ${singleObject.description}`;
+            templateInstance.querySelector(".id").innerText = `ID: ${singleObject.id}`;
+            // the below is the image URL
+            // it updates the image URL src in the template instance
+            templateInstance.querySelector("#imgURL").src = singleObject.image;
+
+            templateInstance.querySelector(".price").innerText = `Price: $${singleObject.price}`;
+            templateInstance.querySelector(".rating").innerText = `Rating: ${singleObject.rating.rate} (${singleObject.rating.count} reviews)`;
+            templateInstance.querySelector(".title").innerText = `Title: ${singleObject.title}`;
+        }
+                   
+        // Function to create and display cards
+        function makeCards() {
+            localArrayOfObjects.forEach(singleObject => {
+                // Get the template and clone it
+                const templateInstance = document.getElementById("card-template").content.cloneNode(true);
+
+                // Populate the cloned template with data
+                addArrayToCards(templateInstance, singleObject);
+
+                // Append the cloned template to the container so it will be displayed
+                document.getElementById("card-container").appendChild(templateInstance);
+            });
+        }
+
+        // Add event listeners to dropdown items for filtering
+        // the below code adds event listeners to the dropdown items
+        // when clicked, it will call the filterByCategory function with the corresponding category
+        // this will filter the cards based on the selected category
+        document.getElementById("mensClothing").addEventListener("click", () => filterByCategory("men's clothing"));
+        document.getElementById("womensClothing").addEventListener("click", () => filterByCategory("women's clothing"));
+        document.getElementById("electronics").addEventListener("click", () => filterByCategory("electronics"));
+        document.getElementById("jewelry").addEventListener("click", () => filterByCategory("jewelery"));
+
+        // Function to filter cards by category
+
+        // the below code filters the cards based on the selected category
+        // it is itself called by the event listeners above
+        // NB note the => syntax used in the event listeners
+        // this is an arrow function syntax which is a shorthand for function() {}
+        // first it declares a function called filterByCategory that takes a category as an argument
+        // then it clears the card container by setting its innerHTML to an empty string
+        // this ensures that only the filtered cards are displayed
+        // then it filters the localArrayOfObjects array based on the selected category
+        // and creates cards for the matching category using the addArrayToCards function
+
+        function filterByCategory(category) {
+            // Clear the card container
+            const cardContainer = document.getElementById("card-container");
+            cardContainer.innerHTML = "";
+
+            // Filter the local array and create cards for the matching category
+
+            // the below code filters the localArrayOfObjects array based on the selected category
+            // and creates cards for the matching category using the addArrayToCards function
+            // it uses the filter method to create a new array of objects that match the selected category
+            // then it uses the forEach method to iterate over the filtered array and create cards for each object
+            // it uses the addArrayToCards function to populate the template instance with data
+            // and appends the cloned template to the card container
+            localArrayOfObjects
+                .filter(item => item.category === category)
+                .forEach(singleObject => {
+                    const templateInstance = document.getElementById("card-template").content.cloneNode(true);
+                    addArrayToCards(templateInstance, singleObject);
+                    cardContainer.appendChild(templateInstance);
+                });
+        }
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
