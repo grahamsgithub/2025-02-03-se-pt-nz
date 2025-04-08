@@ -1,165 +1,242 @@
 <!DOCTYPE html>
+<!-- Module 4 Lab 2
+
+Mirza please find the figma prototype at the following link,
+I have also invited you (via your IOD email) to view the base files in Figma directly.
+
+https://www.figma.com/proto/0RtIXf7IPBtVlsA0flQBkB/calculator-screens?node-id=1-2&p=f&t=rJJofygkxmnhelpG-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2 -->
+
 <html lang="en">
-
-<!-- the below is adapted from lab6 and lab9 -->
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- below is the bootstrap insertion -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Simple Calculator</title>
+    <!-- added styles and scripts in same file for simplicity-->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #a4a4a4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #c88585;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            cursor: pointer;
+        }
+        button.primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        button.secondary {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+        }
+        /* NB note syntax difference for button.active and
+        button:hover*/
+        button.active {
+            background-color: #0056b3;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        #result {
+            background-color: #e9ecef;
+        }
+        .operations {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        #equalsButton.active {
+            background-color: #0056b3; /* Darker blue for equals button when active similar to operators*/
+        }
+    </style>
 </head>
 
 <body>
-    <!-- used lab 4 as base code for this lab -->
-
-    <!-- bootstrap dropdown button copy-->
-
-    <!-- in th below code I added the id and then added the event listeners to ids in the script section
-    this lets us capture the click events on the dropdown items and filter the cards accordingly
-    using the filterByCategory function -->
-
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Dropdown button
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" id="mensClothing" >Mens Clothing</a></li>
-          <li><a class="dropdown-item" id="womensClothing" >Womens Clothing</a></li>
-          <li><a class="dropdown-item" id="electronics" >Electronics</a></li>
-          <li><a class="dropdown-item" id="jewelry" >Jewelry</a></li>
-        </ul>
-      </div>
-
-    <!-- Template for the card -->
-    <!-- with added wrapper divs for bootstrap functionality -->
-    <template id="card-template">
-        <div class="col-lg-3 col-md-6 col-12">
-            <!-- Responsive column classes -->
-            <div class="card" style="width: 18rem;">
-                <!-- added a flower image to template-->
-                <img id="imgURL" src="https://shirleysflowers.imgix.net/assets/img/symbolism/pink-flowers.jpg" class="card-img-top"
-                    alt="Placeholder Image">
-                <div class="card-body">
-                    <!-- updated template to macth data structure from API -->
-                    <p class="category">Category</p>
-                    <p class="description">Description</p>
-                    <p class="id">ID</p>
-                    <p class="price">Price</p>
-                    <p class="rating">Rating</p>
-                    <p class="title">Title</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+    <div class="container">
+        <h1>Simple Calculator</h1>
+        <!-- the below code is a simple calculator that allows the user to perform basic arithmetic operations.
+        it includes a form with input fields for two numbers, buttons for the four basic operations 
+        (addition, subtraction, multiplication, and division), and a 
+        button to calculate the result. 
+        The result is displayed in a read-only input field. 
+        The calculator also includes a reset button to clear all inputs and results. 
+        as per Lab brief-->
+        <form id="calculatorForm">
+            <div class="form-group">
+                <label for="number1">Enter First Number</label>
+                <input type="number" id="number1" placeholder="First Number">
             </div>
-        </div>
-    </template>
-
-    <!-- Container to display the cards -->
-    <div class="container mt-4">
-        <div id="card-container" class="row g-4"></div> <!-- added Bootstrap row with gap between cards -->
+            <div class="form-group operations">
+                <button type="button" class="primary" data-operation="add">+</button>
+                <button type="button" class="primary" data-operation="subtract">-</button>
+                <button type="button" class="primary" data-operation="multiply">x</button>
+                <button type="button" class="primary" data-operation="divide">/</button>
+            </div>
+            <div class="form-group">
+                <label for="number2">Enter Second Number</label>
+                <input type="number" id="number2" placeholder="Second Number">
+            </div>
+            <div class="form-group">
+                <button type="button" class="primary" id="equalsButton">=</button>
+            </div>
+            <div class="form-group">
+                <button type="button" class="secondary" id="resetButton">Reset</button>
+            </div>
+            <div class="form-group">
+                <label for="result">Result</label>
+                <input type="text" id="result" placeholder="Result" readonly>
+            </div>
+        </form>
     </div>
 
     <script>
-        // declare an empty array to store the objects
-        // this will be used to store the data fetched from the API
-        const localArrayOfObjects = [];
+        // JavaScript code to handle calculator operations
+        // and button interactions
 
-        // Fetch all products from the API
-        fetch('https://fakestoreapi.com/products')
-            .then(response => response.json()) // Parse the response as JSON
-            .then(json => {
-                console.log("JSON array logged below:");
-                console.log(json); // Log the JSON array to the console
+        // initialize variables needed for the calculator
+        // selectedOperation will store the operation selected by the user
+        // calculationDone will track if a calculation has been performed
+        // this will help in preventing multiple calculations without resetting
+        let selectedOperation = null;
+        let calculationDone = false;
 
-                // Save the array into localArrayOfObjects
-                json.forEach(indexValue => {
-                    localArrayOfObjects.push(indexValue); // Push each post into the local array
-                });
-                console.log("Locally saved array below:");
-                console.log(localArrayOfObjects); // Log the updated localArrayOfObjects
-
-                // Call makeCards after the data is fetched
-                makeCards();
+        // add event listeners to the operation buttons and equals button
+        // when an operation button is clicked, it will set the selectedOperation variable
+        // and add the active class to the clicked button
+        // when the equals button is clicked, it will perform the calculation based on the selected operation
+        // and the input numbers, and display the result in the result field
+        // if the calculation is done, it will prevent further calculations until reset
+        // when the reset button is clicked, it will reset all fields and remove the active class from all buttons
+        const operationButtons = document.querySelectorAll('.operations button');
+        // in the below code, we are using the forEach method to loop through each button in the operationButtons NodeList
+        // and adding an event listener to each button. When a button is clicked, it will remove the active class from all buttons
+        operationButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                if (calculationDone) {
+                    alert('Please reset before starting a new calculation.');
+                    return;
+                }
+                // in the below code, we are using the getAttribute method 
+                // to get the value of the data-operation attribute of the clicked button
+                // and storing it in the selectedOperation variable.
+                // we are also removing the active class from all buttons and adding it to the clicked button
+                // to indicate which operation is currently selected
+                operationButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                // in the below code, we are using the this keyword to refer to the clicked button
+                // and using the getAttribute method to get the value of the data-operation attribute
+                // and storing it in the selectedOperation variable.
+                selectedOperation = this.getAttribute('data-operation');
             });
+        });
 
-        // Function to populate a card with data
-        function addArrayToCards(templateInstance, singleObject) {
-            templateInstance.querySelector(".category").innerText = `Category: ${singleObject.category}`;
-            templateInstance.querySelector(".description").innerText = `Description: ${singleObject.description}`;
-            templateInstance.querySelector(".id").innerText = `ID: ${singleObject.id}`;
-            // the below is the image URL
-            // it updates the image URL src in the template instance
-            templateInstance.querySelector("#imgURL").src = singleObject.image;
+        // the below code is for the equals button
+        // when the equals button is clicked, it will check if a calculation has already been done
+        // if so, it will alert the user to reset before starting a new calculation
+        document.getElementById('equalsButton').addEventListener('click', function() {
+            if (calculationDone) {
+                alert('Please reset before starting a new calculation.');
+                return;
+            }
+            // in the below code, we are using the parseFloat function to convert the input values to numbers
+            // and storing them in the number1 and number2 variables.
+            // we are also checking if the input values are valid numbers using the isNaN function
+            // if not, we will alert the user to enter valid numbers
+            // if the selectedOperation is null, we will alert the user to select an operation
+            const number1 = parseFloat(document.getElementById('number1').value);
+            const number2 = parseFloat(document.getElementById('number2').value);
+            let result;
 
-            templateInstance.querySelector(".price").innerText = `Price: $${singleObject.price}`;
-            templateInstance.querySelector(".rating").innerText = `Rating: ${singleObject.rating.rate} (${singleObject.rating.count} reviews)`;
-            templateInstance.querySelector(".title").innerText = `Title: ${singleObject.title}`;
-        }
-                   
-        // Function to create and display cards
-        function makeCards() {
-            localArrayOfObjects.forEach(singleObject => {
-                // Get the template and clone it
-                const templateInstance = document.getElementById("card-template").content.cloneNode(true);
+            if (isNaN(number1) || isNaN(number2)) {
+                alert('Please enter valid numbers.');
+                return;
+            }
 
-                // Populate the cloned template with data
-                addArrayToCards(templateInstance, singleObject);
+            if (!selectedOperation) {
+                alert('Please select an operation.');
+                return;
+            }
+            // in the below code, we are using a switch statement to perform the selected operation
+            // based on the value of the selectedOperation variable.
+            // we are also checking if the selected operation is division and if the second number is zero
+            // if so, we will alert the user that division by zero is not allowed
+            // and return without performing the calculation
+            switch (selectedOperation) {
+                case 'add':
+                    result = number1 + number2;
+                    break;
+                case 'subtract':
+                    result = number1 - number2;
+                    break;
+                case 'multiply':
+                    result = number1 * number2;
+                    break;
+                case 'divide':
+                    if (number2 === 0) {
+                        alert('Division by zero is not allowed.');
+                        return;
+                    }
+                    result = number1 / number2;
+                    break;
+                // in the below code, we are using a default case to handle any invalid operation selected by the user
+                // this is in the code but can not actually be triggered due to the way the buttons are set up
+                default:
+                    alert('Invalid operation selected.');
+                    return;
+            }
 
-                // Append the cloned template to the container so it will be displayed
-                document.getElementById("card-container").appendChild(templateInstance);
-            });
-        }
+            // in the below we set calculationDone to true to indicate that a calculation has been performed
+            document.getElementById('result').value = result;
+            calculationDone = true;
 
-        // Add event listeners to dropdown items for filtering
-        // the below code adds event listeners to the dropdown items
-        // when clicked, it will call the filterByCategory function with the corresponding category
-        // this will filter the cards based on the selected category
-        document.getElementById("mensClothing").addEventListener("click", () => filterByCategory("men's clothing"));
-        document.getElementById("womensClothing").addEventListener("click", () => filterByCategory("women's clothing"));
-        document.getElementById("electronics").addEventListener("click", () => filterByCategory("electronics"));
-        document.getElementById("jewelry").addEventListener("click", () => filterByCategory("jewelery"));
+            // Add active class to equals button
+            this.classList.add('active');
+        });
 
-        // Function to filter cards by category
-
-        // the below code filters the cards based on the selected category
-        // it is itself called by the event listeners above
-        // NB note the => syntax used in the event listeners
-        // this is an arrow function syntax which is a shorthand for function() {}
-        // first it declares a function called filterByCategory that takes a category as an argument
-        // then it clears the card container by setting its innerHTML to an empty string
-        // this ensures that only the filtered cards are displayed
-        // then it filters the localArrayOfObjects array based on the selected category
-        // and creates cards for the matching category using the addArrayToCards function
-
-        function filterByCategory(category) {
-            // Clear the card container
-            const cardContainer = document.getElementById("card-container");
-            cardContainer.innerHTML = "";
-
-            // Filter the local array and create cards for the matching category
-
-            // the below code filters the localArrayOfObjects array based on the selected category
-            // and creates cards for the matching category using the addArrayToCards function
-            // it uses the filter method to create a new array of objects that match the selected category
-            // then it uses the forEach method to iterate over the filtered array and create cards for each object
-            // it uses the addArrayToCards function to populate the template instance with data
-            // and appends the cloned template to the card container
-            localArrayOfObjects
-                .filter(item => item.category === category)
-                .forEach(singleObject => {
-                    const templateInstance = document.getElementById("card-template").content.cloneNode(true);
-                    addArrayToCards(templateInstance, singleObject);
-                    cardContainer.appendChild(templateInstance);
-                });
-        }
-    </script>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+        // the below code is for the reset button
+        // when the reset button is clicked, it will reset all input fields and the result field
+        // it will also remove the active class from all operation buttons and the equals button
+        document.getElementById('resetButton').addEventListener('click', function() {
+            document.getElementById('calculatorForm').reset();
+            document.getElementById('result').value = '';
+            selectedOperation = null;
+            calculationDone = false;
+            // below we are removing the active class from all operation buttons and the equals button
+            // NB note the use of the forEach method to loop through each button in the operationButtons NodeList
+            // and the classList.remove method to remove the active class from each button
+            // using the fat arrow function syntax for the forEach method
+            operationButtons.forEach(btn => btn.classList.remove('active'));
+            document.getElementById('equalsButton').classList.remove('active'); // Remove active class from equals button
+        });
     </script>
 </body>
-
 </html>
