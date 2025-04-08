@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+const numbers1 = [45, 4, 9, 16, 25];
+const numbers2 = numbers1.map(myFunction);
+
+let txt = '';
+
+// Append both arrays to the innerHTML of the demo element
+txt += numbers1 + "<br>";
+txt += numbers2;
+
+document.getElementById("demo").innerHTML = txt;
+
+function myFunction(value) {
+  return value * 2;
+}
+</script>
+    
+    
+</body>
+</html>
