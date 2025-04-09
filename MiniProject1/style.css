@@ -1,0 +1,20 @@
+/* This style sheet works with Bootstrap
+
+How It Works:
+
+Bootstrap provides a set of predefined styles for various HTML elements 
+and components this is done using a set of specific CSS classes 
+that can be applied to HTML elements. 
+
+These styles are applied globally unless overridden by more specific rules. Which
+can be done using a custom stylesheet.
+
+This is how you can override or extend Bootstrap's styles by:
+1. Adding new styles for elements.
+2. Overriding Bootstrap styles using more specific selectors
+3. And/or by loading your stylesheet after the Bootstrap stylesheet.
+(The order in which stylesheets are loaded matters. 
+Styles defined later in the HTML file take precedence 
+over earlier ones if they target the same elements 
+with the same specificity.)
+*/
