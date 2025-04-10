@@ -19,129 +19,182 @@ over earlier ones if they target the same elements
 with the same specificity.)
 */
 #tagLine {
-    color: #000000; /* Dark gray font color */
+    color: #000000;
+    /* Dark gray font color */
 }
+
 body {
-    background-color: #b5dad8; 
-    color: #5f5f5f; /* Dark gray font color */
+    background-color: #b5dad8;
+    color: #5f5f5f;
+    /* Dark gray font color */
 }
 
 /* Change the font color for headings */
 h1 {
-    color: #51bd62; /* Bootstrap primary blue */
+    color: #51bd62;
+    /* Bootstrap primary blue */
 }
 
 /* Change the font color for labels in the form */
 .form-label {
-    color: #555; /* Medium gray font color */
+    color: #555;
+    /* Medium gray font color */
 }
+
 /* Change the background color of the login button */
 .btn-primary {
-    background-color: #28a745; /* Green */
-    border-color: #28a745; /* Green border */
-    color: #d8cf1c; /* White text color */
-    font-weight: bold; /* Bold text */
-   
-  
+    background-color: #28a745;
+    /* Green */
+    border-color: #28a745;
+    /* Green border */
+    color: #d8cf1c;
+    /* White text color */
+    font-weight: bold;
+    /* Bold text */
+
+
 }
 
 /* Change the button text color */
 .btn-primary:hover {
-  
-    background-color: #218838; /* Darker green on hover */
-    border-color: #1e7e34; /* Darker green border on hover */
+
+    background-color: #218838;
+    /* Darker green on hover */
+    border-color: #1e7e34;
+    /* Darker green border on hover */
 }
 
+/* breakpoints for larger screens*/
 @media (min-width: 768px) {
-    
+
     #logo {
-        width: 35%; /* Logo width for larger screens */
-        margin-top: 2%; 
-        height: auto; /* Maintain aspect ratio */
-    }
-    #tagline {
-        font-size: 5rem; /* Larger font size for headings */
-    }
-    h1 {
-        font-size: 7rem; /* Larger size for tablets and up */
-        margin-top: 2rem; /* Add margin to the top of the heading */
+        width: 35%;
+        /* Logo width for larger screens */
+        margin-top: 2%;
+        height: auto;
+        /* Maintain aspect ratio */
     }
 
-    p {
-        font-size: 5rem; /* Larger size for tablets and up */
+    #tagline {
+        font-size: 5rem;
+        /* Larger font size for headings */
     }
-    .form-label {
-        font-size: 4rem; /* Larger font size for form labels */
+
+    h1 {
+        font-size: 7rem;
+        /* Larger size for tablets and up */
+        margin-top: 2rem;
+        /* Add margin to the top of the heading */
+    }
+
+    .card h2, p {
+
+        font-size: 4rem;    
     }
 
     
-    .navbar-nav .nav-link {
-        font-size: 4rem; /* Larger font size for navbar links */
+
+    .form-label {
+        font-size: 4rem;
+        /* Larger font size for form labels */
     }
 
-      /* Increase the font size of the login button text */
-      .btn-primary {
-        font-size: 4rem; /* Larger font size for button text */
-        padding: 2rem 4rem; /* Increase padding for a larger button */
+
+    .navbar-nav .nav-link {
+        font-size: 4rem;
+        /* Larger font size for navbar links */
+    }
+
+    /* Increase the font size of the login button text */
+    .btn-primary {
+        font-size: 4rem;
+        /* Larger font size for button text */
+        padding: 2rem 4rem;
+        /* Increase padding for a larger button */
         margin-top: 3rem;
-        margin-bottom: 4rem; /* Add margin to the bottom of the button */
+        margin-bottom: 4rem;
+        /* Add margin to the bottom of the button */
     }
 
     /* Increase the font size of the placeholder text */
     input::placeholder {
-        font-size: 3rem; /* Larger font size for placeholder text */
+        font-size: 3rem;
+        /* Larger font size for placeholder text */
     }
-     /* Increase the size of the form input fields */
-     .form-control {
-        font-size: 2rem; /* Larger text inside the input field */
-        padding: 2rem; /* Increase padding for a larger field */
-        height: auto; /* Adjust height automatically */
+
+    /* Increase the size of the form input fields */
+    .form-control {
+        font-size: 2rem;
+        /* Larger text inside the input field */
+        padding: 2rem;
+        /* Increase padding for a larger field */
+        height: auto;
+        /* Adjust height automatically */
     }
 }
+
+/* breakpoint for smaller screens */
 
 @media (max-width: 767px) {
     #logo {
-        width: 80%; /* Logo width for larger screens */
-        margin-top: 5%; 
-        height: auto; /* Maintain aspect ratio */
+        width: 80%;
+        margin-top: 5%;
+        height: auto;
+        /* Maintain aspect ratio */
     }
+
     #tagline {
-        font-size: 1.2rem; /* Larger font size for headings */
+        font-size: 1.2rem;
+        /* Larger font size for headings */
     }
+
     h1 {
-        font-size: 3rem; /* Larger size for tablets and up */
-        margin-top: 2rem; /* Add margin to the top of the heading */
+        font-size: 3rem;
+        /* Larger size for tablets and up */
+        margin-top: 2rem;
+        /* Add margin to the top of the heading */
     }
 
     p {
-        font-size: 1.5rem; /* Larger size for tablets and up */
+        font-size: 1.5rem;
+        /* Larger size for tablets and up */
     }
 
     .form-label {
-        font-size: 2rem; /* Larger font size for form labels */
+        font-size: 2rem;
+        /* Larger font size for form labels */
     }
 
     .navbar-nav .nav-link {
-        font-size: 2rem; /* Larger font size for navbar links */
+        font-size: 2rem;
+        /* Larger font size for navbar links */
     }
 
-      /* Increase the font size of the login button text */
-      .btn-primary {
-        font-size: 2rem; /* Larger font size for button text */
-        padding: 1rem; /* Increase padding for a larger button */
+    /* Increase the font size of the login button text */
+    .btn-primary {
+        font-size: 2rem;
+        /* Larger font size for button text */
+        padding: 1rem;
+        /* Increase padding for a larger button */
         margin-top: 3rem;
-        margin-bottom: 4rem; /* Add margin to the bottom of the button */
+        margin-bottom: 4rem;
+        /* Add margin to the bottom of the button */
     }
 
     /* Increase the font size of the placeholder text */
     input::placeholder {
-        font-size: 1.5rem; /* Larger font size for placeholder text */
+        font-size: 1.5rem;
+        /* Larger font size for placeholder text */
     }
-     /* Increase the size of the form input fields */
-     .form-control {
-        font-size: 1rem; /* Larger text inside the input field */
-        padding: 1rem; /* Increase padding for a larger field */
-        height: auto; /* Adjust height automatically */
+
+    /* Increase the size of the form input fields */
+    .form-control {
+        font-size: 1rem;
+        /* Larger text inside the input field */
+        padding: 1rem;
+        /* Increase padding for a larger field */
+        height: auto;
+        /* Adjust height automatically */
     }
 
 
