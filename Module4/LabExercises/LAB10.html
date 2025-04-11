@@ -14,6 +14,7 @@
      most came from lab 6 and 9-->
 
     <!-- Dropdown for category selection -->
+     <!-- I didn't do the below - I got a bootrap component and adapted it -->
     <div class="container mt-4">
         <label for="categoryDropdown" class="form-label">Filter by Category:</label>
         <select id="categoryDropdown" class="form-select">
@@ -34,6 +35,7 @@
                     alt="Placeholder Image">
                 <div class="card-body">
                     <!-- updated the below to match the fakestoreapi data -->
+                    <!-- so i chagned these card items to match the data keys -->
                     <p class = "id">ID</p>
                     <p class = "title">TITLE</p>
                     <p class = "price">PRICE</p>
@@ -49,6 +51,8 @@
     </template>
 
     <!-- Container to display the cards -->
+     <!-- this just supplies a class and id that can be targeted by the 
+     functions below as a div to populate -->
     <div class="container mt-4">
         <div id="card-container" class="row g-4"></div> <!-- added Bootstrap row with gap between cards -->
     </div>
@@ -57,6 +61,7 @@
         const localArrayOfObjects = [];
 
         // Fetch posts from the API
+        // copied from the IOD slides 
         fetch('https://fakestoreapi.com/products')
             .then(response => response.json()) // Parse the response as JSON
             .then(json => {
@@ -71,6 +76,9 @@
                 console.log(localArrayOfObjects); // Log the updated localArrayOfObjects
 
                 // Group products by category
+                // I didn't do this myself, found some logic online
+                // and adapted it to suit (not really sure how it works yet)
+                // check with Mirza
                 const groupedByCategory = json.reduce((accumulator, product) => {
                     if (!accumulator[product.category]) {
                         accumulator[product.category] = [];
@@ -84,6 +92,7 @@
 
                 // Populate the dropdown with category names
                 // the below is not my own code I found a similar example and adapted it here
+                // check with Mirza
                 const categoryDropdown = document.getElementById("categoryDropdown");
                 Object.keys(groupedByCategory).forEach(category => {
                     const option = document.createElement("option");
@@ -120,6 +129,7 @@
         }
 
         // Function to create and display cards
+        // check with Mirza
         function make10Cards() {
             const cardContainer = document.getElementById("card-container");
             cardContainer.innerHTML = ""; // Clear existing cards
@@ -165,6 +175,9 @@
             // note the use of the templateInstance variable here
             // it is used to create a new instance of the template for each object in the filtered array
             // and then populate the card with data using the addArrayToCards function    
+            
+            // the below is based on an online example but I still struggle to understand it
+            // myself
             filteredObjects.forEach(singleObject => {
                 const templateInstance = document.getElementById("card-template").content.cloneNode(true);
                 addArrayToCards(templateInstance, singleObject);

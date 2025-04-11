@@ -1,0 +1,26 @@
+[
+    {
+        "cardId": "1",
+        "cardImage": "resources/favQuote.svg",
+        "cardTitle": "Favorite Quotes",
+        "cardDescription": "Scroll you're favorite Parks&Rec quotes by character."
+    },
+    {
+        "cardId": "2",
+        "cardImage": "resources/guessWhoSaid.svg",
+        "cardTitle": "Guess the Quote",
+        "cardDescription": "We show you a quote and you guess who said it."
+    },
+    {
+        "cardId": "3",
+        "cardImage": "resources/themeSong.svg",
+        "cardTitle": "Play that song",
+        "cardDescription": "Listen to the theme song."
+    },
+    {
+        "cardId": "4",
+        "cardImage": "resources/uploadQuote.svg",
+        "cardTitle": "Upload a quote",
+        "cardDescription": "Scroll you're favorite Parks&Rec quote with the community."
+    }
+]

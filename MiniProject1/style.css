@@ -1,4 +1,4 @@
-/* This style sheet works with Bootstrap
+/* This style sheet works with Bootsp
 
 How It Works:
 
@@ -28,10 +28,47 @@ body {
     color: #5f5f5f;
     /* Dark gray font color */
 }
+.card-body {
+    display: flex; /* Enable flexbox for the card body */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Distribute space evenly */
+    height: 100%; /* Ensure the card body takes up the full height */
+}
+
+.card-img-top {
+    margin-top: 5rem; /* Add margin to the top of the image */
+    width: 70%; /* Make the image span the full width of the card */
+    height: 30rem; /* Set a fixed height for the image */
+    object-fit: contain; /* Ensure the entire SVG fits within the container */
+    background-color: white;
+    
+}
+
+.card-body .d-flex {
+    margin-top: auto; /* Push the button container to the bottom */
+}
+.card {
+    width: 18rem; /* Set a fixed width for the cards */
+    height: 75rem; /* Set a fixed height for the cards */
+    overflow: hidden; /* Ensure content does not overflow */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Distribute content evenly */
+    align-items: center; /* Center-align content horizontally */
+}
+
+body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.centered-text {
+    text-align: center; /* Centers the text horizontally */
+}
 
 /* Change the font color for headings */
 h1 {
     color: #51bd62;
+    margin-bottom: 3rem;
     /* Bootstrap primary blue */
 }
 
@@ -65,6 +102,9 @@ h1 {
 }
 
 /* breakpoints for larger screens*/
+
+/* 0000000000000000000000000000000000000000000000000000000000000000000000000 */
+
 @media (min-width: 768px) {
 
     #logo {
@@ -91,8 +131,18 @@ h1 {
 
         font-size: 4rem;    
     }
+    .card {
+        width: auto;
+        font-size: 2rem;
+        /* Larger size for tablets and up */
+        margin-top: 10rem;
+        /* Add margin to the top of the heading */
 
+    }
     
+    .container-fluid {
+        margin-bottom: 12rem; /* Adjust the value as needed */
+    }
 
     .form-label {
         font-size: 4rem;
@@ -134,6 +184,8 @@ h1 {
 }
 
 /* breakpoint for smaller screens */
+/* 
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 
 @media (max-width: 767px) {
     #logo {
@@ -159,7 +211,13 @@ h1 {
         font-size: 1.5rem;
         /* Larger size for tablets and up */
     }
-
+    .card-img-top {
+        width: 70%; /* Make the image span the full width of the card */
+        height: 30rem; /* Set a fixed height for the image */
+        object-fit: contain; /* Ensure the entire SVG fits within the container */
+        background-color: white;
+        
+    }
     .form-label {
         font-size: 2rem;
         /* Larger font size for form labels */
@@ -176,8 +234,8 @@ h1 {
         /* Larger font size for button text */
         padding: 1rem;
         /* Increase padding for a larger button */
-        margin-top: 3rem;
-        margin-bottom: 4rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
         /* Add margin to the bottom of the button */
     }
 
@@ -195,6 +253,22 @@ h1 {
         /* Increase padding for a larger field */
         height: auto;
         /* Adjust height automatically */
+    }
+    
+    .card {
+        width: 22rem; /* Set a fixed width for the cards */
+        height: 36rem; /* Set a fixed height for the cards */
+        overflow: hidden; /* Ensure content does not overflow */
+        display: flex;
+        flex-direction: column; /* Stack content vertically */
+        justify-content: space-between; /* Distribute content evenly */
+        align-items: center; /* Center-align content horizontally */
+    }
+    .card-text {
+        margin-top: 0; /* Remove the top margin */
+        margin-bottom: 0; /* Remove the bottom margin */
+        line-height: 1.5; /* Optional: Adjust line height for better spacing */
+        text-align: left; /* Optional: Center-align the text */
     }
 
 
