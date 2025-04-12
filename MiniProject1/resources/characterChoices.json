@@ -1,0 +1,28 @@
+[
+    {
+        "cardId": "1",
+        "cardImage": "resources/andy.png",
+        "cardTitle": "Andy Dwyer",
+        "cardDescription": "'that lovable goofball'",
+        "cardNavigate": "andy.html"
+    },{
+        "cardId": "2",
+        "cardImage": "resources/ann.png",
+        "cardTitle": "Ann Perkins",
+        "cardDescription": "'the kindest friend'",
+        "cardNavigate": "ann.html"
+    },
+    {
+        "cardId": "3",
+        "cardImage": "resources/ron.png",
+        "cardTitle": "Ron Swanson",
+        "cardDescription": "'the staunch libertarian'",
+        "cardNavigate": "ron.html"
+    },{
+        "cardId": "4",
+        "cardImage": "resources/leslie.png",
+        "cardTitle": "Leslie Knope",
+        "cardDescription": "'the most passionate public servant'",
+        "cardNavigate": "Leslie.html"
+    }   
+]

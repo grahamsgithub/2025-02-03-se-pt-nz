@@ -16,13 +16,29 @@ This is how you can override or extend Bootstrap's styles by:
 (The order in which stylesheets are loaded matters. 
 Styles defined later in the HTML file take precedence 
 over earlier ones if they target the same elements 
-with the same specificity.)
-*/
+with the same specificity.)*/
+
+
+
+#banner {
+    max-width: 80%; /* Prevents the image from exceeding its natural width */
+    height: auto;    /* Maintains the aspect ratio */
+}
+
+
+#quoteBlock {
+    text-align: center; /* Centers the text horizontally */
+    font-family:'Courier New', Courier, monospace;
+    font-size: 6em;
+}
 #tagLine {
     color: #000000;
     /* Dark gray font color */
 }
 
+#chooseOption {
+    margin: 1rem;
+}
 body {
     background-color: #b5dad8;
     color: #5f5f5f;
@@ -188,6 +204,12 @@ h1 {
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 
 @media (max-width: 767px) {
+    #quoteBlock {
+        text-align: center; /* Centers the text horizontally */
+        font-family:'Courier New', Courier, monospace;
+        font-size: 2em;
+    }
+    
     #logo {
         width: 80%;
         margin-top: 5%;
