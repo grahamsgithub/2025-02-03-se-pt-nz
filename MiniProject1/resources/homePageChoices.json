@@ -24,7 +24,7 @@
         "cardId": "4",
         "cardImage": "resources/uploadQuote.svg",
         "cardTitle": "Upload a quote",
-        "cardDescription": "Share your favorite Parks&Rec quote with the community.",
+        "cardDescription": "Share your favorite Parks&Rec quote.",
         "cardNavigate": "uploadQuote.html"
     }
 ]

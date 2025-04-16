@@ -1,297 +1,216 @@
-/* This style sheet works with Bootsp
-
-How It Works:
-
-Bootstrap provides a set of predefined styles for various HTML elements 
-and components this is done using a set of specific CSS classes 
-that can be applied to HTML elements. 
-
-These styles are applied globally unless overridden by more specific rules. Which
-can be done using a custom stylesheet.
-
-This is how you can override or extend Bootstrap's styles by:
-1. Adding new styles for elements.
-2. Overriding Bootstrap styles using more specific selectors
-3. And/or by loading your stylesheet after the Bootstrap stylesheet.
-(The order in which stylesheets are loaded matters. 
-Styles defined later in the HTML file take precedence 
-over earlier ones if they target the same elements 
-with the same specificity.)*/
-
-
-
-#banner {
-    max-width: 80%; /* Prevents the image from exceeding its natural width */
-    height: auto;    /* Maintains the aspect ratio */
+/* General Styles */
+html {
+    font-size: 100%; /* Base font size for the document (1rem = 16px by default) */
+    color: #212529; /* Default text color */
 }
 
+body {
+    background-color: #c4d6e9; /* Background color for the entire page */
+    color: #212529; /* Default text color */
+}
 
-#quoteBlock {
-    text-align: center; /* Centers the text horizontally */
-    font-family:'Courier New', Courier, monospace;
-    font-size: 6em;
+h1 {
+    color: #212529;
 }
-#tagLine {
-    color: #000000;
-    /* Dark gray font color */
+
+#hashTagLine {
+    color: #212529; /* Tagline text color */
 }
+
+/* Navigation Bar */
+.navbar {
+    background-color: #a2b8ce; /* Navbar background color */
+}
+
+.navbar .nav-link {
+    color: #545454; /* Navbar link text color */
+    background-color: transparent; /* Transparent background for links */
+}
+
+.navbar .nav-link:hover {
+    background-color: #a2b8ce; /* Background color on hover */
+    color: #ffffff; /* Text color on hover */
+}
+
+#logo{
+    width: 100%; /* Set the width to fill the card */
+    height: auto; /* Maintain the aspect ratio */
+    max-width: 20rem; /* Optional: Set a maximum width */
+    max-height: 20rem; /* Optional: Set a maximum height */
+    object-fit: contain; /* Ensure the SVG fits within the specified dimensions */
+    display: block; /* Ensure proper alignment */
+    margin: 5% auto; /* Center the image horizontally */}
+/* Welcome Banner */
+#banner, #banner-small {
+    background-color: #e9ecef; /* Background color for images */
+    width: 100%; /* Ensure the banner spans the full width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 2%; /* Add spacing below the banner */
+}
+
+.pageImage{
+    width: 100%; /* Set the width to fill the card */
+    height: auto; /* Maintain the aspect ratio */
+    max-width: 12rem; /* Optional: Set a maximum width */
+    max-height: 12rem; /* Optional: Set a maximum height */
+    object-fit: contain; /* Ensure the SVG fits within the specified dimensions */
+    display: block; /* Ensure proper alignment */
+    border-radius: 5%;
+    margin: 5% auto; /* Center the image horizontally */}
 
 #chooseOption {
-    margin: 1rem;
-}
-body {
-    background-color: #b5dad8;
-    color: #5f5f5f;
-    /* Dark gray font color */
-}
-.card-body {
-    display: flex; /* Enable flexbox for the card body */
-    flex-direction: column; /* Stack content vertically */
-    justify-content: space-between; /* Distribute space evenly */
-    height: 100%; /* Ensure the card body takes up the full height */
+    margin-bottom: 2%; /* Add spacing below the heading */
+    text-align: center; /* Center-align the heading */
 }
 
-.card-img-top {
-    margin-top: 5rem; /* Add margin to the top of the image */
-    width: 70%; /* Make the image span the full width of the card */
-    height: 30rem; /* Set a fixed height for the image */
-    object-fit: contain; /* Ensure the entire SVG fits within the container */
-    background-color: white;
+/* Cards */
+#card-container{
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping of cards */
+    justify-content: center; /* Center the cards horizontally */
     
-}
-
-.card-body .d-flex {
-    margin-top: auto; /* Push the button container to the bottom */
+    margin-bottom: 2%; /* Add spacing below the card container */
 }
 .card {
-    width: 18rem; /* Set a fixed width for the cards */
-    height: 75rem; /* Set a fixed height for the cards */
-    overflow: hidden; /* Ensure content does not overflow */
+    position: relative; /* Set the card as a positioning context */
+    background-color: #f1e7c5;
+    color: #212529;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+    width: 14rem;
+    height: 24rem;
     display: flex;
-    flex-direction: column; /* Stack content vertically */
-    justify-content: space-between; /* Distribute content evenly */
-    align-items: center; /* Center-align content horizontally */
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
 }
 
-body {
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+#card-template{
+    position: relative; /* Set the card as a positioning context */
 }
 
-.centered-text {
-    text-align: center; /* Centers the text horizontally */
+.card .buttonIndexNav {
+    position: absolute; /* Position the button absolutely */
+    bottom: 1rem; /* Distance from the bottom of the card */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for the button's width */
+}.card .card-img-top {
+    width: 100%; /* Set the width to fill the card */
+    height: auto; /* Maintain the aspect ratio */
+    max-width: 10rem; /* Optional: Set a maximum width */
+    max-height: 10rem; /* Optional: Set a maximum height */
+    object-fit: contain; /* Ensure the SVG fits within the specified dimensions */
+    display: block; /* Ensure proper alignment */
+    margin: 5% auto; /* Center the image horizontally */
 }
 
-/* Change the font color for headings */
-h1 {
-    color: #51bd62;
-    margin-bottom: 3rem;
-    /* Bootstrap primary blue */
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card on hover */
 }
 
-/* Change the font color for labels in the form */
-.form-label {
-    color: #555;
-    /* Medium gray font color */
+.card-title {
+    color: #212529; /* Card title text color */
+    text-align: center; /* Center-align the title */
+    font-weight: bold; /* Make the title bold */
 }
 
-/* Change the background color of the login button */
-.btn-primary {
-    background-color: #28a745;
-    /* Green */
-    border-color: #28a745;
-    /* Green border */
-    color: #d8cf1c;
-    /* White text color */
-    font-weight: bold;
-    /* Bold text */
-
-
+.card-text {
+    color: #6c757d; /* Card description text color */
+    text-align: center; /* Center-align the description */
 }
 
-/* Change the button text color */
-.btn-primary:hover {
-
-    background-color: #218838;
-    /* Darker green on hover */
-    border-color: #1e7e34;
-    /* Darker green border on hover */
+/* Card Button */
+.buttonIndexNav {
+    background-color: #28a745; /* Button background color */
+    color: #ffffff; /* Button text color */
+    border-radius: 0.3125rem; /* Rounded corners for the button */
+    padding: 0.625rem 1.25rem; /* Add padding to the button */
+    text-align: center; /* Center-align the button text */
+    display: block; /* Ensure the button spans the full width */
+    margin: 0.625rem auto; /* Center the button horizontally */
 }
 
-/* breakpoints for larger screens*/
+.buttonIndexNav:hover {
+    background-color: #218838; /* Button background color on hover */
+    color: #ffffff; /* Button text color on hover */
+}
 
-/* 0000000000000000000000000000000000000000000000000000000000000000000000000 */
+/* Card Container */
+#card-container {
+    position: relative; /* Set the container as a positioning context */
+}
+/* Back-to-Top Button */
+/* Back-to-Top Button */
+#backToTop {
+    position: relative; /* Keep it in the normal document flow */
+    background-color: #ffc107; /* Back-to-top button background color */
+    border-color: #ffc107; /* Back-to-top button border color */
+    color: #212529; /* Back-to-top button text color */
+    border-radius: 5%; /* Make the button circular */
+    width: 7rem; /* Set a fixed width */
+    height: 3rem; /* Set a fixed height */
+    display: flex; /* Center the text inside the button */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2); /* Add a shadow */
+    margin: 2rem auto; /* Center the button horizontally and add spacing */
+    text-align: center; /* Center-align the text */
+}#backToTop:hover {
+    background-color: #e0a800; /* Background color on hover */
+    border-color: #d39e00; /* Border color on hover */
+    color: #ffffff; /* Text color on hover */
+}
 
-@media (min-width: 768px) {
+/* Dropdown Menu */
+.dropdown-menu {
+    background-color: #343a40; /* Dropdown menu background color */
+    color: #ffffff; /* Dropdown menu text color */
+    border-radius: 0.3125rem; /* Rounded corners for the dropdown */
+}
 
-    #logo {
-        width: 35%;
-        /* Logo width for larger screens */
-        margin-top: 2%;
-        height: auto;
-        /* Maintain aspect ratio */
-    }
+.dropdown-menu .dropdown-item {
+    background-color: transparent; /* Transparent background for menu items */
+    color: #ffffff; /* Menu item text color */
+}
 
-    #tagline {
-        font-size: 5rem;
-        /* Larger font size for headings */
-    }
+.dropdown-menu .dropdown-item:hover {
+    background-color: #495057; /* Background color on hover */
+    color: #ffffff; /* Text color on hover */
+}
 
-    h1 {
-        font-size: 7rem;
-        /* Larger size for tablets and up */
-        margin-top: 2rem;
-        /* Add margin to the top of the heading */
-    }
+/* Quote Block */
+#quoteBlock, #showQuote {
+    background-color: #f8f9fa; /* Background color for the quote block */
+    font-size: 1.25rem; /* Increase font size */
+    text-align: center; /* Center-align the text */
+    padding: 5%; /* Add padding inside the block */
+    border-radius: 0.3125rem; /* Rounded corners */
+    margin: 5% 0; /* Add margin around the block */
+}
 
-    .card h2, p {
+#clickMe {
+    background-color: #ffc107; /* Button background color */
+    color: #ffffff; /* Button text color */
+    border-radius: 0.3125rem; /* Rounded corners for the button */
+    padding: 0.625rem 1.25rem; /* Add padding to the button */
+    text-align: center; /* Center-align the button text */
+    display: block; /* Ensure the button spans the full width */
+    margin: 0.625rem auto; /* Center the button horizontally */
+;
+}
 
-        font-size: 4rem;    
-    }
+/* Responsive Design */
+@media (max-width: 48rem) { /* 768px equivalent */
     .card {
-        width: auto;
-        font-size: 2rem;
-        /* Larger size for tablets and up */
-        margin-top: 10rem;
-        /* Add margin to the top of the heading */
-
-    }
-    
-    .container-fluid {
-        margin-bottom: 12rem; /* Adjust the value as needed */
+        width: 100%; /* Make cards span the full width on smaller screens */
+        margin-bottom: 1.25rem; /* Add spacing between cards */
     }
 
-    .form-label {
-        font-size: 4rem;
-        /* Larger font size for form labels */
+    #banner-small {
+        display: block; /* Show the small banner on smaller screens */
     }
 
-
-    .navbar-nav .nav-link {
-        font-size: 4rem;
-        /* Larger font size for navbar links */
+    #banner {
+        display: none; /* Hide the large banner on smaller screens */
     }
-
-    /* Increase the font size of the login button text */
-    .btn-primary {
-        font-size: 4rem;
-        /* Larger font size for button text */
-        padding: 2rem 4rem;
-        /* Increase padding for a larger button */
-        margin-top: 3rem;
-        margin-bottom: 4rem;
-        /* Add margin to the bottom of the button */
-    }
-
-    /* Increase the font size of the placeholder text */
-    input::placeholder {
-        font-size: 3rem;
-        /* Larger font size for placeholder text */
-    }
-
-    /* Increase the size of the form input fields */
-    .form-control {
-        font-size: 2rem;
-        /* Larger text inside the input field */
-        padding: 2rem;
-        /* Increase padding for a larger field */
-        height: auto;
-        /* Adjust height automatically */
-    }
-}
-
-/* breakpoint for smaller screens */
-/* 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
-
-@media (max-width: 767px) {
-    #quoteBlock {
-        text-align: center; /* Centers the text horizontally */
-        font-family:'Courier New', Courier, monospace;
-        font-size: 2em;
-    }
-    
-    #logo {
-        width: 80%;
-        margin-top: 5%;
-        height: auto;
-        /* Maintain aspect ratio */
-    }
-
-    #tagline {
-        font-size: 1.2rem;
-        /* Larger font size for headings */
-    }
-
-    h1 {
-        font-size: 3rem;
-        /* Larger size for tablets and up */
-        margin-top: 2rem;
-        /* Add margin to the top of the heading */
-    }
-
-    p {
-        font-size: 1.5rem;
-        /* Larger size for tablets and up */
-    }
-    .card-img-top {
-        width: 70%; /* Make the image span the full width of the card */
-        height: 30rem; /* Set a fixed height for the image */
-        object-fit: contain; /* Ensure the entire SVG fits within the container */
-        background-color: white;
-        
-    }
-    .form-label {
-        font-size: 2rem;
-        /* Larger font size for form labels */
-    }
-
-    .navbar-nav .nav-link {
-        font-size: 2rem;
-        /* Larger font size for navbar links */
-    }
-
-    /* Increase the font size of the login button text */
-    .btn-primary {
-        font-size: 2rem;
-        /* Larger font size for button text */
-        padding: 1rem;
-        /* Increase padding for a larger button */
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        /* Add margin to the bottom of the button */
-    }
-
-    /* Increase the font size of the placeholder text */
-    input::placeholder {
-        font-size: 1.5rem;
-        /* Larger font size for placeholder text */
-    }
-
-    /* Increase the size of the form input fields */
-    .form-control {
-        font-size: 1rem;
-        /* Larger text inside the input field */
-        padding: 1rem;
-        /* Increase padding for a larger field */
-        height: auto;
-        /* Adjust height automatically */
-    }
-    
-    .card {
-        width: 22rem; /* Set a fixed width for the cards */
-        height: 36rem; /* Set a fixed height for the cards */
-        overflow: hidden; /* Ensure content does not overflow */
-        display: flex;
-        flex-direction: column; /* Stack content vertically */
-        justify-content: space-between; /* Distribute content evenly */
-        align-items: center; /* Center-align content horizontally */
-    }
-    .card-text {
-        margin-top: 0; /* Remove the top margin */
-        margin-bottom: 0; /* Remove the bottom margin */
-        line-height: 1.5; /* Optional: Adjust line height for better spacing */
-        text-align: left; /* Optional: Center-align the text */
-    }
-
-
 }

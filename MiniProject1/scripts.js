@@ -1,5 +1,4 @@
-// dummy log in function just for testing purposes
-
+// Dummy login function just for testing purposes
 function loginChecker() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -12,7 +11,6 @@ function loginChecker() {
     }
 }
 
-// <!-- Script to create and display characterChoice cards on quoteMain.html -->
 // Function to fetch and parse characterChoices.json and display cards
 function displaycharacterChoices() {
     fetch('resources/characterChoices.json') // Path to the JSON file
@@ -22,50 +20,46 @@ function displaycharacterChoices() {
     
             // Call makeCards for each item in the JSON array
             json.forEach(choice => {
-                // below code uses makCards and 
                 makeCards(choice.cardId, choice.cardImage, choice.cardTitle, choice.cardDescription);
             });
         })
         .catch(error => console.error("Error fetching or parsing JSON:", error));
-    }
-    
-// <!-- Script to create and display 4 cards -->
+}
+
 // Function to fetch and parse homePageChoices.json and display cards
 function displayHomePageChoices() {
-fetch('resources/homePageChoices.json') // Path to the JSON file
-    .then(response => response.json()) // Parse the response as JSON
-    .then(json => {
-        console.log("Parsed JSON data:", json); // Log the JSON data for debugging
+    fetch('resources/homePageChoices.json') // Path to the JSON file
+        .then(response => response.json()) // Parse the response as JSON
+        .then(json => {
+            console.log("Parsed JSON data:", json); // Log the JSON data for debugging
 
-        // Call makeCards for each item in the JSON array
-        json.forEach(choice => {
-            // below code uses makCards and 
-            makeCards(choice.cardId, choice.cardImage, choice.cardTitle, choice.cardDescription);
-        });
-    })
-    .catch(error => console.error("Error fetching or parsing JSON:", error));
+            // Call makeCards for each item in the JSON array
+            json.forEach(choice => {
+                makeCards(choice.cardId, choice.cardImage, choice.cardTitle, choice.cardDescription);
+            });
+        })
+        .catch(error => console.error("Error fetching or parsing JSON:", error));
 }
 
-// Function to create and display a card
+
 function makeCards(cardId, cardImage, cardTitle, cardDescription) {
-// Get the template and clone it
-const template = document.getElementById("card-template").content.cloneNode(true);
+    // Get the template and clone it
+    const template = document.getElementById("card-template").content.cloneNode(true);
 
-// Populate the card with data
-template.querySelector(".card-title").innerText = cardTitle;
-template.querySelector(".card-text").innerText = cardDescription;
-template.querySelector(".card-img-top").src = cardImage;
-template.querySelector(".card").id = `card-${cardId}`;
+    // Populate the card with data
+    template.querySelector(".card-title").innerText = cardTitle;
+    template.querySelector(".card-text").innerText = cardDescription;
+    template.querySelector(".card-img-top").src = cardImage;
+    template.querySelector(".card").id = `card-${cardId}`;
 
- // Set the onclick event for the button to call navChecker with the cardId
- const button = template.querySelector("#buttonIndexNav");
- button.setAttribute("onclick", `navChecker(${cardId})`);
+    // Set the data-card-id attribute and use a class for the button
+    const button = template.querySelector(".buttonIndexNav");
+    button.setAttribute("data-card-id", cardId);
 
-
-
-// Append the cloned template to the container so it will be displayed
-document.getElementById("card-container").appendChild(template);
+    // Append the cloned template to the container so it will be displayed
+    document.getElementById("card-container").appendChild(template);
 }
+
 // Get the current page's filename
 const currentPage = window.location.pathname.split("/").pop();
 
@@ -75,12 +69,11 @@ if (currentPage === "index.html") {
 } else if (currentPage === "quoteMain.html") {
     displaycharacterChoices(); // Call this function only on quoteMain.html
 }
+
 function navChecker(cardId) {
-    // Get the current page's filename
     const currentPage = window.location.pathname.split("/").pop();
 
     if (currentPage === "index.html") {
-        // Handle cases specific to the index.html page
         switch (cardId) {
             case 1:
                 window.location.href = "quoteMain.html";
@@ -98,28 +91,19 @@ function navChecker(cardId) {
                 console.error("Invalid card ID on index.html:", cardId);
         }
     } else if (currentPage === "quoteMain.html") {
-        // Handle cases specific to the quoteMain.html page
         switch (cardId) {
             case 1:
-                // these IDs correspond to different characters
                 window.location.href = "andy.html";
-
                 break;
-            case 1:
-                    // these IDs correspond to different characters
-                    window.location.href = "ann.html";
-
-                    break;
+            case 2:
+                window.location.href = "ann.html";
+                break;
             case 3:
-                 // these IDs correspond to different characters
-                 window.location.href = "ron.html";
-                 break;
+                window.location.href = "ron.html";
+                break;
             case 4:
-                 // these IDs correspond to different characters
-                 window.location.href = "leslie.html";
-                 
-                 break;
-                        
+                window.location.href = "leslie.html";
+                break;
             default:
                 console.error("Invalid card ID on quoteMain.html:", cardId);
         }
@@ -129,37 +113,38 @@ function navChecker(cardId) {
 }
 
 function displayQuoteBlock() {
-    let quotes = []; // Store the filtered quotes
-    let currentIndex = 0; // Track the current quote index
+    let quotes = [];
+    let currentIndex = 0;
 
-    // Fetch the JSON file containing quotes
+    const currentPage = window.location.pathname.split("/").pop().split(".")[0];
+    console.log(currentPage);
+
     fetch('resources/parksAndRecQuotes.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            return response.json(); // Parse the response as JSON
+            return response.json();
         })
         .then(json => {
             console.log("JSON object logged below:");
-            console.log(json); // Log the JSON array to the console for testing
+            console.log(json);
 
-            // Filter keys that contain "RonS" and extract the quotes
             quotes = Object.keys(json)
-                .filter(key => key.includes("RonS"))
-                .map(key => json[key]); // Extract only the values (quotes)
+                .filter(key => key.slice(0, 3).toLowerCase() === currentPage.slice(0, 3).toLowerCase())
+                .map(key => json[key]);
+
+            quotes = removeDuplicatesByFirstThreeWords(quotes);
 
             if (quotes.length === 0) {
-                console.warn("No quotes found for 'RonS'.");
+                console.warn(`No quotes found for '${currentPage}' after removing duplicates.`);
                 return;
             }
 
-            // Display the first quote
             updateQuote();
         })
         .catch(error => console.error("Error fetching or parsing JSON:", error));
 
-    // Function to update the displayed quote
     function updateQuote() {
         const quoteBlock = document.getElementById("quoteBlock");
         if (!quoteBlock) {
@@ -167,78 +152,229 @@ function displayQuoteBlock() {
             return;
         }
 
-        // Check if all quotes have been displayed
         if (currentIndex >= quotes.length) {
             quoteBlock.textContent = "No more quotes to display.";
             return;
         }
 
-        // Display the current quote
         quoteBlock.textContent = quotes[currentIndex];
-
-        // Increment the index for the next quote
         currentIndex++;
     }
 
-    // Attach the updateQuote function to the button's click event
     const button = document.querySelector("button[onclick='displayQuoteBlock()']");
     if (button) {
         button.onclick = updateQuote;
     }
 }
 
+function removeDuplicatesByFirstThreeWords(quotes) {
+    const uniqueQuotes = [];
+    const seenFirstThreeWords = new Set();
+
+    quotes.forEach(quote => {
+        const firstThreeWords = quote.split(" ").slice(0, 3).join(" ");
+        if (!seenFirstThreeWords.has(firstThreeWords)) {
+            uniqueQuotes.push(quote);
+            seenFirstThreeWords.add(firstThreeWords);
+        }
+    });
+
+    return uniqueQuotes;
+}
+
+let currentQuoteKey = "";
+
+function displayGuessQuote() {
+    fetch('resources/parksAndRecQuotes.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(json => {
+            const keys = Object.keys(json);
+            const values = Object.values(json);
+
+            const randomIndex = Math.floor(Math.random() * values.length);
+
+            const randomQuote = values[randomIndex];
+            currentQuoteKey = keys[randomIndex];
+
+            const quoteDiv = document.getElementById('showQuote');
+            if (quoteDiv) {
+                quoteDiv.textContent = randomQuote;
+            } else {
+                console.error("Element with ID 'showQuote' not found.");
+            }
+        })
+        .catch(error => console.error("Error fetching or parsing JSON:", error));
+}
+
+function populateDropdown() {
+    fetch('resources/parksAndRecQuotes.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(json => {
+            const keys = Object.keys(json);
+
+            if (!currentQuoteKey) {
+                console.error("currentQuoteKey is not set.");
+                return;
+            }
+
+            const correctOptionFormatted = currentQuoteKey
+                .replace(/([A-Z])/g, ' $1')
+                .replace(/[0-9]/g, '')
+                .trim();
+
+            const randomKeys = [];
+            const localArray = [
+                "Ron Swanson", "Leslie Knope", "Andy Dwyer", "Tom Haverford",
+                "Jeremy Jam", "Chris Traeger", "Jean Ralphio", "Donna Meagle",
+                "April Ludgate", "Perd Hapley", "Ann Perkins"
+            ];
+
+            while (randomKeys.length < 2) {
+                const randomKey = localArray[Math.floor(Math.random() * localArray.length)];
+                const randomKeyFormatted = randomKey
+                    .replace(/([A-Z])/g, ' $1')
+                    .replace(/[0-9]/g, '')
+                    .trim();
+
+                if (
+                    randomKey !== currentQuoteKey &&
+                    randomKeyFormatted !== correctOptionFormatted &&
+                    !randomKeys.includes(randomKey)
+                ) {
+                    randomKeys.push(randomKey);
+                }
+            }
+
+            const dropdownOptions = [currentQuoteKey, ...randomKeys];
+            dropdownOptions.sort(() => Math.random() - 0.5);
+
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            if (dropdownMenu) {
+                dropdownMenu.innerHTML = '';
+                dropdownOptions.forEach(key => {
+                    const formattedKey = key
+                        .replace(/([A-Z])/g, ' $1')
+                        .replace(/[0-9]/g, '')
+                        .trim();
+
+                    const listItem = document.createElement('li');
+                    const link = document.createElement('a');
+                    link.className = 'dropdown-item';
+                    link.href = '#';
+                    link.textContent = formattedKey;
+
+                    link.onclick = function () {
+                        if (key === currentQuoteKey) {
+                            alert("Right Answer!");
+                        } else {
+                            alert("Wrong Answer!");
+                        }
+                    };
+
+                    listItem.appendChild(link);
+                    dropdownMenu.appendChild(listItem);
+                });
+            } else {
+                console.error("Dropdown menu not found.");
+            }
+        })
+        .catch(error => console.error("Error fetching or parsing JSON:", error));
+}
 
 function playThemeSong() {
-    let audioElement = document.getElementById("themeAudio");
-    if (!audioElement) {
-        audioElement = document.createElement("audio");
+    let alertBox = document.getElementById("themeAlertBox");
+    if (!alertBox) {
+        alertBox = document.createElement("div");
+        alertBox.id = "themeAlertBox";
+        alertBox.style.position = "fixed";
+        alertBox.style.top = "50%";
+        alertBox.style.left = "50%";
+        alertBox.style.transform = "translate(-50%, -50%)";
+        alertBox.style.backgroundColor = "#ffffff";
+        alertBox.style.border = "1px solid #ccc";
+        alertBox.style.borderRadius = "8px";
+        alertBox.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+        alertBox.style.padding = "20px";
+        alertBox.style.textAlign = "center";
+        alertBox.style.zIndex = "1000";
+
+        const audioElement = document.createElement("audio");
         audioElement.id = "themeAudio";
         audioElement.src = "resources/theme.mp3";
         audioElement.controls = true;
         audioElement.style.display = "block";
-        document.getElementById("card-container").appendChild(audioElement); // Append to a specific container
+
+        const closeButton = document.createElement("button");
+        closeButton.textContent = "Close";
+        closeButton.style.marginTop = "10px";
+        closeButton.style.padding = "5px 10px";
+        closeButton.style.border = "none";
+        closeButton.style.borderRadius = "4px";
+        closeButton.style.backgroundColor = "#007bff";
+        closeButton.style.color = "#ffffff";
+        closeButton.style.cursor = "pointer";
+
+        closeButton.onclick = function () {
+            document.body.removeChild(alertBox);
+        };
+
+        alertBox.appendChild(audioElement);
+        alertBox.appendChild(closeButton);
+        document.body.appendChild(alertBox);
+        audioElement.play();
     }
-    audioElement.play();
 }
-    
+
 function make4Cards() {
-        for (let i = 0; i < 4; i++) {
-            // Get the template and clone it 
-            const template = document.getElementById("card-template").content.cloneNode(true);
-
-            // Append the cloned template to the container so it will be displayed
-            document.getElementById("card-container").appendChild(template);
-        }
+    for (let i = 0; i < 4; i++) {
+        const template = document.getElementById("card-template").content.cloneNode(true);
+        document.getElementById("card-container").appendChild(template);
     }
+}
 
-    // Get the button
-    const backToTopButton = document.getElementById("backToTop");
+const backToTopButton = document.getElementById("backToTop");
+backToTopButton.onclick = function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
-    // Scroll to the top when the button is clicked
-    backToTopButton.onclick = function () {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-
-
-    const localObjectFromJSON ={};
-    // Fetch locally saved json file containing quotes
-    fetch('resources/parksAndRecQuotes.json')
-        .then(response => response.json()) // Parse the response as JSON
-        .then(json => {
-            console.log("JSON object logged below:");
-            console.log(json); // Log the JSON array to the console for testing
-        // Iterate over the key-value pairs in the JSON object
+const localObjectFromJSON = {};
+fetch('resources/parksAndRecQuotes.json')
+    .then(response => response.json())
+    .then(json => {
+        console.log("JSON object logged below:");
+        console.log(json);
         Object.entries(json).forEach(([key, value]) => {
-        localObjectFromJSON[key] = value; // Save each key-value pair into the local object
+            localObjectFromJSON[key] = value;
+        });
+        console.log("Locally saved object below:");
+        console.log(localObjectFromJSON);
     });
 
-    console.log("Locally saved object below:");
-    console.log(localObjectFromJSON); // Log the updated localObjectFromJSON
-        })
+document.addEventListener("click", (event) => {
+    if (event.target && event.target.classList.contains("buttonIndexNav")) {
+        const cardId = event.target.getAttribute("data-card-id");
+        handleCardButtonClick(cardId);
+    }
+});
 
+const cardClickCounts = JSON.parse(localStorage.getItem("cardClickCounts")) || {};
 
+function handleCardButtonClick(cardId) {
+    // Increment the click count for the card
+    cardClickCounts[cardId] = (cardClickCounts[cardId] || 0) + 1;
+    localStorage.setItem("cardClickCounts", JSON.stringify(cardClickCounts));
+    console.log(`Card ${cardId} clicked. Updated counts:`, cardClickCounts);
 
-
-
-
+    // Call navChecker to handle navigation or actions based on cardId
+    navChecker(parseInt(cardId, 10));
+}

@@ -17,7 +17,7 @@
     <!-- Navigation Bar -->
     <nav id="tagline" class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid mb-10">
-            <a id='tagLine' class="navbar-brands" href="">#ParksAndRecreationLove</a>
+            <a id="hashTagLine" class="navbar-brand" href="index.html">#ParksAndRecreationLove</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,30 +44,25 @@
     <div class="d-flex justify-content-center align-items-center w-100 vh-70">
         <img id="logo" src="resources/logo.svg" class="img-fluid" alt="Responsive Logo">
     </div>
-    <h1 id="chooseOption" class="centered-text">choose a character to see their quotes</h1>
+    <h1 id="chooseOption" class="text-center">choose a character to see their quotes</h1>
+    <div id="card-container" class="container-fluid row g-4">
+        <!-- Cards will be dynamically generated here -->
+    </div>
 
-    <template id="card-template" class="row g-4">
-        <div class="col-lg-3 col-md-6 col-12">
-            <div class="card m-3">
+    <!-- Card Template -->
+    <template id="card-template">
+        <div class="col-md-3">
+            <div class="card">
                 <img src="" class="card-img-top" alt="Card Image">
                 <div class="card-body">
-                    <h2 class="card-title">Card Title</h2>
+                    <h5 class="card-title">Card Title</h5>
                     <p class="card-text">Card Description</p>
-                    <div class="d-flex justify-content-center">
-                        <button id="buttonIndexNav" class="btn btn-primary">Go</button>
-                        <!-- <a href="#" class="btn btn-primary">Go</a> -->
-                    </div>
+                    <button class="buttonIndexNav btn btn-primary">Go</button>
                 </div>
             </div>
         </div>
     </template>
-    <!-- Container to display the cards -->
-    <!-- the below code is the container for the cards
-    it uses container-fluid to span the full width of the screen
-    and row g-4 to add a gap between cards -->
-    <div class="container-fluid">
-        <div id="card-container" class="row g-4"></div> <!-- added Bootstrap row with gap between cards -->
-    </div>
+
 
     <!-- Back-to-Top Button -->
     <div class="d-flex justify-content-center">

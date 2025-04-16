@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Parks and Recreation Fan Site</title>
 
     <!-- Link to Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -16,8 +16,8 @@
 <body>
     <!-- Navigation Bar -->
     <nav id="tagline" class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid mb-10">
-            <a id='tagLine' class="navbar-brands" href="">#ParksAndRecreationLove</a>
+        <div class="container-fluid">
+            <a id="hashTagLine" class="navbar-brand" href="index.html">#ParksAndRecreationLove</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -25,64 +25,62 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link mx-5" href="index.html">Home</a>
+                        <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-5" href="about.html">About</a>
+                        <a class="nav-link" href="quoteMain.html">Quotes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-5" href="contact.html">Contact</a>
+                        <a class="nav-link" href="about.html">About</a>
                     </li>
-                    <li class="nav-item mx-5">
-                        <a class="nav-link active" aria-current="page" href="login.html">Login</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <h1 id="chooseOption" class="centered-text">welcome to the Parks and Recreation fan site</h1>
+    <!-- Welcome Banner -->
+    <h1 id="chooseOption" class="text-center">Welcome to the Parks and Recreation Fan Site</h1>
     <div class="d-flex justify-content-center align-items-center vh-83" style="margin: 0; padding: 0;">
         <!-- Original banner for medium and larger screens -->
-        <img src="resources/banner.png" alt="image of the Parks and Recreation cast" class="img-fluid w-100 d-none d-md-block" id="banner">
+        <img src="resources/banner.png" alt="Image of the Parks and Recreation cast" class="img-fluid w-100 d-none d-md-block" id="banner">
         
         <!-- Alternate banner for small screens -->
         <img src="resources/parksAndRecreation.jpg" alt="Alternate Parks and Recreation image" class="img-fluid w-100 d-block d-md-none" id="banner-small">
     </div>
-    
-    
-    <h1 id="chooseOption" class="centered-text">choose an option</h1>
-    <br>
-    <br>
 
-    <template id="card-template" class="row g-4">
-        <div class="col-lg-3 col-md-6 col-12">
-            <div class="card m-3">
+    <!-- Cards Section -->
+    <h1 id="chooseOption" class="text-center">Choose an Option</h1>
+    
+    <div id="card-container" class="container-fluid row g-4">
+        <!-- Cards will be dynamically generated here -->
+    </div>
+    <!-- Card Template -->
+    <template id="card-template">
+        <div class="col-md-3">
+            <div class="card">
                 <img src="" class="card-img-top" alt="Card Image">
                 <div class="card-body">
-                    <h2 class="card-title">Card Title</h2>
+                    <h5 class="card-title">Card Title</h5>
                     <p class="card-text">Card Description</p>
-                    <div class="d-flex justify-content-center">
-                        <button id="buttonIndexNav" class="btn btn-primary">Go</button>
-                        <!-- <a href="#" class="btn btn-primary">Go</a> -->
-                    </div>
+                    <button class ="buttonIndexNav btn btn-primary">Go</button>
                 </div>
             </div>
         </div>
     </template>
-    <!-- Container to display the cards -->
-    <!-- the below code is the container for the cards
-    it uses container-fluid to span the full width of the screen
-    and row g-4 to add a gap between cards -->
-    <div class="container-fluid">
-        <div id="card-container" class="row g-4"></div> <!-- added Bootstrap row with gap between cards -->
-    </div>
 
-    <!-- Back-to-Top Button -->
-    <div class="d-flex justify-content-center">
-        <a onclick= "backUp()" id="backToTop" class="btn btn-primary">Back To Top</a>
-    </div>
-<!-- Link to Bootstrap JS Bundle (includes Popper.js) -->
+
+<!-- Back to Top Button -->
+<div class="text-center">
+    <button id="backToTop" class="btn btn-secondary">Back to Top</button>
+</div>
+
+    <!-- Link to Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Link to the custom JavaScript file -->
