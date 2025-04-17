@@ -166,6 +166,7 @@ h1 {
     background-color: #343a40; /* Dropdown menu background color */
     color: #ffffff; /* Dropdown menu text color */
     border-radius: 0.3125rem; /* Rounded corners for the dropdown */
+    
 }
 
 .dropdown-menu .dropdown-item {

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Parks and Recreation</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="analytics.html">Analytics</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Main Menu Choice Analytics</h1>
+        
+        <!-- Table for displaying raw data -->
+        <table class="table table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th>Card ID</th>
+                    <th>Card Title</th>
+                    <th>Click Count</th>
+                </tr>
+            </thead>
+            <tbody id="analyticsTable">
+                <!-- Data will be dynamically populated here -->
+            </tbody>
+        </table>
+
+        <!-- Canvas for the pie chart -->
+        <div id="pieDiv"class="mt-2">
+            <h2 class="text-center">Click Distribution</h2>
+            <canvas id="clicksPieChart" width="300" height="300"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Retrieve the click counts from localStorage
+        const cardClickCounts = JSON.parse(localStorage.getItem("cardClickCounts")) || {};
+
+        // Define card titles for display
+        const cardTitles = {
+            1: "Quote By Character Page",
+            2: "Guess Who Said Page",
+            3: "Play Theme Song",
+            4: "Upload Quote Page"
+        };
+
+        // Populate the analytics table
+        const analyticsTable = document.getElementById("analyticsTable");
+        Object.keys(cardClickCounts).forEach(cardId => {
+            const row = document.createElement("tr");
+
+            // Card ID
+            const cardIdCell = document.createElement("td");
+            cardIdCell.textContent = cardId;
+            row.appendChild(cardIdCell);
+
+            // Card Title
+            const cardTitleCell = document.createElement("td");
+            cardTitleCell.textContent = cardTitles[cardId] || "Unknown Card";
+            row.appendChild(cardTitleCell);
+
+            // Click Count
+            const clickCountCell = document.createElement("td");
+            clickCountCell.textContent = cardClickCounts[cardId];
+            row.appendChild(clickCountCell);
+
+            analyticsTable.appendChild(row);
+        });
+
+        // Prepare data for the pie chart
+        const chartLabels = Object.keys(cardClickCounts).map(cardId => cardTitles[cardId] || `Card ${cardId}`);
+        const chartData = Object.values(cardClickCounts);
+
+        // Create the pie chart
+        const ctx = document.getElementById('clicksPieChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: chartLabels,
+                datasets: [{
+                    label: 'Click Distribution',
+                    data: chartData,
+                    backgroundColor: [
+                        '#FF6384', // Color for each slice
+                        '#36A2EB',
+                        '#FFCE56',
+                        '#4BC0C0'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: false,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                const label = tooltipItem.label || '';
+                                const value = tooltipItem.raw || 0;
+                                return `${label}: ${value} clicks`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
