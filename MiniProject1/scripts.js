@@ -232,29 +232,38 @@ function populateDropdown() {
                 .replace(/[0-9]/g, '')
                 .trim();
 
-            const randomKeys = [];
+            // Original array
             const localArray = [
                 "Ron Swanson", "Leslie Knope", "Andy Dwyer", "Tom Haverford",
                 "Jeremy Jam", "Chris Traeger", "Jean Ralphio", "Donna Meagle",
                 "April Ludgate", "Perd Hapley", "Ann Perkins"
             ];
+// Spread copy into a new array and remove the correct option
+const localArrayClean = [...localArray].filter(item => {
+    // Compare the item directly with the correct option
+    const isMatch = item.trim().toLowerCase() === correctOptionFormatted.trim().toLowerCase();
+    console.log(`Comparing: "${item}" with "${correctOptionFormatted}" -> Match: ${isMatch}`);
+    return !isMatch; // Exclude the correct option
+});
 
+console.log("Original Local Array:", localArray);
+console.log("Correct Option Formatted:", correctOptionFormatted);
+console.log("Cleaned Local Array:", localArrayClean);
+console.log("Original Local Array:", localArray);
+console.log("Correct Option Formatted:", correctOptionFormatted);
+console.log("Cleaned Local Array:", localArrayClean);
+            // Randomly select 2 options from the cleaned array
+            const randomKeys = [];
             while (randomKeys.length < 2) {
-                const randomKey = localArray[Math.floor(Math.random() * localArray.length)];
-                const randomKeyFormatted = randomKey
-                    .replace(/([A-Z])/g, ' $1')
-                    .replace(/[0-9]/g, '')
-                    .trim();
-
-                if (
-                    randomKey !== currentQuoteKey &&
-                    randomKeyFormatted !== correctOptionFormatted &&
-                    !randomKeys.includes(randomKey)
-                ) {
+                const randomKey = localArrayClean[Math.floor(Math.random() * localArrayClean.length)];
+                if (!randomKeys.includes(randomKey)) {
                     randomKeys.push(randomKey);
                 }
             }
 
+            console.log("Randomly Selected Keys:", randomKeys);
+
+            // Combine the correct option with the random options
             const dropdownOptions = [currentQuoteKey, ...randomKeys];
             dropdownOptions.sort(() => Math.random() - 0.5);
 
@@ -290,6 +299,9 @@ function populateDropdown() {
         })
         .catch(error => console.error("Error fetching or parsing JSON:", error));
 }
+
+
+
 
 function playThemeSong() {
     let alertBox = document.getElementById("themeAlertBox");
@@ -377,4 +389,30 @@ function handleCardButtonClick(cardId) {
 
     // Call navChecker to handle navigation or actions based on cardId
     navChecker(parseInt(cardId, 10));
+}
+
+// Function to handle card clicks on the quoteMain.html page
+function quoteMainCardCounts(cardId) {
+    // Retrieve the existing click counts from localStorage or initialize an empty object
+    const quoteMainClickCounts = JSON.parse(localStorage.getItem("quoteMainClickCounts")) || {};
+
+    // Increment the click count for the card
+    quoteMainClickCounts[cardId] = (quoteMainClickCounts[cardId] || 0) + 1;
+
+    // Save the updated counts back to localStorage
+    localStorage.setItem("quoteMainClickCounts", JSON.stringify(quoteMainClickCounts));
+    console.log(`Quote Main Card ${cardId} clicked. Updated counts:`, quoteMainClickCounts);
+
+    // Call navChecker to handle navigation or actions based on cardId
+    navChecker(parseInt(cardId, 10));
+}
+
+// Add an event listener for clicks on the quoteMain.html page
+if (currentPage === "quoteMain.html") {
+    document.addEventListener("click", (event) => {
+        if (event.target && event.target.classList.contains("buttonIndexNav")) {
+            const cardId = event.target.getAttribute("data-card-id");
+            quoteMainCardCounts(cardId); // Use the new function for quoteMain.html
+        }
+    });
 }

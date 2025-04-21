@@ -40,15 +40,109 @@
         </table>
 
         <!-- Canvas for the pie chart -->
-        <div id="pieDiv"class="mt-2">
-            <h2 class="text-center">Click Distribution</h2>
+        <div id="pieDiv" class="mt-2">
+            <h2 class="text-center">Click Distribution By Page Clicked</h2>
             <canvas id="clicksPieChart" width="300" height="300"></canvas>
         </div>
+
+        <!-- Most Frequently Clicked Character -->
+        <div id="mostClickedCharacter" class="mt-4 text-center">
+            <h2>Most Frequently Clicked On Character</h2>
+            <p id="mostClickedCharacterText">No data available yet.</p>
+        </div>
+
+        <!-- Most Liked Quote -->
+        <div id="mostLikedQuote" class="mt-4 text-center">
+            <h2>Most Liked Quote by Character</h2>
+            <p id="mostLikedQuoteText">No data available yet.</p>
+        </div>
+    </div>
+    <div class="mt-5">
+        <h2 class="text-center">Mini Project 1</h2>
+        <p><strong>1. What was your requirements gathering and design process? Was it useful/successful?</strong></p>
+        <p>
+            A. Completed a review of other fan sites, blogs and social media pages.<br>
+            B. Did a requirements analysis (functional and non-functional).<br>
+            C. Separated the project plan into 3 parts (for mini-projects 1, 2 and 3).<br>
+            <br><strong>Project 1 (this mini project) includes:</strong><br>
+            Requirements gathering and Design<br>
+            Data Set build<br>
+            Resource filing<br>
+            Front-End programming<br>
+            <br><strong>Project 2 (future) includes:</strong><br>
+            Back-End Programming<br>
+            Social Media Integration<br>
+            Game-based content development<br>
+            <br><strong>Project 3 (future) includes:</strong><br>
+            Testing<br>
+            Hosting and Deployment<br>
+            Review and Improvements<br>
+            <br>
+            D. Built appropriate datasets (stored as internal JSON objects).<br>
+            E. Completed a Figma lo-fi design.<br>
+            F. Completed Front-End base files to project 1 stage (HTML, CSS, JS).
+        </p>
+        <p><strong>2. Give a high-level overview of your application and its features</strong></p>
+        <p>
+            The application is designed to be a free-to-use TV Show fan site template that produces user analytics. 
+            The application (using JSON datasets) is built to be easily adapted to various TV shows and will have a 
+            strong game component that will encourage users to undertake mini-challenges about the content of their 
+            favourite TV shows and share their achievements online.
+        </p>
+        <p><strong>3. Where does its data come from (external/internal APIs)?</strong></p>
+        <p>
+            The application uses currently uses 3 main datasets stored as internal JSON objects. The application as a 
+            whole is designed to have these datasets be interchangeable (across various TV shows) and built from a 
+            combination of AI searches and data scraping.
+        </p>
+        <p><strong>4. How is this data processed and displayed?</strong></p>
+        <p>
+            The analytics page includes use of charts and a table (built from locally stored data) and JSON objects are 
+            parsed to dynamically create cards covering the 3 main functions of the application (as well as the related 
+            game-based content). The processing here is primarily based on data used as numbers and strings and then 
+            displayed as such to screen. Future updates will include adding more complex data types and elements to the 
+            existing JSON objects (for example adding user ‘likes’ and sharable game scores).
+        </p>
+        <p><strong>5. How can the user interact with your application?</strong></p>
+        <p>
+            The application uses JS functionality to allow keyboard, touch screen and mouse interactions that include 
+            log-ins, navigation, form-field entry and browser-based game interactions.
+        </p>
+        <p><strong>6. What JS techniques have you used (e.g. objects, arrays, DOM functions, loops, functions)?</strong></p>
+        <p>
+            The application makes extensive use of JSON datasets and functions containing objects, arrays and sets as 
+            well as various iteration methods (spanning for loops, forEach array methods, do loops, ternary statements, 
+            switches and if statements as well as direct DOM manipulation (primarily using query selector) to dynamically 
+            update cards from an HTML template. The application also (temporarily) makes use of console logging for 
+            testing and uses local storage to hold event listener data (which in future will be stored in the back end).
+        </p>
+        <p><strong>7. What external tools/libraries have you used (e.g. bootstrap/axios/charts)? How? Why?</strong></p>
+        <p>
+            The application currently includes the use of Bootstrap, Charts.js and uses fetch (for accessing an internally 
+            stored set of JSON files).
+        </p>
+        <p><strong>8. What kinds of HTML elements have you used (e.g. tables, forms, divs, lists, headings, menus, videos, images)?</strong></p>
+        <p>
+            The application uses several JS-driven DOM manipulations to dynamically generate headings, divs, navigation, 
+            tables, charts, images and playable sound files.
+        </p>
+        <p><strong>9. What kinds of CSS features have you used (e.g. animations, backgrounds, fonts, colours, flexbox, grid)?</strong></p>
+        <p>
+            The application uses a combination of Bootstrap components and classes as well as a dedicated CSS file (for 
+            more specific control) and features a bespoke style including a set palette, fonts, backgrounds and CSS 
+            effects. It employs a fully responsive design.
+        </p>
+        <p><strong>10. How might you extend the features of your application in future?</strong></p>
+        <p>
+            In projects 2 and 3 the intention (as mentioned above) is to further develop the back end and social media 
+            components of the design and to improve the browser-based game components.
+        </p>
     </div>
 
     <script>
         // Retrieve the click counts from localStorage
         const cardClickCounts = JSON.parse(localStorage.getItem("cardClickCounts")) || {};
+        console.log("Card Click Counts from localStorage:", cardClickCounts);
 
         // Define card titles for display
         const cardTitles = {
@@ -57,6 +151,7 @@
             3: "Play Theme Song",
             4: "Upload Quote Page"
         };
+        console.log("Card Titles:", cardTitles);
 
         // Populate the analytics table
         const analyticsTable = document.getElementById("analyticsTable");
@@ -121,6 +216,32 @@
                 }
             }
         });
+        
+        // Retrieve the click counts for quoteMain.html from localStorage
+        const quoteMainClickCounts = JSON.parse(localStorage.getItem("quoteMainClickCounts")) || {};
+
+        // Define card titles for quoteMain.html
+        const quoteMainCardTitles = {
+            1: "andy.html",
+            2: "ann.html",
+            3: "ron.html",
+            4: "leslie.html"
+        };
+
+        // Find the most clicked card on quoteMain.html
+        const mostClickedQuoteMainCardId = Object.keys(quoteMainClickCounts).reduce((a, b) => 
+            quoteMainClickCounts[a] > quoteMainClickCounts[b] ? a : b, null);
+        console.log("Most Clicked Quote Main Card ID:", mostClickedQuoteMainCardId);
+        const mostClickedQuoteMainCardText = mostClickedQuoteMainCardId
+            ? `${quoteMainCardTitles[mostClickedQuoteMainCardId]} (${quoteMainClickCounts[mostClickedQuoteMainCardId]} clicks)`
+            : "No data available yet.";
+
+        // Update the analytics page with the most clicked card
+        document.getElementById("mostClickedCharacterText").textContent = mostClickedQuoteMainCardText;
+
+        // Placeholder for the most liked quote
+        const mostLikedQuoteText = "This is a placeholder for the most liked quote.";
+        document.getElementById("mostLikedQuoteText").textContent = mostLikedQuoteText;
     </script>
 </body>
 </html>

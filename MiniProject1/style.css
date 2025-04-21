@@ -89,11 +89,15 @@ h1 {
     position: relative; /* Set the card as a positioning context */
 }
 
+
 .card .buttonIndexNav {
     position: absolute; /* Position the button absolutely */
     bottom: 1rem; /* Distance from the bottom of the card */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%); /* Adjust for the button's width */
+    border: none;
+    border-radius: 10%;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
 }.card .card-img-top {
     width: 100%; /* Set the width to fill the card */
     height: auto; /* Maintain the aspect ratio */
@@ -128,6 +132,8 @@ h1 {
     text-align: center; /* Center-align the button text */
     display: block; /* Ensure the button spans the full width */
     margin: 0.625rem auto; /* Center the button horizontally */
+    border: none; /* Remove border */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 .buttonIndexNav:hover {
@@ -189,16 +195,7 @@ h1 {
     margin: 5% 0; /* Add margin around the block */
 }
 
-#clickMe {
-    background-color: #ffc107; /* Button background color */
-    color: #ffffff; /* Button text color */
-    border-radius: 0.3125rem; /* Rounded corners for the button */
-    padding: 0.625rem 1.25rem; /* Add padding to the button */
-    text-align: center; /* Center-align the button text */
-    display: block; /* Ensure the button spans the full width */
-    margin: 0.625rem auto; /* Center the button horizontally */
-;
-}
+
 
 /* Responsive Design */
 @media (max-width: 48rem) { /* 768px equivalent */
