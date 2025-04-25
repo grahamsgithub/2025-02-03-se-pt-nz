@@ -18,7 +18,7 @@ const port = 3000
 // res is an object that represents the HTTP response
 // the res.send() method sends a response to the client
 app.get('/', (req, res) => {
-res.send('Hello from server 3000!')
+res.send('Hello from server 3000! at localhost:3000')
 })
 
 app.listen(port, () => {
@@ -35,14 +35,14 @@ const port2 = 3001
 
 // NB browser access must now use http://localhost:3001/app2
 app2.get('/app2', (req, res) => {
-res.send('Hello from server 3001!')
+res.send('Hello from server 3001! at localhost:3001/app2')
 })
 
 // start the server on the new port
 // with the new values for the port and URL
 app2.listen(port2, () => {
 console.log(`Example app listening
-at http://localhost:${port2}`)
+at http://localhost:${port2}/app2`)
 })
 
 // OUTPUT:
