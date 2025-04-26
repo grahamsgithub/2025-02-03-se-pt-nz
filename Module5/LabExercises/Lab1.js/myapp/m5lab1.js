@@ -46,5 +46,5 @@ at http://localhost:${port2}/app2`)
 })
 
 // OUTPUT:
-// on browser at localhost:3000 = Hello from server 3000!
-// on browser at localhost:3001/app2 = Hello from server 3001!
+// on browser at localhost:3000 = Hello from server 3000! at localhost:3000
+// on browser at localhost:3001/app2 = Hello from server 3001! at localhost:3001/app2

@@ -1,5 +1,3 @@
-// MODULE 5 LAB 1
-
 // require the express module/package
 const express = require('express')
 // create an instance of express
@@ -26,25 +24,15 @@ console.log(`Example app listening
 at http://localhost:${port}`)
 })
 
+// LAB 2
+// import the calculator routes from the calculatorRoutes.js file
+// import all calculator routes (up the top)
 
-// Create a basic back-end application with multiple web servers running on different ports.
-const app2 = express()
-// define a new port number
-const port2 = 3001
-// define a unique route for the new root URL (eg. "/app2")
+// add update to serve static files from the public directory
+// Serve static files from the "public" directory
+app.use(express.static('public'));
 
-// NB browser access must now use http://localhost:3001/app2
-app2.get('/app2', (req, res) => {
-res.send('Hello from server 3001!')
-})
-
-// start the server on the new port
-// with the new values for the port and URL
-app2.listen(port2, () => {
-console.log(`Example app listening
-at http://localhost:${port2}`)
-})
-
-// OUTPUT:
-// on browser at localhost:3000 = Hello from server 3000!
-// on browser at localhost:3001/app2 = Hello from server 3001!
+ const calculatorRoutes = 
+require('./routes/calculatorRoutes');
+ // map the calculator routes to our app
+ app.use('/calculator', calculatorRoutes);
