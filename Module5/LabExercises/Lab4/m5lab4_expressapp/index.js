@@ -12,5 +12,5 @@ app.use('/friends', friendRoutes);
 
 // starts the backend app on the given port
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app is really listening at http://localhost:${port}`);
 });
